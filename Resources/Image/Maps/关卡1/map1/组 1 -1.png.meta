@@ -1,9 +1,8 @@
 fileFormatVersion: 2
-guid: 7cee4c3b4df04884aac422390c171fbf
+guid: 8c390bdc71feb794da80bafbafe75981
 TextureImporter:
   fileIDToRecycleName:
-    21300000: leftstand_0
-    21300002: leftstand_1
+    21300000: "\u7EC4 1 -1_0"
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -86,13 +85,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: leftstand_0
+      name: "\u7EC4 1 -1_0"
       rect:
         serializedVersion: 2
-        x: 56
-        y: 156
-        width: 30
-        height: 56
+        x: 0
+        y: 0
+        width: 60
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,27 +99,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16f8b92cc866990468b2a540cd911629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: leftstand_1
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 28
-        width: 30
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fe69337b505a184982f127319f0d57f
+      spriteID: 8669c6fb5c5ffd349a0bbdab438d97d9
       vertices: []
       indices: 
       edges: []
@@ -128,7 +107,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: cf5d532aa520a4641a7cc150a733646b
+    spriteID: 8355c0fa5bc969140b5636695ea6ceff
     vertices: []
     indices: 
     edges: []
