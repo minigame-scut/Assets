@@ -2205,7 +2205,7 @@ GameObject:
   - component: {fileID: 1398479804}
   m_Layer: 0
   m_Name: airPlace
-  m_TagString: Untagged
+  m_TagString: trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3719,7 +3719,7 @@ PrefabInstance:
     - target: {fileID: 3065040089294827191, guid: 109b24c51df63b247b651e2ed14e037b,
         type: 3}
       propertyPath: m_Name
-      value: birthPlace
+      value: birthPlace1-2-2
       objectReference: {fileID: 0}
     - target: {fileID: 5105765558277027745, guid: 109b24c51df63b247b651e2ed14e037b,
         type: 3}
@@ -3799,7 +3799,7 @@ PrefabInstance:
     - target: {fileID: 878209286829639390, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.21
+      value: 8.24
       objectReference: {fileID: 0}
     - target: {fileID: 878209286829639390, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
@@ -3854,22 +3854,22 @@ PrefabInstance:
     - target: {fileID: 7637123568921508146, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.33637
+      value: 0.97770405
       objectReference: {fileID: 0}
     - target: {fileID: 7637123568921508146, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.32726002
+      value: 1.6099281
       objectReference: {fileID: 0}
     - target: {fileID: 7637123568921508146, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
       propertyPath: m_Offset.y
-      value: 3.6932168
+      value: 2.4586453
       objectReference: {fileID: 0}
     - target: {fileID: 7637123568921508146, guid: 2ed7a2ab43b63ab468e97b765689bf30,
         type: 3}
       propertyPath: m_Size.y
-      value: 8.386434
+      value: 5.9172907
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ed7a2ab43b63ab468e97b765689bf30, type: 3}
