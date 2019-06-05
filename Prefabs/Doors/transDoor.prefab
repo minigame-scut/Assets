@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4764642242691608874}
   - component: {fileID: 4764642242691608873}
   - component: {fileID: 4764642242691608875}
+  - component: {fileID: 8798244640871026343}
   m_Layer: 0
   m_Name: transDoor
   m_TagString: transDoor
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4764642242691608879}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.58, y: 3.36, z: 0.0078125}
   m_LocalScale: {x: 2, y: 3.3, z: 1}
   m_Children: []
@@ -126,3 +127,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23573297, y: 0.3808545}
   m_EdgeRadius: 0
+--- !u!114 &8798244640871026343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764642242691608879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77b1f90213b0fa479c17aad3abab0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiggestTriggerTime: 1

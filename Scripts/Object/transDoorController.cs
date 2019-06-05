@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ghostTest : MonoBehaviour
+public class transDoorController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

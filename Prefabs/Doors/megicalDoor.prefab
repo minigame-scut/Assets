@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2549017541106511390}
   - component: {fileID: 2549017541106511377}
   - component: {fileID: 2615466544266526527}
+  - component: {fileID: 7914172088729954080}
   m_Layer: 0
   m_Name: megicalDoor
   m_TagString: megicalDoor
@@ -126,3 +127,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2696866, y: 0.3885275}
   m_EdgeRadius: 0
+--- !u!114 &7914172088729954080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549017541106511376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8530cb215ef28e40ae85416090292a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiggestTriggerTime: 1

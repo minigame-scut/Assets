@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7382189107279705142}
   - component: {fileID: 7382189107279705140}
   - component: {fileID: 7439418507961728372}
+  - component: {fileID: 8629481118280978501}
   m_Layer: 0
   m_Name: gDoor
   m_TagString: gDoor
@@ -126,3 +127,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20279664, y: 0.32905418}
   m_EdgeRadius: 0
+--- !u!114 &8629481118280978501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7382189107279705137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ac93f3fc334274181fa03c3d0d10f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiggestTriggerTime: 1
