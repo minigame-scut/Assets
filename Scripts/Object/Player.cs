@@ -13,14 +13,24 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EventCenter.AddListener(EventType.PlayerDeath, playerDeath);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //检测输入
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(speed.x * inputX, speed.y * inputY);
+
+        
+    }
+
+    //玩家死亡处理函数
+    void playerDeath()
+    {
+        Debug.Log("玩家死亡");
+
     }
 }
