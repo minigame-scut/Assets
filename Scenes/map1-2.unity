@@ -2795,6 +2795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1304765944}
   - component: {fileID: 1304765946}
+  - component: {fileID: 1304765945}
   m_Layer: 0
   m_Name: "\u56FE\u5C42 1"
   m_TagString: Untagged
@@ -2816,6 +2817,25 @@ Transform:
   m_Father: {fileID: 1255148430}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304765945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304765943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1930459b5b6bbd74d8680b340a693ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1024
+  height: 597
+  mapObject: {fileID: 1304765943}
+  camera: {fileID: 1255148429}
+  sizeOfCamera: 0
+  yOfRate: 0
+  xOfRate: 0
 --- !u!212 &1304765946
 SpriteRenderer:
   m_ObjectHideFlags: 0
