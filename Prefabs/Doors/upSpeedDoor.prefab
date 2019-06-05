@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1554024558349641329}
   - component: {fileID: 1554024558349641334}
   - component: {fileID: 8109636819060316318}
+  - component: {fileID: 1697292977625663653}
   m_Layer: 0
   m_Name: upSpeedDoor
   m_TagString: upSpeedDoor
@@ -126,3 +127,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23399377, y: 0.34255952}
   m_EdgeRadius: 0
+--- !u!114 &1697292977625663653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554024558349641335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec93681835d59cb41888ac5cf8949a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiggestTriggerTime: 1

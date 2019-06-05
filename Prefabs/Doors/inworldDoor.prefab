@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 771148408336400234}
   - component: {fileID: 771148408336400235}
   - component: {fileID: 1745408353948310336}
+  - component: {fileID: 4630206291626235941}
   m_Layer: 0
   m_Name: inworldDoor
   m_TagString: inworldDoor
@@ -126,3 +127,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25630185, y: 0.34255952}
   m_EdgeRadius: 0
+--- !u!114 &4630206291626235941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771148408336400236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449e94800262d824390483e863dc73cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiggestTriggerTime: 1
