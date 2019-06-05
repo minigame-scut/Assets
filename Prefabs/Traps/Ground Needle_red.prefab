@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3150021128740048574}
   - component: {fileID: 7410965018112072463}
   - component: {fileID: 5778953725420269581}
+  - component: {fileID: 8991377935195002037}
   m_Layer: 0
   m_Name: Ground Needle_red
   m_TagString: trap
@@ -106,3 +107,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &8991377935195002037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567900689613168679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
