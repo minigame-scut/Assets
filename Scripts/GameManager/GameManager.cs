@@ -16,10 +16,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        
-        //初始化映射关系
 
+        //初始化映射关系
+        SceneMapData.getInstance().init();
         mapData = SceneMapData.getInstance().getMapData();
+
+        //监听玩家关卡转换
+        EventCenter.AddListener<string>(EventType.NEXTPLACE, toNextPlace);
     }
 
     // Update is called once per frame
@@ -33,7 +36,16 @@ public class GameManager : MonoBehaviour
     {
         //获取通往的关卡的标号
         string toPlace = mapData[nowPlace];
-        int toPlaceIndex = toPlace[toPlace.IndexOf('-')];
+        int toPlaceIndex = 0;
+        try
+        {
+         toPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') + 1, 1));
+        }
+        catch (UnityException e)
+        {
+            Debug.Log("error_placeIndex");
+        }
+     
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
     }

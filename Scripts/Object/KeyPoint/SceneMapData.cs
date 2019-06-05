@@ -30,16 +30,16 @@ public class SceneMapData
 
     public  void init()
     {
-      if(instance != null)
-        {
+      //if(instance != null)
+      //  {
             mapData = new Dictionary<string, string>();
 
             mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
-        }
-        else
-        {
-            Debug.Log("error_null_install");
-        }
+        //}
+        //else
+        //{
+        //    Debug.Log("error_null_install");
+        //}
 
 
     }
