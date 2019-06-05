@@ -8,21 +8,45 @@ public class SceneMapData
 {
     public static SceneMapData instance;
     //存储映射关系的键值对容器
-    private Dictionary<string, string> mapData;
+    private static  Dictionary<string, string> mapData;
 
-    public void intit()
+    private SceneMapData()
     {
-        instance = this;
-        mapData = new Dictionary<string, string>();
 
-        mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
+    }
+
+    public static SceneMapData getInstance()
+    {
+        if(instance == null)
+        {
+            instance = new SceneMapData();
+            return instance;
+        }
+        else
+        {
+            return instance;
+        }
+    }
+
+    public  void init()
+    {
+      if(instance != null)
+        {
+            mapData = new Dictionary<string, string>();
+
+            mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
+        }
+        else
+        {
+            Debug.Log("error_null_install");
+        }
 
 
     }
     //获得这个映射数据
     public Dictionary<string, string> getMapData()
     {
-        return instance.mapData;
+        return mapData;
     }
    //修改映射关系
     public void addMapData(string key, string value)

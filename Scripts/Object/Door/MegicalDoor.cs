@@ -31,7 +31,7 @@ public class MegicalDoor : MonoBehaviour
             {
 
                 Debug.Log("megicalDoor");//测试
-                EventCenter.Broadcast(EventType.MEGICALDOOR);   //广播魔法门触碰信号
+                EventCenter.Broadcast(EventType.MAGICALDOOR);   //广播魔法门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }
