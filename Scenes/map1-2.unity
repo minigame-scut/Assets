@@ -712,8 +712,8 @@ GameObject:
   - component: {fileID: 330363919}
   - component: {fileID: 330363920}
   m_Layer: 0
-  m_Name: sprite_0 (4)
-  m_TagString: Untagged
+  m_Name: upSpeedDoor(4)
+  m_TagString: upSpeedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2272,8 +2272,8 @@ GameObject:
   - component: {fileID: 1171665058}
   - component: {fileID: 1171665059}
   m_Layer: 0
-  m_Name: sprite_0 (2)
-  m_TagString: Untagged
+  m_Name: upSpeedDoor (2)
+  m_TagString: upSpeedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3357,8 +3357,8 @@ GameObject:
   - component: {fileID: 1575312430}
   - component: {fileID: 1575312431}
   m_Layer: 0
-  m_Name: sprite_0
-  m_TagString: Untagged
+  m_Name: upSpeedDoor
+  m_TagString: upSpeedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3456,8 +3456,8 @@ GameObject:
   - component: {fileID: 1604943369}
   - component: {fileID: 1604943370}
   m_Layer: 0
-  m_Name: sprite_0 (3)
-  m_TagString: Untagged
+  m_Name: upSpeedDoor (3)
+  m_TagString: upSpeedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4285,8 +4285,8 @@ GameObject:
   - component: {fileID: 1843702607}
   - component: {fileID: 1843702608}
   m_Layer: 0
-  m_Name: sprite_0 (1)
-  m_TagString: Untagged
+  m_Name: upSpeedDoor (1)
+  m_TagString: upSpeedDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
