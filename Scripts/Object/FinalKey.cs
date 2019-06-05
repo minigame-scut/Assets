@@ -32,7 +32,7 @@ public class FinalKey : MonoBehaviour
             int index = int.Parse(szIndex);
             player.finalKey[index] = true;
 
-            //广播销毁关卡滑稽脸的信号并传递当前gameObject对象
+            //广播销毁关卡最终钥匙碎片的信号并传递当前gameObject对象
             GameObject gameObject = this.gameObject;
             EventCenter.BroadCast(EventType.DESTROY, gameObject); 
         }
