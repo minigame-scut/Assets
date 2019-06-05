@@ -1,5 +1,4 @@
 ﻿public enum EventType{
-    SHOWTEXT,
     //各类门的信号
     BROKESPEEDDOOR,  //弹力门
     DEATHDOOR,       //死亡门
@@ -17,5 +16,4 @@
     RUSH,            //玩家冲
     //道具信号
     DESTROY          //道具销毁
-
 }

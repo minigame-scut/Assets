@@ -27,8 +27,9 @@ public class Key : MonoBehaviour
             //更新当前关卡的钥匙的状态
             player.hasKey = true;
 
-            //销毁关卡钥匙自身
-            Destroy(gameObject);
+            //广播销毁关卡钥匙道具的信号并传递当前gameObject对象
+            GameObject gameObject = this.gameObject;
+            EventCenter.BroadCast(EventType.DESTROY, gameObject); 
         }
     }
 
