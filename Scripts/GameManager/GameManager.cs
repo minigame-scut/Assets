@@ -13,10 +13,15 @@ public class GameManager : MonoBehaviour
 
     Dictionary<string, string> mapData;
 
-    public GameObject player;
+    //玩家的object
+    static public GameObject player;
+
+ 
+
     public string sceneName;
 
-    static string toPlace;
+    static string toPlace; //通往关卡的标号
+
     int toPlaceIndex;  //小关卡的下标
     int toBigPlaceIndex;  //大关卡的下标
 
@@ -28,18 +33,28 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
+        //读取玩家资源
+        //建议使用资源管理类
+        player = Resources.Load<GameObject>("Image/Roles/Player/playerTestPrefab");
+
+
         //初始化映射关系
         SceneMapData.getInstance().init();
         mapData = SceneMapData.getInstance().getMapData();
 
+        //获取当前场景的name
         sceneName = SceneManager.GetActiveScene().name;
 
         //监听玩家关卡转换
         EventCenter.AddListener<string>(EventType.NEXTPLACE, toNextPlace);
+
+        //只有初始化toplace后才能生成玩家位置
         if(toPlace != null)
         {
             Transform birthPlacePosition = GameObject.Find(toPlace).transform;
             Debug.Log("birthPlacePosition" + birthPlacePosition.position);
+            //生成玩家
+            GameObject.Instantiate(player, birthPlacePosition.position, Quaternion.identity);
         }
     
 
@@ -60,7 +75,6 @@ public class GameManager : MonoBehaviour
         toPlaceIndex = 0;  //小关卡的下标
         toBigPlaceIndex = 0;  //大关卡的下标
 
-
         try
         {
          toBigPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') - 1, 1));
@@ -76,8 +90,6 @@ public class GameManager : MonoBehaviour
         //转移到新的场景
          SceneManager.LoadScene("map" + toBigPlaceIndex + '-' +toPlaceIndex);
         //SceneManager.LoadScene(3);
-
-       
 
        // Debug.Log("birthPlacePosition" + birthPlacePosition.position);
       //  GameObject.Instantiate(player, birthPlacePosition.position,Quaternion.identity);
