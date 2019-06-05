@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         EventCenter.AddListener(EventType.DEATH, playerDeath);
+    
     }
 
     // Update is called once per frame
