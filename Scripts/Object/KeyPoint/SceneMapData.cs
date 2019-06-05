@@ -48,6 +48,16 @@ public class SceneMapData
             mapData.Add("nextPlace1-6-1", "birthPlace1-3-2");
             mapData.Add("nextPlace1-4-2", "birthPlace1-5-1");
 
+        //传送门映射
+        mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
+        mapData.Add("transDoor1-1-2-1", "transDoor1-1-2-2");
+        mapData.Add("transDoor1-1-3-1", "transDoor1-1-3-2");
+
+        //里表世界门映射
+        mapData.Add("inWorldDoor1-1-1", "outWorldDoor1-1-1");
+        mapData.Add("inWorldDoor1-1-2", "outWorldDoor1-1-2");
+        mapData.Add("inWorldDoor1-1-3", "outWorldDoor1-1-3");
+
         //}
         //else
         //{

@@ -30,7 +30,19 @@ public class TransDoor : MonoBehaviour
             {
 
                 Debug.Log("upSpeedDoor");//测试
-                EventCenter.Broadcast(EventType.UPSPEEDDOOR);   //广播加速门触碰信号
+                //这个传送门对应的传送门
+                GameObject mapTransDoor = GameObject.Find(SceneMapData.instance.getMapData()[gameObject.name]);
+
+                //这个对应的门在该scene中
+                if(mapTransDoor != null)
+                {
+                    EventCenter.Broadcast(EventType.TRANSDOOR);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                }
+                else
+                {
+                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                }
+               
                 deltaTime = 0;  //重置间隔定时器
             }
         }

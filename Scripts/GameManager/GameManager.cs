@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public string sceneName;
 
     static string toPlace; //通往关卡的标号
+    static string toTrans;
 
     int toPlaceIndex;  //小关卡的下标
     int toBigPlaceIndex;  //大关卡的下标
@@ -48,8 +49,12 @@ public class GameManager : MonoBehaviour
         //监听玩家关卡转换
         EventCenter.AddListener<string>(EventType.NEXTPLACE, toNextPlace);
 
+        //监听传送门的转换
+        EventCenter.AddListener<string>(EventType.TRANSDOORTOWORLD, toTransDoor);
+
+
         //只有初始化toplace后才能生成玩家位置
-        if(toPlace != null)
+        if (toPlace != null)
         {
             Transform birthPlacePosition = GameObject.Find(toPlace).transform;
             Debug.Log("birthPlacePosition" + birthPlacePosition.position);
@@ -94,4 +99,11 @@ public class GameManager : MonoBehaviour
        // Debug.Log("birthPlacePosition" + birthPlacePosition.position);
       //  GameObject.Instantiate(player, birthPlacePosition.position,Quaternion.identity);
     }
+
+    void toTransDoor(string nowTransDoor)
+    {
+
+
+    }
+   
 }
