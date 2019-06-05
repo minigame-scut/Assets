@@ -5,16 +5,16 @@ using UnityEngine;
 
 //sceneManager负责接收门触碰发出的信号，然后使用该信号来操作玩家做出相应的改变。
 
-public class SceneManager : MonoBehaviour
+public class SManager : MonoBehaviour
 {
-    private readonly static SceneManager Instance = new SceneManager();
+    private readonly static SManager Instance = new SManager();
 
-    private SceneManager()
+    private SManager()
     {
         
     }
 
-    public static SceneManager getInstance()
+    public static SManager getInstance()
     {
         return Instance;
     }

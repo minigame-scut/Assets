@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 
 //游戏管理类
 
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
         //获取通往的关卡的标号
         string toPlace = mapData[nowPlace];
         int toPlaceIndex = 0;
+
+        
         try
         {
          toPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') + 1, 1));
@@ -48,5 +52,8 @@ public class GameManager : MonoBehaviour
      
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
+
+         SceneManager.LoadScene("map1-" +toPlaceIndex);
+        //SceneManager.LoadScene(3);
     }
 }

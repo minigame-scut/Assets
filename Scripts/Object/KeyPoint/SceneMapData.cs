@@ -35,6 +35,10 @@ public class SceneMapData
             mapData = new Dictionary<string, string>();
 
             mapData.Add("nextPlace1-1-2", "birthPlace1-2-1");
+            mapData.Add("nextPlace1-0-1", "birthPlace1-1-1");
+        mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
+        mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
+
         //}
         //else
         //{
