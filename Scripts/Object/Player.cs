@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public bool hasKey = false; //是否拥有当前关卡的钥匙
     public int faceCount = 0;   //收集的滑稽脸的个数
+    public bool[] finalKey = new bool[9];   //最终钥匙碎片的收集状态
 
     // Start is called before the first frame update
     void Start()
