@@ -1683,8 +1683,8 @@ GameObject:
   - component: {fileID: 2021831216}
   - component: {fileID: 2021831217}
   m_Layer: 0
-  m_Name: sprite_0
-  m_TagString: Untagged
+  m_Name: lastDoor
+  m_TagString: lastDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
