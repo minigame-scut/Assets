@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4876940}
   - component: {fileID: 4876939}
   - component: {fileID: 4876941}
+  - component: {fileID: 4876942}
   m_Layer: 0
   m_Name: Ground Needle_5 (4)
   m_TagString: trap
@@ -218,6 +219,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &4876942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &10734759
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +242,7 @@ GameObject:
   - component: {fileID: 10734761}
   - component: {fileID: 10734760}
   - component: {fileID: 10734762}
+  - component: {fileID: 10734763}
   m_Layer: 0
   m_Name: Ground Needle_5 (10)
   m_TagString: trap
@@ -324,6 +338,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &10734763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10734759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &71571168
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +361,7 @@ GameObject:
   - component: {fileID: 71571170}
   - component: {fileID: 71571169}
   - component: {fileID: 71571171}
+  - component: {fileID: 71571172}
   m_Layer: 0
   m_Name: Ground Needle_5 (6)
   m_TagString: trap
@@ -430,6 +457,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &71571172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71571168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147503898
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +480,7 @@ GameObject:
   - component: {fileID: 147503900}
   - component: {fileID: 147503899}
   - component: {fileID: 147503901}
+  - component: {fileID: 147503902}
   m_Layer: 0
   m_Name: Ground Needle_5 (5)
   m_TagString: trap
@@ -536,6 +576,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &147503902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147503898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177202332
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,6 +999,7 @@ GameObject:
   - component: {fileID: 246098765}
   - component: {fileID: 246098764}
   - component: {fileID: 246098766}
+  - component: {fileID: 246098767}
   m_Layer: 0
   m_Name: Ground Needle_3 (1)
   m_TagString: trap
@@ -1042,6 +1095,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &246098767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246098763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252854101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1118,7 @@ GameObject:
   - component: {fileID: 252854104}
   - component: {fileID: 252854103}
   - component: {fileID: 252854102}
+  - component: {fileID: 252854105}
   m_Layer: 0
   m_Name: Ground Needle_5 (23)
   m_TagString: trap
@@ -1148,6 +1214,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &252854105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252854101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &293382813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1237,7 @@ GameObject:
   - component: {fileID: 293382816}
   - component: {fileID: 293382815}
   - component: {fileID: 293382814}
+  - component: {fileID: 293382817}
   m_Layer: 0
   m_Name: Ground Needle_5 (18)
   m_TagString: trap
@@ -1254,6 +1333,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293382817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293382813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &299963846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1554024558349641328, guid: 9b49d52d79bfafc42baa6631afe62da8,
@@ -1377,6 +1468,7 @@ GameObject:
   - component: {fileID: 327653394}
   - component: {fileID: 327653393}
   - component: {fileID: 327653392}
+  - component: {fileID: 327653395}
   m_Layer: 0
   m_Name: Ground Needle_5 (12)
   m_TagString: trap
@@ -1472,6 +1564,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327653395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327653391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &351081113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4071385210044189824, guid: 6f4a73651b3e65645ab47151b156949f,
@@ -1684,6 +1788,7 @@ GameObject:
   - component: {fileID: 442614065}
   - component: {fileID: 442614064}
   - component: {fileID: 442614066}
+  - component: {fileID: 442614067}
   m_Layer: 0
   m_Name: Ground Needle_5 (8)
   m_TagString: trap
@@ -1779,6 +1884,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &442614067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442614063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &446779288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,6 +1907,7 @@ GameObject:
   - component: {fileID: 446779290}
   - component: {fileID: 446779289}
   - component: {fileID: 446779291}
+  - component: {fileID: 446779292}
   m_Layer: 0
   m_Name: Ground Needle_5
   m_TagString: trap
@@ -1885,6 +2003,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &446779292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446779288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &473210104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2179,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f4a73651b3e65645ab47151b156949f, type: 3}
+--- !u!1 &510887716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6453887073112625993, guid: 6f4a73651b3e65645ab47151b156949f,
+    type: 3}
+  m_PrefabInstance: {fileID: 510887715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &510887717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510887716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &521065639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2155,6 +2303,7 @@ GameObject:
   - component: {fileID: 528058733}
   - component: {fileID: 528058732}
   - component: {fileID: 528058731}
+  - component: {fileID: 528058734}
   m_Layer: 0
   m_Name: Ground Needle_5 (13)
   m_TagString: trap
@@ -2250,6 +2399,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528058734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528058730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &562666595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2340,6 +2501,7 @@ GameObject:
   - component: {fileID: 565895176}
   - component: {fileID: 565895175}
   - component: {fileID: 565895174}
+  - component: {fileID: 565895177}
   m_Layer: 0
   m_Name: Ground Needle_5 (14)
   m_TagString: trap
@@ -2435,6 +2597,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &565895177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565895173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617976235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2620,7 @@ GameObject:
   - component: {fileID: 617976238}
   - component: {fileID: 617976237}
   - component: {fileID: 617976236}
+  - component: {fileID: 617976239}
   m_Layer: 0
   m_Name: Ground Needle_3 (11)
   m_TagString: trap
@@ -2541,6 +2716,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617976239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617976235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650698076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,6 +2739,7 @@ GameObject:
   - component: {fileID: 650698078}
   - component: {fileID: 650698077}
   - component: {fileID: 650698079}
+  - component: {fileID: 650698080}
   m_Layer: 0
   m_Name: Ground Needle_5 (3)
   m_TagString: trap
@@ -2647,6 +2835,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &650698080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650698076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &653667376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,6 +2858,7 @@ GameObject:
   - component: {fileID: 653667378}
   - component: {fileID: 653667377}
   - component: {fileID: 653667379}
+  - component: {fileID: 653667380}
   m_Layer: 0
   m_Name: Ground Needle_3 (7)
   m_TagString: trap
@@ -2753,6 +2954,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &653667380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653667376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &659137112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4071385210044189824, guid: 6f4a73651b3e65645ab47151b156949f,
@@ -2770,6 +2983,7 @@ GameObject:
   - component: {fileID: 681624519}
   - component: {fileID: 681624518}
   - component: {fileID: 681624520}
+  - component: {fileID: 681624521}
   m_Layer: 0
   m_Name: Ground Needle_3 (5)
   m_TagString: trap
@@ -2865,6 +3079,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &681624521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681624517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &699955082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
@@ -2950,6 +3176,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f4a73651b3e65645ab47151b156949f, type: 3}
+--- !u!1 &725681687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6453887073112625993, guid: 6f4a73651b3e65645ab47151b156949f,
+    type: 3}
+  m_PrefabInstance: {fileID: 725681686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &725681688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725681687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &793623707
 GameObject:
   m_ObjectHideFlags: 0
@@ -3073,6 +3317,7 @@ GameObject:
   - component: {fileID: 871262932}
   - component: {fileID: 871262931}
   - component: {fileID: 871262930}
+  - component: {fileID: 871262933}
   m_Layer: 0
   m_Name: Ground Needle_5 (15)
   m_TagString: trap
@@ -3168,6 +3413,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871262933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871262929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &884769061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3363,6 +3620,7 @@ GameObject:
   - component: {fileID: 960214732}
   - component: {fileID: 960214731}
   - component: {fileID: 960214730}
+  - component: {fileID: 960214733}
   m_Layer: 0
   m_Name: Ground Needle_5 (24)
   m_TagString: trap
@@ -3458,6 +3716,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &960214733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960214729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &979646402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3637,6 +3907,7 @@ GameObject:
   - component: {fileID: 1032845708}
   - component: {fileID: 1032845707}
   - component: {fileID: 1032845709}
+  - component: {fileID: 1032845710}
   m_Layer: 0
   m_Name: Ground Needle_3 (8)
   m_TagString: trap
@@ -3732,6 +4003,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1032845710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032845706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1051565408
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,6 +4026,7 @@ GameObject:
   - component: {fileID: 1051565410}
   - component: {fileID: 1051565409}
   - component: {fileID: 1051565411}
+  - component: {fileID: 1051565412}
   m_Layer: 0
   m_Name: Ground Needle_3 (9)
   m_TagString: trap
@@ -3838,6 +4122,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1051565412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051565408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069922230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3849,6 +4145,7 @@ GameObject:
   - component: {fileID: 1069922233}
   - component: {fileID: 1069922232}
   - component: {fileID: 1069922231}
+  - component: {fileID: 1069922234}
   m_Layer: 0
   m_Name: Ground Needle_5 (22)
   m_TagString: trap
@@ -3944,6 +4241,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1069922234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069922230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1083396659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,6 +4482,7 @@ GameObject:
   - component: {fileID: 1170938802}
   - component: {fileID: 1170938801}
   - component: {fileID: 1170938803}
+  - component: {fileID: 1170938804}
   m_Layer: 0
   m_Name: Ground Needle_5 (2)
   m_TagString: trap
@@ -4268,6 +4578,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1170938804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170938800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260221129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,6 +4601,7 @@ GameObject:
   - component: {fileID: 1260221131}
   - component: {fileID: 1260221130}
   - component: {fileID: 1260221132}
+  - component: {fileID: 1260221133}
   m_Layer: 0
   m_Name: Ground Needle
   m_TagString: trap
@@ -4374,6 +4697,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1260221133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260221129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1271438155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4459,6 +4794,7 @@ GameObject:
   - component: {fileID: 1287601268}
   - component: {fileID: 1287601267}
   - component: {fileID: 1287601269}
+  - component: {fileID: 1287601270}
   m_Layer: 0
   m_Name: Ground Needle_3 (10)
   m_TagString: trap
@@ -4554,6 +4890,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1287601270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287601266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1292073637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4640,6 +4988,7 @@ GameObject:
   - component: {fileID: 1346724852}
   - component: {fileID: 1346724851}
   - component: {fileID: 1346724850}
+  - component: {fileID: 1346724853}
   m_Layer: 0
   m_Name: Ground Needle_5 (19)
   m_TagString: trap
@@ -4735,6 +5084,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &1346724853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346724849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1347736221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 771148408336400233, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
@@ -4752,6 +5113,7 @@ GameObject:
   - component: {fileID: 1352452935}
   - component: {fileID: 1352452934}
   - component: {fileID: 1352452936}
+  - component: {fileID: 1352452937}
   m_Layer: 0
   m_Name: Ground Needle_5 (1)
   m_TagString: trap
@@ -4847,6 +5209,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1352452937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352452933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385794670
 GameObject:
   m_ObjectHideFlags: 0
@@ -4858,6 +5232,7 @@ GameObject:
   - component: {fileID: 1385794673}
   - component: {fileID: 1385794672}
   - component: {fileID: 1385794671}
+  - component: {fileID: 1385794674}
   m_Layer: 0
   m_Name: Ground Needle_5 (16)
   m_TagString: trap
@@ -4953,6 +5328,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385794674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385794670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1386793521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4964,6 +5351,7 @@ GameObject:
   - component: {fileID: 1386793524}
   - component: {fileID: 1386793523}
   - component: {fileID: 1386793522}
+  - component: {fileID: 1386793525}
   m_Layer: 0
   m_Name: Ground Needle_5 (21)
   m_TagString: trap
@@ -5059,6 +5447,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &1386793525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386793521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1435930916
 GameObject:
   m_ObjectHideFlags: 0
@@ -5484,6 +5884,7 @@ GameObject:
   - component: {fileID: 1540707149}
   - component: {fileID: 1540707148}
   - component: {fileID: 1540707150}
+  - component: {fileID: 1540707151}
   m_Layer: 0
   m_Name: Ground Needle_5 (7)
   m_TagString: trap
@@ -5579,6 +5980,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1540707151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540707147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1554110802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5669,6 +6082,7 @@ GameObject:
   - component: {fileID: 1558949138}
   - component: {fileID: 1558949137}
   - component: {fileID: 1558949139}
+  - component: {fileID: 1558949140}
   m_Layer: 0
   m_Name: Ground Needle_3 (6)
   m_TagString: trap
@@ -5764,6 +6178,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1558949140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558949136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1571471099
 GameObject:
   m_ObjectHideFlags: 0
@@ -5881,6 +6307,7 @@ GameObject:
   - component: {fileID: 1574210917}
   - component: {fileID: 1574210916}
   - component: {fileID: 1574210918}
+  - component: {fileID: 1574210919}
   m_Layer: 0
   m_Name: Ground Needle_5 (9)
   m_TagString: trap
@@ -5976,6 +6403,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1574210919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574210915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620349873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6060,6 +6499,7 @@ GameObject:
   - component: {fileID: 1696800036}
   - component: {fileID: 1696800035}
   - component: {fileID: 1696800037}
+  - component: {fileID: 1696800038}
   m_Layer: 0
   m_Name: Ground Needle_3 (4)
   m_TagString: trap
@@ -6155,6 +6595,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1696800038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696800034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1725550320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6234,6 +6686,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f4a73651b3e65645ab47151b156949f, type: 3}
+--- !u!1 &1725550321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6453887073112625993, guid: 6f4a73651b3e65645ab47151b156949f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1725550320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725550322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725550321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742075231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6245,6 +6715,7 @@ GameObject:
   - component: {fileID: 1742075233}
   - component: {fileID: 1742075232}
   - component: {fileID: 1742075234}
+  - component: {fileID: 1742075235}
   m_Layer: 0
   m_Name: Ground Needle_3 (2)
   m_TagString: trap
@@ -6340,6 +6811,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1742075235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742075231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752652733
 GameObject:
   m_ObjectHideFlags: 0
@@ -6351,6 +6834,7 @@ GameObject:
   - component: {fileID: 1752652736}
   - component: {fileID: 1752652735}
   - component: {fileID: 1752652734}
+  - component: {fileID: 1752652737}
   m_Layer: 0
   m_Name: Ground Needle_5 (17)
   m_TagString: trap
@@ -6446,6 +6930,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1752652737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752652733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1772364725
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,6 +6953,7 @@ GameObject:
   - component: {fileID: 1772364727}
   - component: {fileID: 1772364726}
   - component: {fileID: 1772364728}
+  - component: {fileID: 1772364729}
   m_Layer: 0
   m_Name: Ground Needle_5 (11)
   m_TagString: trap
@@ -6552,6 +7049,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.72, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1772364729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772364725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1784158202
 GameObject:
   m_ObjectHideFlags: 0
@@ -6563,6 +7072,7 @@ GameObject:
   - component: {fileID: 1784158204}
   - component: {fileID: 1784158203}
   - component: {fileID: 1784158205}
+  - component: {fileID: 1784158206}
   m_Layer: 0
   m_Name: Ground Needle_2 (1)
   m_TagString: trap
@@ -6658,6 +7168,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1784158206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784158202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1806353844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6854,6 +7376,7 @@ GameObject:
   - component: {fileID: 1935050044}
   - component: {fileID: 1935050043}
   - component: {fileID: 1935050045}
+  - component: {fileID: 1935050046}
   m_Layer: 0
   m_Name: Ground Needle_3 (3)
   m_TagString: trap
@@ -6949,6 +7472,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &1935050046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935050042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1966472880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4071385210044189824, guid: 6f4a73651b3e65645ab47151b156949f,
@@ -6966,6 +7501,7 @@ GameObject:
   - component: {fileID: 2100071993}
   - component: {fileID: 2100071992}
   - component: {fileID: 2100071991}
+  - component: {fileID: 2100071994}
   m_Layer: 0
   m_Name: Ground Needle_5 (20)
   m_TagString: trap
@@ -7061,6 +7597,18 @@ Transform:
   m_Father: {fileID: 1620349874}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &2100071994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100071990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2109589983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7072,6 +7620,7 @@ GameObject:
   - component: {fileID: 2109589985}
   - component: {fileID: 2109589984}
   - component: {fileID: 2109589986}
+  - component: {fileID: 2109589987}
   m_Layer: 0
   m_Name: Ground Needle_3
   m_TagString: trap
@@ -7167,6 +7716,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.27}
   m_EdgeRadius: 0
+--- !u!114 &2109589987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109589983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129376454
 GameObject:
   m_ObjectHideFlags: 0
