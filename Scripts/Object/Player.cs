@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventCenter.AddListener(EventType.PlayerDeath, playerDeath);
+        EventCenter.AddListener(EventType.death, playerDeath);
     }
 
     // Update is called once per frame
@@ -31,6 +31,5 @@ public class Player : MonoBehaviour
     void playerDeath()
     {
         Debug.Log("玩家死亡");
-
     }
 }
