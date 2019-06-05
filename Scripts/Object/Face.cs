@@ -27,9 +27,10 @@ public class Face : MonoBehaviour
 
             //更新收集滑稽的个数
             player.faceCount += 1;
-
-            //销毁关卡滑稽脸自身
-            Destroy(gameObject);
+            
+            //广播销毁关卡滑稽脸的信号并传递当前gameObject对象
+            GameObject gameObject = this.gameObject;
+            EventCenter.BroadCast(EventType.DESTROY, gameObject); 
         }
     }
 }
