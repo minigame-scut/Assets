@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayer
+public class GamePlayer : MonoBehaviour
 {
     public float MoveSpeed;
     public int Direction;
@@ -19,7 +19,6 @@ public class GamePlayer
     public float size;//128
     //持有buff列表
     public List<Buff> buffList;
-
 
     private static GamePlayer myGamePlayer = null;
     public static GamePlayer getInstance()
