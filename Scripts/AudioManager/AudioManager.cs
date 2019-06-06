@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         //Instance = this;//初始化该实例类
+        
     }
 
     //播放背景音乐
