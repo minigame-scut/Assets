@@ -73,7 +73,7 @@ public class SManager : MonoBehaviour
         Destroy(GameObject.FindWithTag("Player"), 3.0f);
         //创建对应prefeb
         Quaternion newQuaternion = new Quaternion(0, 0, 0, 0);//实例化预制体的rotation
-        GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
+       // GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
         //GameObject.Instantiate(/*prefeb*/);
     }
     private void responseForJUMP()
