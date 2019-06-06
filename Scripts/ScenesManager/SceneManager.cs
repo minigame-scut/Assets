@@ -31,9 +31,7 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
         EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
         EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
-        EventCenter.AddListener(EventType.INWORLDDOOR, responseForSignalINWORLDDOOR);
         EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener(EventType.OUTWORLDDOOR, responseForOUTWORLDDOOR);
         EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
@@ -54,7 +52,7 @@ public class SManager : MonoBehaviour
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
     private void responseForSignalBROKESPEEDDOOR()
     {
-        //Player.Instance.setBuff();
+        GamePlayer.GetInstance().buffList.Add(Buff.ELASTIC);
     }
     private void responseForSignalDEATHDOOR()
     {
@@ -64,17 +62,9 @@ public class SManager : MonoBehaviour
     {
         //Player.Instance.setBuff();
     }
-    private void responseForSignalINWORLDDOOR()
-    {
-        //Player.Instance.setState();
-    }
     private void responseForMAGICALDOOR()
     {
         //Player.Instance.setBuff();
-    }
-    private void responseForOUTWORLDDOOR()
-    {
-        //Player.Instance.setState();
     }
     private void responseForTRANSDOOR(Vector3 newPosition)
     {

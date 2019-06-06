@@ -17,10 +17,12 @@ public class GamePlayer
     public float DashTime;
     //规格参数
     public float size;//128
+    //持有buff列表
+    public List<Buff> buffList;
 
 
     private static GamePlayer myGamePlayer = null;
-    public static GamePlayer GetInstance()
+    public static GamePlayer getInstance()
     {
         if (myGamePlayer == null)
         {
