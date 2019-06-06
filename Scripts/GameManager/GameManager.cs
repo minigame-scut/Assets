@@ -201,6 +201,10 @@ public class GameManager : MonoBehaviour
         GameObject.Instantiate(player, birthPlacePosition.position, Quaternion.identity);
         kindofTrans = KindofTrans.DEFAULT;
 
+
+        //创建sceneManager
+        buildSceneManager(birthPlacePosition.position);
+
     }
 
     IEnumerator waitForFindForTransDoor()
@@ -280,7 +284,7 @@ public class GameManager : MonoBehaviour
 
 
     //创建场景管理器
-    void buildSceneManager()
+    void buildSceneManager(Vector3 birthPlace)
     {
         GameObject sManager  = GameObject.Find("SceneManager");
         //当前场景没有管理器
@@ -288,12 +292,15 @@ public class GameManager : MonoBehaviour
         {
             sManager = new GameObject("SceneManager");
             sManager.AddComponent<SManager>();
+            sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
         }
         else
         {
             Destroy(sManager);
             sManager = new GameObject("SceneManager");
             sManager.AddComponent<SManager>();
+            SManager.Instance.setBirthPosition(birthPlace);
+            sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
         }
 
 

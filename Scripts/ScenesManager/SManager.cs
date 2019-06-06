@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SManager : MonoBehaviour
 {
-    private Vector3 birthPosition;//当前场景的出生点
+    public  Vector3 birthPosition;//当前场景的出生点
     private static SManager instance = null;
 
     public static SManager Instance
@@ -34,7 +34,7 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
         EventCenter.AddListener(EventType.BIRTH, responseForBIRTH);
-        EventCenter.AddListener(EventType.NEXTPLACE, responseForNEXTPLACE);
+    //    EventCenter.AddListener(EventType.NEXTPLACE, responseForNEXTPLACE);
         EventCenter.AddListener(EventType.JUMP, responseForJUMP);
         EventCenter.AddListener(EventType.RUSH, responseForRUSH);
         EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
@@ -46,7 +46,7 @@ public class SManager : MonoBehaviour
         
     }
     //获取当前场景出生点位置的函数
-    void setBirthPosition(Vector3 newPosition)
+    public void setBirthPosition(Vector3 newPosition)
     {
         this.birthPosition = newPosition;
     }
