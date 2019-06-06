@@ -91,7 +91,7 @@ public class SManager : MonoBehaviour
     }
     private void responseForJUMP()
     {
-        if(GamePlayer.getInstance().buffList)
+        //if(GamePlayer.getInstance().buffList)
     }
     private void responseForRUSH()
     {
