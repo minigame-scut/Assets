@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        para = GamePlayer.GetInstance();
+        para = GamePlayer.getInstance();
         anim = gameObject.GetComponent<Animator>();
         rig = gameObject.GetComponent<Rigidbody2D>();
         CountJ = 0;
@@ -117,4 +117,6 @@ public class Movement : MonoBehaviour
                 para.canJump = false;
         }             
     }
+
+    
 }

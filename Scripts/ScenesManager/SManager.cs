@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SManager : MonoBehaviour
 {
-    protected SManager(){ }
+    private Vector3 birthPosition;//当前场景的出生点
     private static SManager instance = null;
 
     public static SManager Instance
@@ -16,10 +16,8 @@ public class SManager : MonoBehaviour
         {
             if (SManager.instance == null)
             {
-                DontDestroyOnLoad(SManager.instance);
                 SManager.instance = new SManager();
             }
-                
             return SManager.instance;
         }
         
@@ -31,9 +29,7 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
         EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
         EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
-        EventCenter.AddListener(EventType.INWORLDDOOR, responseForSignalINWORLDDOOR);
         EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener(EventType.OUTWORLDDOOR, responseForOUTWORLDDOOR);
         EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
@@ -54,35 +50,27 @@ public class SManager : MonoBehaviour
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
     private void responseForSignalBROKESPEEDDOOR()
     {
-        //Player.Instance.setBuff();
+        GamePlayer.getInstance().buffList.Add(Buff.ELASTIC);
     }
     private void responseForSignalDEATHDOOR()
     {
-        //Player.Instance.setBuff();
+        //Death
     }
     private void responseForSignalGDOOR()
     {
-        //Player.Instance.setBuff();
-    }
-    private void responseForSignalINWORLDDOOR()
-    {
-        //Player.Instance.setState();
+        GamePlayer.getInstance().buffList.Add(Buff.GRAVITY);
     }
     private void responseForMAGICALDOOR()
     {
-        //Player.Instance.setBuff();
-    }
-    private void responseForOUTWORLDDOOR()
-    {
-        //Player.Instance.setState();
+        //Magic
     }
     private void responseForTRANSDOOR(Vector3 newPosition)
     {
-        //Player.Instance.transform.position = newPosition;
+        GamePlayer.getInstance().transform.position = newPosition;
     }
     private void responseForUPSPEEDDOOR()
     {
-        //Player.Instance.setBuff();
+        GamePlayer.getInstance().buffList.Add(Buff.SUPER);
     }
     private void responseForDEATH()
     {
