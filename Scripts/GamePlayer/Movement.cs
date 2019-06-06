@@ -133,12 +133,49 @@ public class Movement : MonoBehaviour
     //超级跳
     void superJump()
     {
-
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            rig.isKinematic = true;
+            CountJ++;
+            para.JumpTime = 0.0f;
+        }
+        getJump(CountJ);
+        if (Input.GetKey(KeyCode.J) && para.JumpTime < 0.25f && CountJ != 0)
+        {
+            rig.isKinematic = true;
+            rig.velocity = new Vector2(rig.velocity.x, para.JumpSpeed*1.5f);
+            para.JumpTime += Time.deltaTime;
+            anim.SetBool("isjump", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.J) || para.JumpTime >= 0.25f || !para.canJump)
+        {
+            rig.isKinematic = false;
+        }
     }
     //超级冲刺
     void superRush()
     {
-
+        if (para.DashTime < 0.15f)
+        {
+            rig.isKinematic = true;
+            anim.SetBool("isdash", true);
+            useInput = false;
+            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 4f, 0);
+            para.DashTime += Time.deltaTime;
+            Debug.Log("1");
+            if (para.Direction == 1)
+                Instantiate<GameObject>(shadowr, transform.position, transform.rotation);
+            else if (para.Direction == -1)
+                Instantiate<GameObject>(shadowl, transform.position, transform.rotation);
+        }
+        else if (para.DashTime >= 0.15f)
+        {
+            anim.SetBool("isdash", false);
+            rig.isKinematic = false;
+            useInput = true;
+            rig.velocity = new Vector2(0, 0);
+            para.DashTime = 0.0f;
+        }
     }
     //反重力
     void gravityContrary()
