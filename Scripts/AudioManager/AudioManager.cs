@@ -2,14 +2,23 @@
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;//单实例类
+    private static AudioManager Instance = null;//单实例类
 
     public AudioSource MusicPlayer;//播放背景音乐的组件
     public AudioSource SoundPlayer;//播放音效的组件
 
+    public static AudioManager getInstance()
+    {
+        if (Instance == null)
+        {
+            Instance = new AudioManager();
+        }
+        return Instance;
+    }
+
     void Start()
     {
-        Instance = this;//初始化该实例类
+        //Instance = this;//初始化该实例类
     }
 
     //播放背景音乐
