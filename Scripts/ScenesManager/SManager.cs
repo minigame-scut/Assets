@@ -83,15 +83,22 @@ public class SManager : MonoBehaviour
     }
     private void responseForBIRTH()
     {
-        //Player.Instance.setState();
-    }
-    private void responseForNEXTPLACE()
-    {
-        //Player.Instance.setState();
+        //接受到BIRTH信号后玩家重生在BirthPosition
+
     }
     private void responseForJUMP()
     {
-        //if(GamePlayer.getInstance().buffList)
+        //播放音效
+        AudioManager.getInstance().PlaySound("Jump");
+        //遍历Player中的buffList列表，查看当前玩家的buff状态
+        //如果在接受到JUMP信号时玩家buff状态为SUPER，则移除该buff状态
+        foreach (Buff curBuff in GamePlayer.getInstance().buffList)
+        {
+            if (curBuff == Buff.SUPER)
+                GamePlayer.getInstance().buffList.Remove(curBuff);
+            if (curBuff == Buff.ELASTIC)
+                GamePlayer.getInstance().buffList.Remove(curBuff);
+        }
     }
     private void responseForRUSH()
     {
