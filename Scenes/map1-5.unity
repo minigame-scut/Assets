@@ -494,6 +494,11 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8754508762385785211, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7258540767607715032, guid: f7b8e9cd49b845b439e1340eb716d15f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f7b8e9cd49b845b439e1340eb716d15f, type: 3}
@@ -3148,6 +3153,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.8
       objectReference: {fileID: 0}
+    - target: {fileID: 8754508762385785211, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7b8e9cd49b845b439e1340eb716d15f, type: 3}
 --- !u!4 &1213290973 stripped
@@ -4105,6 +4115,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: transDoor1-5-2-1
       objectReference: {fileID: 0}
+    - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: transDoor_r
+      objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4603,6 +4618,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754508762385785211, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7b8e9cd49b845b439e1340eb716d15f, type: 3}
