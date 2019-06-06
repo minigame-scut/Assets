@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
     static  KindofTrans kindofTrans = KindofTrans.DEFAULT;
 
     static string toPlace; //通往关卡的标号
-    static string toTrans;
+    static string toTrans;  //通往的传送门
+    static string toWorld;  //通往的里表世界门
+
 
     int toPlaceIndex;  //小关卡的下标
     int toBigPlaceIndex;  //大关卡的下标
@@ -85,22 +87,12 @@ public class GameManager : MonoBehaviour
         //监听传送门的转换
         EventCenter.AddListener<string>(EventType.TRANSDOORTOWORLD, toTransDoor);
 
+        //监听里表世界门的转换
+        EventCenter.AddListener<string>(EventType.INWORLDDOOR, toWorldDoor);
+        EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
-        //只有初始化toplace后才能生成玩家位置
-        if (toPlace != null && kindofTrans == KindofTrans.NEXTPLACE)
-        {
-            //Transform birthPlacePosition = GameObject.Find(toPlace).transform;
-            //Debug.Log("birthPlacePosition" + birthPlacePosition.position);
-            ////生成玩家 
-            //GameObject.Instantiate(player, birthPlacePosition.position, Quaternion.identity);
-            //kindofTrans = KindofTrans.DEFAULT;
-        }
-        else
-        {
-
-        }
-        
-
+        //创建当前场景的sceneManager
+        buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
 
     }
 
@@ -172,6 +164,36 @@ public class GameManager : MonoBehaviour
         StartCoroutine(waitForFindForTransDoor());
     }
 
+    void toWorldDoor(string toWorldDoor)
+    {
+        toWorld = mapData[toWorldDoor];  //目标传送门的标值
+        toPlaceIndex = 0;  //小关卡的下标
+        toBigPlaceIndex = 0;  //大关卡的下标
+
+
+        Debug.Log("toWorldDoor  " + toWorldDoor);
+        try
+        {
+            toBigPlaceIndex = int.Parse(toWorld.Substring(toWorld.IndexOf('-') - 1, 1));
+            toPlaceIndex = int.Parse(toWorld.Substring(toWorld.IndexOf('-') + 1, 1));
+
+        }
+        catch (UnityException e)
+        {
+            Debug.Log("error_placeIndex");
+        }
+
+        Debug.Log(toPlace);
+        Debug.Log(toPlaceIndex);
+        //转移到新的场景
+        SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
+        kindofTrans = KindofTrans.TRANSDOOR; //指明是通过tansdoor进行传送的
+
+        StartCoroutine(waitForFindForWorldDoor());
+    }
+
+
+
     IEnumerator waitForFindForNextPlace()
     {
       
@@ -182,6 +204,10 @@ public class GameManager : MonoBehaviour
         GameObject.Instantiate(player, birthPlacePosition.position, Quaternion.identity);
         kindofTrans = KindofTrans.DEFAULT;
 
+
+        //创建sceneManager
+        buildSceneManager(birthPlacePosition.position);
+
     }
 
     IEnumerator waitForFindForTransDoor()
@@ -189,11 +215,112 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Transform toTransPosition = GameObject.Find(toTrans).transform;
+        Vector3 birthPosition = new Vector3(0,0,0);
         Debug.Log("toTransPosition" + toTransPosition.position);
         //生成玩家 
-        GameObject.Instantiate(player, toTransPosition.position, Quaternion.identity);
-        kindofTrans = KindofTrans.DEFAULT;
 
+        switch (toTransPosition.tag)
+        {
+            case "transDoor":
+                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x -1, toTransPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x - 1, toTransPosition.position.y, 0);
+                break;
+            case "transDoor_r":
+                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x + 1, toTransPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x + 1, toTransPosition.position.y, 0);
+                break;
+            case "transDoor_u":
+                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x , toTransPosition.position.y+1), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y + 1, 0);
+                break;
+            case "transDoor_d":
+                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x, toTransPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y - 1, 0);
+                break;
+            default:
+                break;
+        }
+
+
+        kindofTrans = KindofTrans.DEFAULT;
+        buildSceneManager(birthPosition);
     }
 
+    IEnumerator waitForFindForWorldDoor()
+    {
+
+        yield return new WaitForSeconds(1);
+        Debug.Log("toWorld  " + toWorld);
+        Transform toWorldPosition = GameObject.Find(toWorld).transform;
+        Debug.Log("toWorldPosition" + toWorldPosition.position);
+        //生成玩家 
+        Vector3 birthPosition = new Vector3(0, 0, 0);
+
+
+        switch (toWorldPosition.tag)
+        {
+            case "inworldDoor":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
+                break;
+            case "inworldDoor_r":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
+                break;
+            case "inworldDoor_u":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
+                break;
+            case "inworldDoor_d":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
+                break;
+            case "outworldDoor":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
+                break;
+            case "outworldDoor_r":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
+                break;
+            case "outworldDoor_u":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
+                break;
+            case "outworldDoor_d":
+                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
+                break;
+            default:
+                break;
+        }
+
+ 
+        kindofTrans = KindofTrans.DEFAULT;
+        buildSceneManager(birthPosition);
+    }
+
+
+    //创建场景管理器
+    void buildSceneManager(Vector3 birthPlace)
+    {
+        GameObject sManager  = GameObject.Find("SceneManager");
+        //当前场景没有管理器
+        if(sManager == null)
+        {
+            sManager = new GameObject("SceneManager");
+            sManager.AddComponent<SManager>();
+            sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
+        }
+        else//先销毁已有场景管理器，再生成新的
+        {
+            Destroy(sManager);
+            sManager = new GameObject("SceneManager");
+            sManager.AddComponent<SManager>();
+            SManager.Instance.setBirthPosition(birthPlace);
+            sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
+        }
+
+
+    }
 }

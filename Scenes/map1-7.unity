@@ -1067,24 +1067,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4ef30c8ba675f4a8d94f2e586d7428, type: 3}
---- !u!1 &367032337 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143901688209736028, guid: 0b4ef30c8ba675f4a8d94f2e586d7428,
-    type: 3}
-  m_PrefabInstance: {fileID: 367032336}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &367032338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367032337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &377942640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5266730242634772306, guid: 1732fdfdbb6fbe746bf17ec25067ec69,
@@ -1354,11 +1336,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: transDoor1-7-3-1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
-        type: 3}
-      propertyPath: m_TagString
-      value: transDoor_u
       objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
@@ -4030,6 +4007,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 2.8
       objectReference: {fileID: 0}
+    - target: {fileID: 610913884862215655, guid: d3670d2051617fb459621cb1846afcf2,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3670d2051617fb459621cb1846afcf2, type: 3}
 --- !u!1 &1250294681
@@ -5267,11 +5249,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: outWorldDoor1-7-3
       objectReference: {fileID: 0}
-    - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
-        type: 3}
-      propertyPath: m_TagString
-      value: outworldDoor_r
-      objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5532,24 +5509,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4ef30c8ba675f4a8d94f2e586d7428, type: 3}
---- !u!1 &1685567520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1143901688209736028, guid: 0b4ef30c8ba675f4a8d94f2e586d7428,
-    type: 3}
-  m_PrefabInstance: {fileID: 1685567519}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1685567521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685567520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1686042403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6593,11 +6552,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: outWorldDoor1-7-2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
-        type: 3}
-      propertyPath: m_TagString
-      value: outworldDoor_r
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}

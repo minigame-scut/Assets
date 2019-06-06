@@ -34,6 +34,17 @@ public class Persue : MonoBehaviour
         //归一化
         direction.Normalize();
 
+        //向右追赶，沿X轴翻转
+        if(direction.x > 0)
+        {
+            chaser.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        //向左追赶，沿X轴不翻转
+        else
+        {
+            chaser.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
         //追逐者的位移
         Vector2 offset = new Vector2(
             direction.x * speed.x,
@@ -42,5 +53,7 @@ public class Persue : MonoBehaviour
 
         //更新追逐者的 Position
         chaser.transform.Translate(offset.x, offset.y, 0);
+
+
     }
 }

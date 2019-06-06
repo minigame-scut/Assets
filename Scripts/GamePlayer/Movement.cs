@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        para = GamePlayer.GetInstance();
+        para = GamePlayer.getInstance();
         anim = gameObject.GetComponent<Animator>();
         rig = gameObject.GetComponent<Rigidbody2D>();
         CountJ = 0;
@@ -93,6 +93,7 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(0, 0);
             para.DashTime = 0.0f;
         }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -117,4 +118,6 @@ public class Movement : MonoBehaviour
                 para.canJump = false;
         }             
     }
+
+    
 }
