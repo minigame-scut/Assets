@@ -23,7 +23,10 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K) || para.DashTime != 0.0f)
         {
-            Dash();
+            if (para.buffList.Contains(Buff.SUPER))
+                superRush();
+            else
+                Dash();
         }
         if (!para.isdash)
         {
@@ -55,7 +58,6 @@ public class Movement : MonoBehaviour
     }
     void Jump()
     {
-        Vector3 up = new Vector3(0, para.size,0)+transform.position;
         if (Input.GetKeyDown(KeyCode.J))
         {
             rig.isKinematic = true;
@@ -99,7 +101,6 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "ground")
         {
-
             anim.SetBool("isjump", false);
             para.canJump = true;
             CountJ = 0;
@@ -118,6 +119,24 @@ public class Movement : MonoBehaviour
                 para.canJump = false;
         }             
     }
+    //超级跳
+    void superJump()
+    {
 
-    
+    }
+    //超级冲刺
+    void superRush()
+    {
+
+    }
+    //反重力
+    void gravityContrary()
+    {
+
+    }
+    //弹起
+    void elastic()
+    {
+
+    }
 }

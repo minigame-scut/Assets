@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayer : MonoBehaviour
+public class GamePlayer 
 {
     public float MoveSpeed;
     public int Direction;
@@ -19,6 +19,8 @@ public class GamePlayer : MonoBehaviour
     public float size;//128
     //持有buff列表
     public List<Buff> buffList;
+    //是否死亡
+    public bool ifDead;
 
     private static GamePlayer myGamePlayer = null;
     public static GamePlayer getInstance()
@@ -44,5 +46,10 @@ public class GamePlayer : MonoBehaviour
         DashTime = 0.0f;
 
         size = 5.0f;
+    }
+
+    void Start()
+    {
+        Debug.Log("123");
     }
 }

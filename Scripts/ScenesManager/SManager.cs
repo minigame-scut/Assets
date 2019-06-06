@@ -25,25 +25,13 @@ public class SManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //添加监听
-        EventCenter.AddListener(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
-        EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
-        EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
-        EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
-        EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
-        EventCenter.AddListener(EventType.DEATH, responseForDEATH);
-        EventCenter.AddListener(EventType.BIRTH, responseForBIRTH);
-    //    EventCenter.AddListener(EventType.NEXTPLACE, responseForNEXTPLACE);
-        EventCenter.AddListener(EventType.JUMP, responseForJUMP);
-        EventCenter.AddListener(EventType.RUSH, responseForRUSH);
-        EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
+        listener();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        listener();
     }
     //获取当前场景出生点位置的函数
     public void setBirthPosition(Vector3 newPosition)
@@ -59,7 +47,7 @@ public class SManager : MonoBehaviour
     }
     private void responseForSignalDEATHDOOR()
     {
-        //Death
+        
     }
     private void responseForSignalGDOOR()
     {
@@ -71,7 +59,7 @@ public class SManager : MonoBehaviour
     }
     private void responseForTRANSDOOR(Vector3 newPosition)
     {
-        GamePlayer.getInstance().transform.position = newPosition;
+        //GamePlayer.getInstance().transform.position = newPosition;
     }
     private void responseForUPSPEEDDOOR()
     {
@@ -79,16 +67,18 @@ public class SManager : MonoBehaviour
     }
     private void responseForDEATH()
     {
-        //Player.Instance.setState();
-    }
-    private void responseForBIRTH()
-    {
-        //接受到BIRTH信号后玩家重生在BirthPosition
-
+        //为人物设置死亡状态
+        GamePlayer.getInstance().ifDead = true;
+        //销毁人物，3s延迟后销毁
+        Destroy(GameObject.FindWithTag("Player"), 3.0f);
+        //创建对应prefeb
+        Quaternion newQuaternion = new Quaternion(0, 0, 0, 0);//实例化预制体的rotation
+        GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
+        //GameObject.Instantiate(/*prefeb*/);
     }
     private void responseForJUMP()
     {
-        //播放音效
+        //播放JUMP音效
         AudioManager.getInstance().PlaySound("Jump");
         //遍历Player中的buffList列表，查看当前玩家的buff状态
         //如果在接受到JUMP信号时玩家buff状态为SUPER，则移除该buff状态
@@ -96,16 +86,37 @@ public class SManager : MonoBehaviour
         {
             if (curBuff == Buff.SUPER)
                 GamePlayer.getInstance().buffList.Remove(curBuff);
-            if (curBuff == Buff.ELASTIC)
-                GamePlayer.getInstance().buffList.Remove(curBuff);
         }
     }
     private void responseForRUSH()
     {
-        //Player.Instance.setState();
+        //播放RUSH音效
+        AudioManager.getInstance().PlaySound("Rush");
+        //遍历Player中的buffList列表，如果在接收到RUSH信号时玩家buff状态为SUPER，则移除该buff状态
+        foreach (Buff curBuff in GamePlayer.getInstance().buffList)
+        {
+            if (curBuff == Buff.SUPER)
+                GamePlayer.getInstance().buffList.Remove(curBuff);
+        }
     }
     private void responseForDESTROY(GameObject gameObject)
     {
+        //销毁当前场景玩家的prefeb
         Destroy(gameObject);
     }
+    //添加监听器
+    private void listener()
+    {
+        EventCenter.AddListener(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
+        EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
+        EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
+        EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
+        EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
+        EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
+        EventCenter.AddListener(EventType.DEATH, responseForDEATH);
+        EventCenter.AddListener(EventType.JUMP, responseForJUMP);
+        EventCenter.AddListener(EventType.RUSH, responseForRUSH);
+        EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
+    }
+
 }
