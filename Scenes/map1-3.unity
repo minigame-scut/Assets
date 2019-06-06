@@ -2557,6 +2557,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1745408353948310336, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddb74a167dfbbb146a5abe60ebf5e63c, type: 3}
 --- !u!1 &565895173
@@ -4842,6 +4847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: transDoor1-3-3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: transDoor_r
       objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}

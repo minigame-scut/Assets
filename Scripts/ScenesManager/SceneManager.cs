@@ -7,16 +7,22 @@ using UnityEngine;
 
 public class SManager : MonoBehaviour
 {
-    private readonly static SManager Instance = new SManager();
+    protected SManager(){ }
+    private static SManager instance = null;
 
-    private SManager()
+    public static SManager Instance
     {
+        get
+        {
+            if (SManager.instance == null)
+            {
+                DontDestroyOnLoad(SManager.instance);
+                SManager.instance = new SManager();
+            }
+                
+            return SManager.instance;
+        }
         
-    }
-
-    public static SManager getInstance()
-    {
-        return Instance;
     }
     // Start is called before the first frame update
     void Start()
@@ -28,7 +34,7 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(EventType.INWORLDDOOR, responseForSignalINWORLDDOOR);
         EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
         EventCenter.AddListener(EventType.OUTWORLDDOOR, responseForOUTWORLDDOOR);
-        EventCenter.AddListener(EventType.TRANSDOOR, responseForTRANSDOOR);
+        EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
         EventCenter.AddListener(EventType.BIRTH, responseForBIRTH);
@@ -70,9 +76,9 @@ public class SManager : MonoBehaviour
     {
         //Player.Instance.setState();
     }
-    private void responseForTRANSDOOR()
+    private void responseForTRANSDOOR(Vector3 newPosition)
     {
-        //Player.Instance.setState();
+        //Player.Instance.transform.position = newPosition;
     }
     private void responseForUPSPEEDDOOR()
     {
