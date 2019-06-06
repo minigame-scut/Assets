@@ -57,9 +57,12 @@ public class SceneMapData
         mapData.Add("transDoor1-7-3-1", "transDoor1-3-3-2");
 
         //里表世界门映射
-        mapData.Add("inWorldDoor1-3-1", "outWorldDoor1-7-1");
-        mapData.Add("inWorldDoor1-3-2", "outWorldDoor1-7-2");
-        mapData.Add("inWorldDoor1-3-3", "outWorldDoor1-7-3");
+        mapData.Add("inworldDoor1-3-1", "outworldDoor1-7-1");
+        mapData.Add("outworldDoor1-7-1", "inworldDoor1-3-1");
+        mapData.Add("inworldDoor1-3-2", "outworldDoor1-7-2");
+        mapData.Add("outworldDoor1-7-2", "inworldDoor1-3-2");
+        mapData.Add("inworldDoor1-3-3", "outworldDoor1-7-3");
+        mapData.Add("outworldDoor1-7-3", "inworldDoor1-3-3");
 
         //}
         //else
