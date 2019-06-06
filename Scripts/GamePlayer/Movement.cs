@@ -93,6 +93,7 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(0, 0);
             para.DashTime = 0.0f;
         }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
