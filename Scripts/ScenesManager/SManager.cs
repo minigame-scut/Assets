@@ -46,11 +46,10 @@ public class SManager : MonoBehaviour
         
     }
     //获取当前场景出生点位置的函数
-    void getBirthPosition(Vector3 newPosition)
+    void setBirthPosition(Vector3 newPosition)
     {
         this.birthPosition = newPosition;
     }
-
 
     //委托的方法
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
@@ -92,7 +91,7 @@ public class SManager : MonoBehaviour
     }
     private void responseForJUMP()
     {
-        //Player.Instance.setState();
+        //if(GamePlayer.getInstance().buffList)
     }
     private void responseForRUSH()
     {
