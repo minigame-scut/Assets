@@ -5,6 +5,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private int CountJ;
+    public bool useInput;
+    public GameObject shadowr;
+    public GameObject shadowl;
     //人物组件
     private GamePlayer para;
     private Animator anim;
@@ -16,16 +19,25 @@ public class Movement : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         rig = gameObject.GetComponent<Rigidbody2D>();
         CountJ = 0;
+        useInput = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (para.isDead)
+        {
+            Dead();
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.K) || para.DashTime != 0.0f)
         {
-            Dash();
+            if (para.buffList.Contains(Buff.SUPER))
+                superRush();
+            else
+                Dash();
         }
-        if (!para.isdash)
+        if (useInput)
         {
             Walk();
             Jump();
@@ -55,7 +67,6 @@ public class Movement : MonoBehaviour
     }
     void Jump()
     {
-        Vector3 up = new Vector3(0, para.size,0)+transform.position;
         if (Input.GetKeyDown(KeyCode.J))
         {
             rig.isKinematic = true;
@@ -81,15 +92,20 @@ public class Movement : MonoBehaviour
         {
             rig.isKinematic = true;
             anim.SetBool("isdash", true);
-            para.isdash = true;
+            useInput = false;
             rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 2.5f, 0);
             para.DashTime += Time.deltaTime;
+            Debug.Log("1");
+            if(para.Direction==1)
+                Instantiate<GameObject>(shadowr, transform.position, transform.rotation);
+            else if(para.Direction==-1)
+                Instantiate<GameObject>(shadowl, transform.position, transform.rotation);     
         }
         else if(para.DashTime>=0.15f)
         {
             anim.SetBool("isdash", false);
             rig.isKinematic = false;
-            para.isdash = false;
+            useInput = true;
             rig.velocity = new Vector2(0, 0);
             para.DashTime = 0.0f;
         }
@@ -99,7 +115,6 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "ground")
         {
-
             anim.SetBool("isjump", false);
             para.canJump = true;
             CountJ = 0;
@@ -107,17 +122,32 @@ public class Movement : MonoBehaviour
     }
     void getJump(int j)
     {
-        if (para.DoubleJump)
-        {
-            if (j >= 3)
-                para.canJump = false;
-        }
-        else
-        {
-            if (j >= 2)
-                para.canJump = false;
-        }             
+        if (j >= 2)
+            para.canJump = false;           
     }
+    void Dead()
+    {
+        //anim.SetBool("dead", true);
+        rig.velocity = new Vector2(0, -10.0f);
+    }
+    //超级跳
+    void superJump()
+    {
 
-    
+    }
+    //超级冲刺
+    void superRush()
+    {
+
+    }
+    //反重力
+    void gravityContrary()
+    {
+
+    }
+    //弹起
+    void elastic()
+    {
+
+    }
 }

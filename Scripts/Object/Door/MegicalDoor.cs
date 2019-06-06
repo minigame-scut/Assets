@@ -22,7 +22,7 @@ public class MegicalDoor : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //检测到玩家触碰
         if (collision.transform.tag == "player")
