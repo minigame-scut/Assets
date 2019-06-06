@@ -8,7 +8,10 @@ public class SwitchMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ani = GetComponent<Animator>();
+        ani = this.GetComponent<Animator>();
+        //  ani.SetBool("closemap", true);
+        ani.SetBool("openmap", true);
+        Debug.Log("switcher");
     }
     public void PlayOpenMap()
     {

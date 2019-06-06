@@ -5237,6 +5237,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1572834800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4811690197108877267, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_Name
+      value: mapSwitcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 45939eb167769844fbc988a54ae1630c, type: 3}
 --- !u!1001 &1577463042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5335,13 +5404,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: outworldDoor1-7-3
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_TagString
       value: outworldDoor_r
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
@@ -6664,13 +6731,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: outworldDoor1-7-2
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_TagString
       value: outworldDoor_r
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     //玩家的object
     static public GameObject player;
+    
 
  
 
@@ -71,7 +72,8 @@ public class GameManager : MonoBehaviour
 
         //读取玩家资源
         //建议使用资源管理类
-        player = Resources.Load<GameObject>("Image/Roles/Player/playerTestPrefab");
+        player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
+  
 
 
         //初始化映射关系
@@ -94,13 +96,16 @@ public class GameManager : MonoBehaviour
         //创建当前场景的sceneManager
         buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
 
+
+     
     }
 
     // Update is called once per frame
     void Update()
     {
         sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log(sceneName);
+
+       // Debug.Log(sceneName);
     }
 
     //转化关卡
@@ -123,8 +128,13 @@ public class GameManager : MonoBehaviour
      
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
-        //转移到新的场景
-         SceneManager.LoadScene("map" + toBigPlaceIndex + '-' +toPlaceIndex);
+        //播放切换场景动画
+        //mapSwitcher.GetComponent<SwitchMap>().PlayCloseMap();
+
+        ////转移到新的场景
+        SceneManager.LoadScene("map" + toBigPlaceIndex + '-' +toPlaceIndex);
+
+        //StartCoroutine(waitForMapSwitch(toBigPlaceIndex, toPlaceIndex));
 
         sceneName = SceneManager.GetActiveScene().name;
 
@@ -208,6 +218,8 @@ public class GameManager : MonoBehaviour
         //创建sceneManager
         buildSceneManager(birthPlacePosition.position);
 
+        //创建mapSwitcher
+      //  buildSceneMapSwitcher();
     }
 
     IEnumerator waitForFindForTransDoor()
@@ -244,6 +256,9 @@ public class GameManager : MonoBehaviour
 
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
+
+        //创建mapSwitcher
+       // buildSceneMapSwitcher();
     }
 
     IEnumerator waitForFindForWorldDoor()
@@ -298,6 +313,10 @@ public class GameManager : MonoBehaviour
  
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
+
+
+        //创建mapSwitcher
+        //buildSceneMapSwitcher();
     }
 
 
@@ -323,4 +342,15 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    IEnumerator waitForMapSwitch(int toBigPlaceIndex, int toPlaceIndex)
+    {
+        yield return 0;
+          //转移到新的场景
+          SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
+      
+    }
+
+
+
 }
