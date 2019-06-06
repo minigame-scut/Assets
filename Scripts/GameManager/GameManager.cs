@@ -278,4 +278,24 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    //创建场景管理器
+    void buildSceneManager()
+    {
+        GameObject sManager  = GameObject.Find("SceneManager");
+        //当前场景没有管理器
+        if(sManager == null)
+        {
+            sManager = new GameObject("SceneManager");
+            sManager.AddComponent<SManager>();
+        }
+        else
+        {
+            Destroy(sManager);
+            sManager = new GameObject("SceneManager");
+            sManager.AddComponent<SManager>();
+        }
+
+
+    }
 }
