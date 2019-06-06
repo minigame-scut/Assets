@@ -50,8 +50,11 @@ public class SceneMapData
 
         //传送门映射
         mapData.Add("transDoor1-1-1-1", "transDoor1-1-1-2");
-        mapData.Add("transDoor1-1-2-1", "transDoor1-5-2-2");
+        mapData.Add("transDoor1-1-1-2", "transDoor1-1-1-1");
+        mapData.Add("transDoor1-1-2-2", "transDoor1-5-2-1");
+        mapData.Add("transDoor1-5-2-1", "transDoor1-1-2-2");
         mapData.Add("transDoor1-3-3-2", "transDoor1-7-3-1");
+        mapData.Add("transDoor1-7-3-1", "transDoor1-3-3-2");
 
         //里表世界门映射
         mapData.Add("inWorldDoor1-3-1", "outWorldDoor1-7-1");
