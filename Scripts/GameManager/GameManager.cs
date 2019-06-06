@@ -91,6 +91,9 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(EventType.INWORLDDOOR, toWorldDoor);
         EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
+        //创建当前场景的sceneManager
+        buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
+
     }
 
     // Update is called once per frame
@@ -212,6 +215,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Transform toTransPosition = GameObject.Find(toTrans).transform;
+        Vector3 birthPosition = new Vector3(0,0,0);
         Debug.Log("toTransPosition" + toTransPosition.position);
         //生成玩家 
 
@@ -219,15 +223,19 @@ public class GameManager : MonoBehaviour
         {
             case "transDoor":
                 GameObject.Instantiate(player, new Vector2(toTransPosition.position.x -1, toTransPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x - 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_r":
                 GameObject.Instantiate(player, new Vector2(toTransPosition.position.x + 1, toTransPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x + 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_u":
                 GameObject.Instantiate(player, new Vector2(toTransPosition.position.x , toTransPosition.position.y+1), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y + 1, 0);
                 break;
             case "transDoor_d":
                 GameObject.Instantiate(player, new Vector2(toTransPosition.position.x, toTransPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y - 1, 0);
                 break;
             default:
                 break;
@@ -235,7 +243,7 @@ public class GameManager : MonoBehaviour
 
 
         kindofTrans = KindofTrans.DEFAULT;
-
+        buildSceneManager(birthPosition);
     }
 
     IEnumerator waitForFindForWorldDoor()
@@ -246,32 +254,42 @@ public class GameManager : MonoBehaviour
         Transform toWorldPosition = GameObject.Find(toWorld).transform;
         Debug.Log("toWorldPosition" + toWorldPosition.position);
         //生成玩家 
+        Vector3 birthPosition = new Vector3(0, 0, 0);
+
 
         switch (toWorldPosition.tag)
         {
             case "inworldDoor":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_r":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_u":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "inworldDoor_d":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             case "outworldDoor":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_r":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_u":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "outworldDoor_d":
                 GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+                birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             default:
                 break;
@@ -279,7 +297,7 @@ public class GameManager : MonoBehaviour
 
  
         kindofTrans = KindofTrans.DEFAULT;
-
+        buildSceneManager(birthPosition);
     }
 
 
@@ -294,7 +312,7 @@ public class GameManager : MonoBehaviour
             sManager.AddComponent<SManager>();
             sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
         }
-        else
+        else//先销毁已有场景管理器，再生成新的
         {
             Destroy(sManager);
             sManager = new GameObject("SceneManager");
