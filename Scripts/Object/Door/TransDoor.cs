@@ -21,7 +21,7 @@ public class TransDoor : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //检测到玩家触碰
         if (collision.transform.tag == "player")
@@ -29,18 +29,19 @@ public class TransDoor : MonoBehaviour
             if (deltaTime > 1)  //触发时间间隔大于一秒
             {
 
-                Debug.Log("upSpeedDoor");//测试
+                Debug.Log("TransDoor");//测试
                 //这个传送门对应的传送门
-                GameObject mapTransDoor = GameObject.Find(SceneMapData.instance.getMapData()[gameObject.name]);
+                string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
+                GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
 
                 //这个对应的门在该scene中
                 if(mapTransDoor != null)
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOOR);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    EventCenter.Broadcast(EventType.TRANSDOOR,mapTransDoor.transform.position);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
                 }
-                else
+                else//这个门在别的scene中
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
                 }
                
                 deltaTime = 0;  //重置间隔定时器

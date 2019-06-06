@@ -106,6 +106,7 @@ public class Movement : MonoBehaviour
             rig.velocity = new Vector2(0, 0);
             para.DashTime = 0.0f;
         }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -127,4 +128,6 @@ public class Movement : MonoBehaviour
         //anim.SetBool("dead", true);
         rig.velocity = new Vector2(0, -10.0f);
     }
+
+    
 }

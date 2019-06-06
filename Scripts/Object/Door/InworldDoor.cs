@@ -22,7 +22,7 @@ public class InworldDoor : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //检测到玩家触碰
         if (collision.transform.tag == "player")
@@ -31,7 +31,7 @@ public class InworldDoor : MonoBehaviour
             {
 
                 Debug.Log("InWorldDoorDoor");//测试
-                EventCenter.Broadcast(EventType.INWORLDDOOR);   //广播里世界门触碰信号
+                EventCenter.Broadcast(EventType.INWORLDDOOR,this.name);   //广播里世界门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }

@@ -21,7 +21,7 @@ public class OutworldDoor : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //检测到玩家触碰
         if (collision.transform.tag == "player")
@@ -30,7 +30,7 @@ public class OutworldDoor : MonoBehaviour
             {
 
                 Debug.Log("outWorldDoorDoor");//测试
-                EventCenter.Broadcast(EventType.OUTWORLDDOOR);   //广播表世界门触碰信号
+                EventCenter.Broadcast(EventType.OUTWORLDDOOR, this.name);   //广播表世界门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }

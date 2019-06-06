@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GamePlayer:MonoBehaviour
+public class GamePlayer : MonoBehaviour
+
 {
     //移动参数
     public bool canWalk;
@@ -18,9 +19,13 @@ public class GamePlayer:MonoBehaviour
     public float DashTime;
     //规格参数
     public float size;//128
+
     //死亡信号
     public bool isDead;
 
+
+    //持有buff列表
+    public List<Buff> buffList;
 
     private static GamePlayer myGamePlayer = null;
     public static GamePlayer getInstance()
