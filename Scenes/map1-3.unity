@@ -2490,7 +2490,7 @@ PrefabInstance:
     - target: {fileID: 771148408336400236, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
       propertyPath: m_Name
-      value: inworldDoor1-1-1
+      value: inworldDoor1-3-1
       objectReference: {fileID: 0}
     - target: {fileID: 771148408336400233, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
@@ -3652,7 +3652,7 @@ PrefabInstance:
     - target: {fileID: 771148408336400236, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
       propertyPath: m_Name
-      value: inworldDoor1-1-3
+      value: inworldDoor1-3-3
       objectReference: {fileID: 0}
     - target: {fileID: 771148408336400233, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
@@ -4841,7 +4841,7 @@ PrefabInstance:
     - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
       propertyPath: m_Name
-      value: transDoor1-1-3-2
+      value: transDoor1-3-3-2
       objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
@@ -5697,7 +5697,7 @@ PrefabInstance:
     - target: {fileID: 771148408336400236, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
       propertyPath: m_Name
-      value: inworldDoor1-1-2
+      value: inworldDoor1-3-2
       objectReference: {fileID: 0}
     - target: {fileID: 771148408336400233, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}

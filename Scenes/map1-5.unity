@@ -4103,7 +4103,7 @@ PrefabInstance:
     - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
       propertyPath: m_Name
-      value: transDoor1-1-2-1
+      value: transDoor1-5-2-1
       objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
