@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Buff
 {
-    SUPER,
-    GRAVITY,
-    ELASTIC
+    SUPER,      //超级状态
+    GRAVITY,    //重力
+    ELASTIC     //弹力
 }
