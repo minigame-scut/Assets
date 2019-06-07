@@ -39,6 +39,14 @@ public class SManager : MonoBehaviour
         this.birthPosition = newPosition;
     }
 
+    //生成玩家
+    public void birthPlayer()
+    {
+
+
+    }
+
+
     //委托的方法
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
     private void responseForSignalBROKESPEEDDOOR()
