@@ -2097,6 +2097,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: brokeSpeedDoor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4815688166388223682, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_TagString
+      value: brokeSpeedDoor_d
+      objectReference: {fileID: 0}
     - target: {fileID: 4815688166388223681, guid: f7b8e9cd49b845b439e1340eb716d15f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2922,6 +2927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: brokeSpeedDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815688166388223682, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_TagString
+      value: brokeSpeedDoor_d
       objectReference: {fileID: 0}
     - target: {fileID: 4815688166388223681, guid: f7b8e9cd49b845b439e1340eb716d15f,
         type: 3}
@@ -4285,6 +4295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: brokeSpeedDoor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4815688166388223682, guid: f7b8e9cd49b845b439e1340eb716d15f,
+        type: 3}
+      propertyPath: m_TagString
+      value: brokeSpeedDoor_d
       objectReference: {fileID: 0}
     - target: {fileID: 4815688166388223681, guid: f7b8e9cd49b845b439e1340eb716d15f,
         type: 3}

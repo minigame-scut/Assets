@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
             rig.isKinematic = true;
             anim.SetBool("isdash", true);
             useInput = false;
-            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 2.5f, 0);
+            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 3f, 0);
             para.DashTime += Time.deltaTime;
             Debug.Log("1");
             if(para.Direction==1)
@@ -140,14 +140,14 @@ public class Movement : MonoBehaviour
             para.JumpTime = 0.0f;
         }
         getJump(CountJ);
-        if (Input.GetKey(KeyCode.J) && para.JumpTime < 0.25f && CountJ != 0)
+        if (Input.GetKey(KeyCode.J) && para.JumpTime < 0.1f && CountJ != 0)
         {
             rig.isKinematic = true;
             rig.velocity = new Vector2(rig.velocity.x, para.JumpSpeed*1.5f);
             para.JumpTime += Time.deltaTime;
             anim.SetBool("isjump", true);
         }
-        else if (Input.GetKeyUp(KeyCode.J) || para.JumpTime >= 0.25f || !para.canJump)
+        else if (Input.GetKeyUp(KeyCode.J) || para.JumpTime >= 0.1f || !para.canJump)
         {
             rig.isKinematic = false;
         }
@@ -160,7 +160,7 @@ public class Movement : MonoBehaviour
             rig.isKinematic = true;
             anim.SetBool("isdash", true);
             useInput = false;
-            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 4f, 0);
+            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 5f, 0);
             para.DashTime += Time.deltaTime;
             Debug.Log("1");
             if (para.Direction == 1)

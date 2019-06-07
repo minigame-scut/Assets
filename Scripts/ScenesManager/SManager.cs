@@ -76,7 +76,7 @@ public class SManager : MonoBehaviour
     private void responseForDEATH()
     {
         //为人物设置死亡状态
-        GamePlayer.getInstance().ifDead = true;
+        GamePlayer.getInstance().isDead = true;
         //销毁人物，3s延迟后销毁
         Destroy(GameObject.FindWithTag("Player"), 3.0f);
         //创建对应prefeb
