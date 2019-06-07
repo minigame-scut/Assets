@@ -5200,7 +5200,7 @@ PrefabInstance:
     - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
         type: 3}
@@ -5316,14 +5316,12 @@ PrefabInstance:
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_Name
-
       value: outworldDoor1-7-3
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_TagString
       value: outworldDoor_r
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
@@ -6627,14 +6625,12 @@ PrefabInstance:
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_Name
-
       value: outworldDoor1-7-2
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898678, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
       propertyPath: m_TagString
       value: outworldDoor_r
-
       objectReference: {fileID: 0}
     - target: {fileID: 4603621235698898677, guid: d3670d2051617fb459621cb1846afcf2,
         type: 3}
