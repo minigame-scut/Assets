@@ -2747,25 +2747,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1073858997}
   m_PrefabAsset: {fileID: 0}
-
---- !u!1 &1073858999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4731532249042895718, guid: fb874541b1c42a9468c35d6d58c70d39,
-    type: 3}
-  m_PrefabInstance: {fileID: 1073858997}
-  m_PrefabAsset: {fileID: 0}
-
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073858999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4fd7207708ac94689bb51bfa69a904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1112381514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2777,6 +2758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mapSwitcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877267, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
         type: 3}
@@ -2835,7 +2821,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45939eb167769844fbc988a54ae1630c, type: 3}
-
 --- !u!1001 &1138326301
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
         //读取玩家资源
         //建议使用资源管理类
-        player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
+       // player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
   
 
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         catch (UnityException e)
         {
-            Debug.Log("error_placeIndex");
+            Debug.Log(e.Message);
         }
      
         Debug.Log(toPlace);
@@ -162,7 +162,8 @@ public class GameManager : MonoBehaviour
         }
         catch (UnityException e)
         {
-            Debug.Log("error_placeIndex");
+            
+            Debug.Log(e.Message);
         }
 
         Debug.Log(toPlace);
@@ -190,7 +191,7 @@ public class GameManager : MonoBehaviour
         }
         catch (UnityException e)
         {
-            Debug.Log("error_placeIndex");
+            Debug.Log(e.Message);
         }
 
         Debug.Log(toPlace);
@@ -211,15 +212,16 @@ public class GameManager : MonoBehaviour
         Transform birthPlacePosition = GameObject.Find(toPlace).transform;
         Debug.Log("birthPlacePosition" + birthPlacePosition.position);
         //生成玩家 
-        GameObject.Instantiate(player, birthPlacePosition.position, Quaternion.identity);
+      
         kindofTrans = KindofTrans.DEFAULT;
 
 
         //创建sceneManager
         buildSceneManager(birthPlacePosition.position);
-
+        //生成玩家
+        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
-      //  buildSceneMapSwitcher();
+        //  buildSceneMapSwitcher();
     }
 
     IEnumerator waitForFindForTransDoor()
@@ -234,19 +236,19 @@ public class GameManager : MonoBehaviour
         switch (toTransPosition.tag)
         {
             case "transDoor":
-                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x -1, toTransPosition.position.y), Quaternion.identity);
+              
                 birthPosition = new Vector3(toTransPosition.position.x - 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_r":
-                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x + 1, toTransPosition.position.y), Quaternion.identity);
+               
                 birthPosition = new Vector3(toTransPosition.position.x + 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_u":
-                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x , toTransPosition.position.y+1), Quaternion.identity);
+            
                 birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y + 1, 0);
                 break;
             case "transDoor_d":
-                GameObject.Instantiate(player, new Vector2(toTransPosition.position.x, toTransPosition.position.y - 1), Quaternion.identity);
+              
                 birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y - 1, 0);
                 break;
             default:
@@ -256,9 +258,10 @@ public class GameManager : MonoBehaviour
 
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
-
+        //生成玩家
+        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
-       // buildSceneMapSwitcher();
+        // buildSceneMapSwitcher();
     }
 
     IEnumerator waitForFindForWorldDoor()
@@ -275,35 +278,35 @@ public class GameManager : MonoBehaviour
         switch (toWorldPosition.tag)
         {
             case "inworldDoor":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+            
                 birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_r":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+              
                 birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_u":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+             
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "inworldDoor_d":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+               
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             case "outworldDoor":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y), Quaternion.identity);
+               
                 birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_r":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y), Quaternion.identity);
+              
                 birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_u":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y + 1), Quaternion.identity);
+               
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "outworldDoor_d":
-                GameObject.Instantiate(player, new Vector2(toWorldPosition.position.x, toWorldPosition.position.y - 1), Quaternion.identity);
+                
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             default:
@@ -313,7 +316,8 @@ public class GameManager : MonoBehaviour
  
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
-
+        //生成玩家
+        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
 
         //创建mapSwitcher
         //buildSceneMapSwitcher();

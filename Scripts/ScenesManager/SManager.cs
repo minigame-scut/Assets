@@ -14,10 +14,10 @@ public class SManager : MonoBehaviour
     {
         get
         {
-            if (SManager.instance == null)
-            {
-                SManager.instance = new SManager();
-            }
+            //if (SManager.instance == null)
+            //{
+            //    SManager.instance = new SManager();
+            //}
             return SManager.instance;
         }
         
@@ -42,8 +42,8 @@ public class SManager : MonoBehaviour
     //生成玩家
     public void birthPlayer()
     {
-
-
+        GameObject player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
+        GameObject.Instantiate(player,birthPosition, Quaternion.identity);
     }
 
 
