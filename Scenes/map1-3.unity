@@ -3618,6 +3618,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: inworldDoor1-3-3
       objectReference: {fileID: 0}
+    - target: {fileID: 771148408336400236, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
+        type: 3}
+      propertyPath: m_TagString
+      value: inworldDoor_r
+      objectReference: {fileID: 0}
     - target: {fileID: 771148408336400233, guid: ddb74a167dfbbb146a5abe60ebf5e63c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4112,6 +4117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mapSwitcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811690197108877267, guid: 45939eb167769844fbc988a54ae1630c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4811690197108877265, guid: 45939eb167769844fbc988a54ae1630c,
         type: 3}
@@ -4875,6 +4885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: transDoor1-3-3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: transDoor_r
       objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
