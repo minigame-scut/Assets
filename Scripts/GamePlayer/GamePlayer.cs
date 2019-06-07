@@ -19,15 +19,10 @@ public class GamePlayer : MonoBehaviour
     public float DashTime;
     //规格参数
     public float size;//128
-
     //死亡信号
     public bool isDead;
-
-
     //持有buff列表
     public List<Buff> buffList;
-    //是否死亡
-    public bool ifDead;
 
     private static GamePlayer myGamePlayer = null;
     public static GamePlayer getInstance()
@@ -44,7 +39,7 @@ public class GamePlayer : MonoBehaviour
         MoveSpeed = 5.0f;
         Direction = 1;
 
-        JumpSpeed = 5.0f;
+        JumpSpeed = 8.0f;
         canJump = true;
         JumpTime = 0.0f;
         DoubleJump = false;

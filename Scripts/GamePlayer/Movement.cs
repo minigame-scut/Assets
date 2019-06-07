@@ -160,7 +160,7 @@ public class Movement : MonoBehaviour
             rig.isKinematic = true;
             anim.SetBool("isdash", true);
             useInput = false;
-            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 4f, 0);
+            rig.velocity = new Vector2(para.Direction * para.MoveSpeed * 5f, 0);
             para.DashTime += Time.deltaTime;
             Debug.Log("1");
             if (para.Direction == 1)
