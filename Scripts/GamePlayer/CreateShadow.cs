@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateShaow : MonoBehaviour
+public class CreateShadow : MonoBehaviour
 {
-
     public GameObject shdow;
 
     private int timer;
@@ -15,7 +14,6 @@ public class CreateShaow : MonoBehaviour
     }
     void Update()
     {
-
         //if (timer > 100)
         //    return;
         if (timer % 5 == 0)
