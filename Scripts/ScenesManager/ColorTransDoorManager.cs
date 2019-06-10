@@ -14,7 +14,7 @@ public class ColorTransDoorManager : MonoBehaviour
     public GameObject transDoor_2;
     public GameObject transDoor_3;
     public GameObject transDoor_4;
-    public bool isFinished = false; //上方四个传送门是否全部为红色
+    public bool dIsFinished = false;    //用于调试的控制
 
     public GameObject transDoor_0;  //本关卡最终的传送门
 
@@ -91,15 +91,16 @@ public class ColorTransDoorManager : MonoBehaviour
             }
         }
 
-        isFinished = false;
-        //检查上方四扇门是否全部为红色
+        //上方四扇门全部为红色, 传送至本关卡的最终的传送门
         if (transDoor_1.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
             transDoor_2.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
             transDoor_3.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
-            transDoor_4.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"])
+            transDoor_4.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) ||
+            dIsFinished
             )
         {
-            isFinished = true;
+            GamePlayer.Instance.transform.position = transDoor_0.transform.position + new Vector3(0.5f, 0.0f);
+            return;
         }
 
 
@@ -108,23 +109,17 @@ public class ColorTransDoorManager : MonoBehaviour
         GamePlayer.Instance.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
     }
 
-    //生成一个随机的传送门(上方四扇门 或 本关卡的最终传送门)
+    //生成一个随机的传送门(上方四扇门)
     GameObject genRandomTransDoor()
     {
-        //上方四扇门颜色不是全部为红色, 返回四扇门之一
-        if(!isFinished)
+        int randKey = new System.Random().Next(1, 5);
+        switch (randKey)
         {
-            int randKey = new System.Random().Next(1, 5);
-            switch (randKey)
-            {
-                case 1: return transDoor_1;
-                case 2: return transDoor_2;
-                case 3: return transDoor_3;
-                case 4: return transDoor_4;
-            }
+            case 1: return transDoor_1;
+            case 2: return transDoor_2;
+            case 3: return transDoor_3;
+            case 4: return transDoor_4;
         }
-
-        //上方四扇门全部为红色， 返回本关卡的最终的传送门
-        return transDoor_0;
+        return new GameObject();
     }
 }
