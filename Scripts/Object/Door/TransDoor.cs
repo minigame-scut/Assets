@@ -26,9 +26,11 @@ public class TransDoor : MonoBehaviour
         //检测到玩家触碰
         if (collision.transform.tag == "player")
         {
+            
             if (deltaTime > 1)  //触发时间间隔大于一秒
             {
-
+                EventCenter.Broadcast(EventType.SHAKESCREEN);
+                EventCenter.Broadcast(EventType.ANIMPAUSE);
                 Debug.Log("TransDoor");//测试
                 //这个传送门对应的传送门
                 string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
