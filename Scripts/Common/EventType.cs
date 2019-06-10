@@ -7,6 +7,7 @@
     MAGICALDOOR,     //魔法门
     OUTWORLDDOOR,    //出去里世界的门
     TRANSDOOR,       //传送门  传送本地图内
+    CHANGETRANDOORCOLOR,    //改变传送门的颜色
     TRANSDOORTOWORLD,  //传送门  传送到不同的地图
     UPSPEEDDOOR,     //加速门
     //玩家信号
@@ -18,9 +19,5 @@
     RUSH,            //玩家冲
     ELASTICDELETE,   //弹力buff消除
     //道具信号
-    DESTROY,          //道具销毁
-    //游戏信号
-    SHAKESCREEN,      //抖动屏幕
-    ANIMPAUSE,         //玩家动画卡顿
-    WAVE,              //波纹效果
+    DESTROY          //道具销毁
 }
