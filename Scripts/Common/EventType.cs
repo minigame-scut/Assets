@@ -7,7 +7,7 @@
     MAGICALDOOR,     //魔法门
     OUTWORLDDOOR,    //出去里世界的门
     TRANSDOOR,       //传送门  传送本地图内
-    CHANGETRANDOORCOLOR,    //改变传送门的颜色
+    COLORTRANSDOOR,    //传送门 改变对应门的颜色 传送至本地图内随机的传送门
     TRANSDOORTOWORLD,  //传送门  传送到不同的地图
     UPSPEEDDOOR,     //加速门
     //玩家信号
