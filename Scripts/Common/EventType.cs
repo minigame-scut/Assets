@@ -19,5 +19,10 @@
     RUSH,            //玩家冲
     ELASTICDELETE,   //弹力buff消除
     //道具信号
-    DESTROY          //道具销毁
+    DESTROY，        //道具销毁
+    
+    //特效
+    SHAKESCREEN,
+    WAVE,
+    ANIMPAUSE
 }
