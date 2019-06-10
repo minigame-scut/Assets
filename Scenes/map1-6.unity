@@ -274,7 +274,13 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4764642242691608875, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!1001 &225272426
 PrefabInstance:
@@ -347,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 3.3000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: BiggestTriggerTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
@@ -543,7 +554,8 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.048949808
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!4 &345828381 stripped
 Transform:
@@ -840,7 +852,13 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4764642242691608875, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!1 &539418531
 GameObject:
@@ -853,7 +871,7 @@ GameObject:
   - component: {fileID: 539418533}
   - component: {fileID: 539418532}
   m_Layer: 0
-  m_Name: tranDoorsManager
+  m_Name: colorTranDoorsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,14 +886,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 539418531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db44aefd1a9e71246961bea96e5b1bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 30dafa57fadbba341b42b9587761b8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFinished: 0
   transDoor_1: {fileID: 1621684350}
   transDoor_2: {fileID: 1118307757}
   transDoor_3: {fileID: 12634454}
   transDoor_4: {fileID: 1104311660}
+  isFinished: 0
+  transDoor_0: {fileID: 1777962955}
 --- !u!4 &539418533
 Transform:
   m_ObjectHideFlags: 0
@@ -986,6 +1005,11 @@ PrefabInstance:
     - target: {fileID: 4764642242691608874, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
       propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: BiggestTriggerTime
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1459,6 +1483,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 3.3000019
       objectReference: {fileID: 0}
+    - target: {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: BiggestTriggerTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!1 &1463635999
@@ -1717,7 +1746,13 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4764642242691608875, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!1001 &1717601905
 PrefabInstance:
@@ -1796,8 +1831,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: BiggestTriggerTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
+--- !u!1 &1777962955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 317392079}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1813225186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,7 +2374,13 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4764642242691608875, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8798244640871026343, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db3794c33107b0e4bbfdb21fc852ee0f, type: 3}
 --- !u!1 &2056250098
 GameObject:
