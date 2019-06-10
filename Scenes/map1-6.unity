@@ -479,6 +479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: transDoor (160)
       objectReference: {fileID: 0}
+    - target: {fileID: 4764642242691608879, guid: db3794c33107b0e4bbfdb21fc852ee0f,
+        type: 3}
+      propertyPath: m_TagString
+      value: transDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 4764642242691608872, guid: db3794c33107b0e4bbfdb21fc852ee0f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -898,7 +903,6 @@ MonoBehaviour:
   transDoor_2: {fileID: 1118307757}
   transDoor_3: {fileID: 12634454}
   transDoor_4: {fileID: 1104311660}
-  isFinished: 0
   transDoor_0: {fileID: 1777962955}
 --- !u!4 &539418533
 Transform:
