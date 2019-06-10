@@ -26,26 +26,35 @@ public class TransDoor : MonoBehaviour
         //检测到玩家触碰
         if (collision.transform.tag == "player")
         {
-            
             if (deltaTime > 1)  //触发时间间隔大于一秒
             {
-                EventCenter.Broadcast(EventType.SHAKESCREEN);
-                EventCenter.Broadcast(EventType.ANIMPAUSE);
-                Debug.Log("TransDoor");//测试
-                //这个传送门对应的传送门
-                string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
-                GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
 
-                //这个对应的门在该scene中
-                if(mapTransDoor != null)
+                Debug.Log("TransDoor");//测试
+
+                if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOOR,mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    //这个传送门对应的传送门
+                    string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
+                    GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
+
+                    //这个对应的门在该scene中
+                    if (mapTransDoor != null)
+                    {
+                        EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    }
+                    else//这个门在别的scene中
+                    {
+                        EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                    }
                 }
-                else//这个门在别的scene中
+                else
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                    EventCenter.Broadcast<GameObject>(EventType.CHANGETRANDOORCOLOR, gameObject);
+
+                    GameObject mapTransDoor = Map1_6TransManager.instance.genRandomTransDoor();
+                    EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
                 }
-               
+
                 deltaTime = 0;  //重置间隔定时器
             }
         }
