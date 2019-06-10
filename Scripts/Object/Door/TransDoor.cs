@@ -31,28 +31,19 @@ public class TransDoor : MonoBehaviour
 
                 Debug.Log("TransDoor");//测试
 
-                if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
-                {
-                    //这个传送门对应的传送门
-                    string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
-                    GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
 
-                    //这个对应的门在该scene中
-                    if (mapTransDoor != null)
-                    {
-                        EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
-                    }
-                    else//这个门在别的scene中
-                    {
-                        EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
-                    }
-                }
-                else
-                {
-                    EventCenter.Broadcast<GameObject>(EventType.CHANGETRANDOORCOLOR, gameObject);
+                //这个传送门对应的传送门
+                string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
+                GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
 
-                    GameObject mapTransDoor = Map1_6TransManager.instance.genRandomTransDoor();
+                //这个对应的门在该scene中
+                if (mapTransDoor != null)
+                {
                     EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                }
+                else//这个门在别的scene中
+                {
+                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
                 }
 
                 deltaTime = 0;  //重置间隔定时器
