@@ -26,24 +26,30 @@ public class TransDoor : MonoBehaviour
         //检测到玩家触碰
         if (collision.transform.tag == "player")
         {
-            if (deltaTime > 1)  //触发时间间隔大于一秒
+            if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
 
                 Debug.Log("TransDoor");//测试
 
-
-                //这个传送门对应的传送门
-                string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
-                GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
-
-                //这个对应的门在该scene中
-                if (mapTransDoor != null)
+                if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    //这个传送门对应的传送门
+                    string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
+                    GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
+
+                    //这个对应的门在该scene中
+                    if (mapTransDoor != null)
+                    {
+                        EventCenter.Broadcast(EventType.TRANSDOOR, mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    }
+                    else//这个门在别的scene中
+                    {
+                        EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                    }
                 }
-                else//这个门在别的scene中
+                else  //用于 map1-6 的传送门的
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOORTOWORLD, mapTransDoorName);   //广播传送门门触碰信号  不同scene内的传送交给GameManager来处理
+                    EventCenter.Broadcast<GameObject>(EventType.COLORTRANSDOOR, gameObject);
                 }
 
                 deltaTime = 0;  //重置间隔定时器
