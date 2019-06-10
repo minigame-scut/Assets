@@ -19,7 +19,7 @@ public class Ghost : MonoBehaviour
         //搜索玩家
         if (mObjPlayer == null)
         {
-            mObjPlayer = GameObject.FindGameObjectWithTag("Player");
+            mObjPlayer = GameObject.FindGameObjectWithTag("player");
         }
         //追逐玩家(无视地形)
         else
@@ -33,7 +33,7 @@ public class Ghost : MonoBehaviour
     void OnCollisionEnter2D(Collision2D otherCollision)
     {
         //玩家的 tag 为 Player
-        if (mObjPlayer != null && otherCollision.gameObject.tag.Equals("Player"))
+        if (mObjPlayer != null && otherCollision.gameObject.tag.Equals("player"))
         {
             //广播玩家死亡信号
             EventCenter.Broadcast(EventType.DEATH);

@@ -19,7 +19,7 @@ public class Key : MonoBehaviour
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         //玩家的 tag 为 Player
-        if(otherCollider.tag.Equals("Player"))
+        if(otherCollider.tag.Equals("player"))
         {
             //获取玩家的控制脚本
             Player player = otherCollider.gameObject.GetComponent<Player>();

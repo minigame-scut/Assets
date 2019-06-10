@@ -24,9 +24,11 @@ public class GameManager : MonoBehaviour
 
     //玩家的object
     static public GameObject player;
-    
 
- 
+    //持有的当前场景的sceneManager
+    GameObject sManager;
+
+
 
     public string sceneName;
 
@@ -94,17 +96,21 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
+        // buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
+        buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
-     
     }
 
     // Update is called once per frame
     void Update()
     {
         sceneName = SceneManager.GetActiveScene().name;
-
+        //保存玩家数据
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        }
        // Debug.Log(sceneName);
     }
 
@@ -130,6 +136,10 @@ public class GameManager : MonoBehaviour
         Debug.Log(toPlaceIndex);
         //播放切换场景动画
         //mapSwitcher.GetComponent<SwitchMap>().PlayCloseMap();
+
+        //切关保存玩家的数据
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+
 
         ////转移到新的场景
         SceneManager.LoadScene("map" + toBigPlaceIndex + '-' +toPlaceIndex);
@@ -168,6 +178,9 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
+
+        //切关保存玩家的数据
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
         //转移到新的场景
         SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
         kindofTrans = KindofTrans.TRANSDOOR; //指明是通过tansdoor进行传送的
@@ -194,6 +207,8 @@ public class GameManager : MonoBehaviour
             Debug.Log(e.Message);
         }
 
+        //切关保存玩家的数据
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
         //转移到新的场景
@@ -208,7 +223,7 @@ public class GameManager : MonoBehaviour
     IEnumerator waitForFindForNextPlace()
     {
       
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         Transform birthPlacePosition = GameObject.Find(toPlace).transform;
         Debug.Log("birthPlacePosition" + birthPlacePosition.position);
         //生成玩家 
@@ -219,7 +234,7 @@ public class GameManager : MonoBehaviour
         //创建sceneManager
         buildSceneManager(birthPlacePosition.position);
         //生成玩家
-        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
+        //GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
         //  buildSceneMapSwitcher();
     }
@@ -259,7 +274,7 @@ public class GameManager : MonoBehaviour
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
         //生成玩家
-        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
+        //GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
         // buildSceneMapSwitcher();
     }
@@ -279,11 +294,11 @@ public class GameManager : MonoBehaviour
         {
             case "inworldDoor":
             
-                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_r":
               
-                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_u":
              
@@ -295,11 +310,11 @@ public class GameManager : MonoBehaviour
                 break;
             case "outworldDoor":
                
-                birthPosition = new Vector3(toWorldPosition.position.x - 0.5f, toWorldPosition.position.y, 0);
+                birthPosition = new Vector3(toWorldPosition.position.x - 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_r":
               
-                birthPosition = new Vector3(toWorldPosition.position.x + 0.5f, toWorldPosition.position.y, 0);
+                birthPosition = new Vector3(toWorldPosition.position.x + 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_u":
                
@@ -317,7 +332,7 @@ public class GameManager : MonoBehaviour
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
         //生成玩家
-        GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
+        //GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
 
         //创建mapSwitcher
         //buildSceneMapSwitcher();
@@ -327,7 +342,7 @@ public class GameManager : MonoBehaviour
     //创建场景管理器
     void buildSceneManager(Vector3 birthPlace)
     {
-        GameObject sManager  = GameObject.Find("SceneManager");
+       sManager  = GameObject.Find("SceneManager");
         //当前场景没有管理器
         if(sManager == null)
         {

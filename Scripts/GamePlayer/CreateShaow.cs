@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateShaow : MonoBehaviour
+public class CreateShadow : MonoBehaviour
 {
 
     public GameObject shdow;

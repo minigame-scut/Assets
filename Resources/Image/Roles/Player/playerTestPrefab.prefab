@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 6631026173945132123}
   - component: {fileID: 6631026173945132120}
   - component: {fileID: 6631026173945132125}
+  - component: {fileID: 1481817581}
+  - component: {fileID: 1481817582}
+  - component: {fileID: 1481817583}
   m_Layer: 0
   m_Name: playerTestPrefab
   m_TagString: player
@@ -128,3 +131,64 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1481817581
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631026173945132121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58b67cff1fda5c747a55b842345f2ac5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1481817582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631026173945132121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5116b7a8378f64b86a87408680bdc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1481817583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631026173945132121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98753b84d5c82b448306c9233784505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canWalk: 1
+  MoveSpeed: 5
+  Direction: 1
+  JumpSpeed: 8
+  canJump: 1
+  JumpTime: 0
+  TimesofDash: 1
+  DashTime: 0
+  size: 0
+  isDead: 0
+  useInput: 0
+  shadowr: {fileID: 0}
+  shadowl: {fileID: 0}
+  rig: {fileID: 0}
+  elasticTrans: {fileID: 0}
+  flagGravity: 0
+  elasticTimer: 0
+  testForce: 5

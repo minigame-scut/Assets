@@ -37,7 +37,7 @@ public class TransDoor : MonoBehaviour
                 //这个对应的门在该scene中
                 if(mapTransDoor != null)
                 {
-                    EventCenter.Broadcast(EventType.TRANSDOOR,mapTransDoor.transform.position);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
+                    EventCenter.Broadcast(EventType.TRANSDOOR,mapTransDoor.transform.position, gameObject.tag);   //广播传送门门触碰信号  一个scene内的传送交给sceneManager来处理
                 }
                 else//这个门在别的scene中
                 {

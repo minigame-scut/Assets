@@ -12,9 +12,11 @@
     //玩家信号
     DEATH,           //玩家死亡
     BIRTH,           //玩家诞生
+    REBIRTH,         //玩家重生
     NEXTPLACE,       //玩家进入下一关
     JUMP,            //玩家跳
     RUSH,            //玩家冲
+    ELASTICDELETE,   //弹力buff消除
     //道具信号
     DESTROY          //道具销毁
 }

@@ -64,6 +64,15 @@ public class SceneMapData
         mapData.Add("inworldDoor1-3-3", "outworldDoor1-7-3");
         mapData.Add("outworldDoor1-7-3", "inworldDoor1-3-3");
 
+        //地图编号与build编号的映射
+        mapData.Add("map1-0", "0");
+        mapData.Add("map1-1", "1");
+        mapData.Add("map1-2", "2");
+        mapData.Add("map1-3", "3");
+        mapData.Add("map1-4", "4");
+        mapData.Add("map1-5", "5");
+        mapData.Add("map1-6", "6");
+        mapData.Add("map1-7", "7");
         //}
         //else
         //{

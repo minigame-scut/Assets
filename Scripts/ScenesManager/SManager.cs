@@ -8,6 +8,12 @@ using UnityEngine;
 public class SManager : MonoBehaviour
 {
     public  Vector3 birthPosition;//当前场景的出生点
+    
+    //当前玩家的实例
+    public GameObject gamePlayer;
+    //玩家prefab
+    GameObject player;
+
     private static SManager instance = null;
 
     public static SManager Instance
@@ -20,11 +26,17 @@ public class SManager : MonoBehaviour
             //}
             return SManager.instance;
         }
-        
+
     }
+    void Awake()
+    {
+        player = Resources.Load<GameObject>("GameManagerRes/player");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        birthPlayer();
         listener();
     }
 
@@ -39,19 +51,68 @@ public class SManager : MonoBehaviour
         this.birthPosition = newPosition;
     }
 
+    //返回一个玩家的实例
+    public GameObject getGamePlayer()
+    {
+        return this.gamePlayer;
+    }
+
+
     //生成玩家
     public void birthPlayer()
     {
-        GameObject player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
-        GameObject.Instantiate(player,birthPosition, Quaternion.identity);
+        //如果找到玩家物体，则销毁当前玩家物体
+        if (GameObject.Find("player(clone)"))
+        {
+            Destroy(GameObject.Find("player(Clone)"));
+            //return;
+        }
+        //加载player预制体，在出生位置创建玩家
+        //GameObject player = Resources.Load<GameObject>("GameManagerRes/player");
+        gamePlayer = GameObject.Instantiate(player,birthPosition, Quaternion.identity);
+
+
+
+        // //在进入场景的时候应该读取修改保存一个玩家的数据
+        try
+        {
+            PlayerData playerData = (PlayerData)SavePlayerData.GetData("Save/PlayerData.sav", typeof(PlayerData));
+            //为玩家的生成位置赋值
+            playerData.setPlayerVector3DPositionData(this.birthPosition.x, this.birthPosition.y, this.birthPosition.z);
+            playerData.mapIndex = int.Parse(SceneMapData.getInstance().getMapData()[GameManager.instance.sceneName]);
+            //修改
+            gamePlayer.GetComponent<GamePlayer>().setPlayerData(playerData);
+
+            //保存
+            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<GamePlayer>().getPlayerData());
+            //读取 修改位置地图信息 再保存
+
+        }
+        catch (UnityException e)
+        {
+            Debug.Log(e.Message);
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().setPlayerVector3DPositionData(this.birthPosition.x, this.birthPosition.y, this.birthPosition.z);
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().mapIndex = int.Parse(SceneMapData.getInstance().getMapData()[GameManager.instance.sceneName]);
+            //保存
+            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<GamePlayer>().getPlayerData());
+        }
+
+
+
     }
 
 
     //委托的方法
     //玩家通过门重置状态，玩家死亡，玩家重置位置，玩家经过门之后的效果
-    private void responseForSignalBROKESPEEDDOOR()
+    private void responseForSignalBROKESPEEDDOOR(Transform transform)
     {
-        GamePlayer.getInstance().buffList.Add(Buff.ELASTIC);
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.ELASTIC);
+            gamePlayer.GetComponent<GamePlayer>().elasticTrans = transform;
+            //根据弹力门的方向设置玩家刚体该方向速度为0
+            gamePlayer.GetComponent<GamePlayer>().rig.velocity *= (transform.right.x == 0) ? new Vector2(0, 1) : new Vector2(1, 0);
+        }
     }
     private void responseForSignalDEATHDOOR()
     {
@@ -59,52 +120,85 @@ public class SManager : MonoBehaviour
     }
     private void responseForSignalGDOOR()
     {
-        GamePlayer.getInstance().buffList.Add(Buff.GRAVITY);
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().flagGravity = 0;
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.GRAVITY);
+        }
     }
     private void responseForMAGICALDOOR()
     {
         //Magic
     }
-    private void responseForTRANSDOOR(Vector3 newPosition)
+    private void responseForTRANSDOOR(Vector3 newPosition, string curTag)
     {
+        if (gamePlayer != null)
+        {
+            newPosition += (curTag == "transDoor_r") ? new Vector3(-1, 0, 0) : new Vector3(1, 0, 0);
+            gamePlayer.GetComponent<GamePlayer>().transform.position = newPosition;
+        }
         //GamePlayer.getInstance().transform.position = newPosition;
     }
     private void responseForUPSPEEDDOOR()
     {
-        GamePlayer.getInstance().buffList.Add(Buff.SUPER);
+        if(gamePlayer != null)
+        {
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.SUPER);
+        }
     }
     private void responseForDEATH()
     {
         //为人物设置死亡状态
-        GamePlayer.getInstance().isDead = true;
+
         //销毁人物，3s延迟后销毁
-        Destroy(GameObject.FindWithTag("Player"), 3.0f);
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().isDead = true;
+            Destroy(gamePlayer, 2.0f);
+            StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
+        }
+            
+        
         //创建对应prefeb
-        Quaternion newQuaternion = new Quaternion(0, 0, 0, 0);//实例化预制体的rotation
-       // GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
+        //Quaternion newQuaternion = new Quaternion(0, 0, 0, 0);//实例化预制体的rotation
+        // GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
         //GameObject.Instantiate(/*prefeb*/);
+    }
+    private void responseForREBIRTH()
+    {
+        if(gamePlayer != null)
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().isBirth = true;
     }
     private void responseForJUMP()
     {
         //播放JUMP音效
-        AudioManager.getInstance().PlaySound("Jump");
+        //AudioManager.getInstance().PlaySound("Jump");
         //遍历Player中的buffList列表，查看当前玩家的buff状态
         //如果在接受到JUMP信号时玩家buff状态为SUPER，则移除该buff状态
-        foreach (Buff curBuff in GamePlayer.getInstance().buffList)
+        if(gamePlayer != null)
         {
-            if (curBuff == Buff.SUPER)
-                GamePlayer.getInstance().buffList.Remove(curBuff);
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.SUPER);
         }
+        
     }
     private void responseForRUSH()
     {
         //播放RUSH音效
-        AudioManager.getInstance().PlaySound("Rush");
+        //AudioManager.getInstance().PlaySound("Rush");
         //遍历Player中的buffList列表，如果在接收到RUSH信号时玩家buff状态为SUPER，则移除该buff状态
-        foreach (Buff curBuff in GamePlayer.getInstance().buffList)
+        if(gamePlayer != null)
         {
-            if (curBuff == Buff.SUPER)
-                GamePlayer.getInstance().buffList.Remove(curBuff);
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.SUPER);
+        }
+        
+    }
+    private void responseForELASTICDELETE()
+    {
+        //接受到ELASTICDELETE信号后设置弹力计时器时间为0，并移除弹力buff
+        if(gamePlayer != null)
+        {
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().elasticTimer = 0.0f;
+            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.ELASTIC);
         }
     }
     private void responseForDESTROY(GameObject gameObject)
@@ -115,16 +209,31 @@ public class SManager : MonoBehaviour
     //添加监听器
     private void listener()
     {
-        EventCenter.AddListener(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
+        //监听门信号
+        EventCenter.AddListener<Transform>(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
         EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
         EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
         EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener<Vector3>(EventType.TRANSDOOR, responseForTRANSDOOR);
+        EventCenter.AddListener<Vector3, string>(EventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
+        //监听玩家信号
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
         EventCenter.AddListener(EventType.JUMP, responseForJUMP);
         EventCenter.AddListener(EventType.RUSH, responseForRUSH);
+        EventCenter.AddListener(EventType.ELASTICDELETE, responseForELASTICDELETE);
+        EventCenter.AddListener(EventType.REBIRTH, responseForREBIRTH);
+        //
         EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
     }
 
+    IEnumerator createNewPlayerInBirthPlaceAfterDeath()
+    {
+        yield return new WaitForSeconds(3.0f);
+        if(gamePlayer == null)
+        {
+            birthPlayer();
+            EventCenter.Broadcast(EventType.REBIRTH);
+        }
+            
+    }
 }

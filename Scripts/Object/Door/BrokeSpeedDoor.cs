@@ -7,12 +7,12 @@ using UnityEngine;
 public class BrokeSpeedDoor : MonoBehaviour
 {
     public float BiggestTriggerTime = 1.0f;   //一个门在最大triggerTime时间内能够触发的次数
-
     private float deltaTime = 0;       //定时器
+    private Transform elasticTrans;
     // Start is called before the first frame update
     void Start()
     {
-
+        elasticTrans = gameObject.transform;
     }
 
     // Update is called once per frame
@@ -36,7 +36,8 @@ public class BrokeSpeedDoor : MonoBehaviour
             {
 
                 Debug.Log("BorkeDoor");//测试
-                EventCenter.Broadcast(EventType.BROKESPEEDDOOR);   //广播弹力门触碰信号
+
+                EventCenter.Broadcast(EventType.BROKESPEEDDOOR, elasticTrans);   //广播弹力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }
