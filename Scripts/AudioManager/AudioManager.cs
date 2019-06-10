@@ -4,8 +4,8 @@ public class AudioManager : MonoBehaviour
 {
     private static AudioManager Instance = null;//单实例类
 
-    public AudioSource MusicPlayer;//播放背景音乐的组件
-    public AudioSource SoundPlayer;//播放音效的组件
+    public AudioSource musicPlayer;//播放背景音乐的组件
+    public AudioSource soundPlayer;//播放音效的组件
 
     public static AudioManager getInstance()
     {
@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
             Instance = new AudioManager();
         }
         return Instance;
-    }
+    }   
 
     void Start()
     {
@@ -26,19 +26,19 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(string name)
     {
         //如果当前背景音乐没有播放，播放给定的背景音乐（循环播放）
-        if (!MusicPlayer.isPlaying)
+        if (!musicPlayer.isPlaying)
         {
             //给定的音乐资源必须在Resource文件夹中
             AudioClip clip = Resources.Load<AudioClip>(name);
-            MusicPlayer.clip = clip;
-            MusicPlayer.Play();
+            musicPlayer.clip = clip;
+            musicPlayer.Play();
         }
     }
 
     //停止播放背景音乐
     public void StopMusic()
     {
-        MusicPlayer.Stop();
+        musicPlayer.Stop();
     }
 
     //播放音效
@@ -46,7 +46,16 @@ public class AudioManager : MonoBehaviour
     {
         //给定的音效资源必须在Resource文件夹中
         AudioClip clip = Resources.Load<AudioClip>(name);
-        SoundPlayer.PlayOneShot(clip);
+        soundPlayer.PlayOneShot(clip);
+    }
+
+    public void setMusciVolume(float mv)
+    {
+        musicPlayer.volume = mv;
+    }
+    public void setSoundVolume(float sv)
+    {
+        soundPlayer.volume = sv;
     }
 }
 

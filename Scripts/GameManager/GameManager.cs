@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
-
+using UnityEngine.UI;
 
 public enum KindofTrans
 {
@@ -25,9 +24,15 @@ public class GameManager : MonoBehaviour
     //玩家的object
     static public GameObject player;
 
-    //持有的当前场景的sceneManager
+    //持有的当前场景的SceneManager
     GameObject sManager;
 
+    private float musicVolume;
+    private float soundVolume;
+    private Slider volumeControl;
+
+    //持有的当前场景的AudioManager
+    GameObject aManager;
 
 
     public string sceneName;
@@ -99,7 +104,8 @@ public class GameManager : MonoBehaviour
         // buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
         buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
-
+        //创建当前场景的AudioManager
+        buildAudioManager(new Vector3(0, 0, 0));
     }
 
     // Update is called once per frame
@@ -358,8 +364,32 @@ public class GameManager : MonoBehaviour
             SManager.Instance.setBirthPosition(birthPlace);
             sManager.GetComponent<SManager>().setBirthPosition(birthPlace);
         }
+    }
 
+    void buildAudioManager(Vector3 birthPlace)
+    {
+        aManager = GameObject.Find("AudioManager");
+        //当前场景没有管理器
+        if (aManager == null)
+        {
+            aManager =  (GameObject)Resources.Load("AudioManager");
+            changeMusicVolum();
+            changeSoundVolum();
+        }
+    }
 
+    public void changeMusicVolum()
+    {
+        volumeControl = GameObject.FindWithTag("MVControl").GetComponent<Slider>();
+        musicVolume = volumeControl.value;
+        aManager.GetComponent<AudioManager>().setMusciVolume(musicVolume);
+    }
+
+    public void changeSoundVolum()
+    {
+        volumeControl = GameObject.FindWithTag("SVControl").GetComponent<Slider>();
+        soundVolume = volumeControl.value;
+        aManager.GetComponent<AudioManager>().setSoundVolume(soundVolume);
     }
 
     IEnumerator waitForMapSwitch(int toBigPlaceIndex, int toPlaceIndex)
