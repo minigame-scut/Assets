@@ -18,7 +18,7 @@ public class ColorTransDoorManager : MonoBehaviour
 
     public GameObject transDoor_0;  //本关卡最终的传送门
 
-
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +39,13 @@ public class ColorTransDoorManager : MonoBehaviour
         //添加 颜色传送门 的监听
         EventCenter.AddListener<GameObject>(EventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
 
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        player = GameObject.Find("SceneMananger").GetComponent<SManager>().getGamePlayer();
     }
 
     //对信号 颜色传送门 的处理函数
@@ -99,14 +100,14 @@ public class ColorTransDoorManager : MonoBehaviour
             dIsFinished
             )
         {
-            GamePlayer.Instance.transform.position = transDoor_0.transform.position + new Vector3(0.5f, 0.0f);
+            player.transform.position = transDoor_0.transform.position + new Vector3(0.5f, 0.0f);
             return;
         }
 
 
         //进行传送
         GameObject toTransDoor = genRandomTransDoor();
-        GamePlayer.Instance.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
+       player.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
     }
 
     //生成一个随机的传送门(上方四扇门)

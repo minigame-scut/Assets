@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         //保存玩家数据
         if (Input.GetKeyUp(KeyCode.T))
         {
-            SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+            SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         }
        // Debug.Log(sceneName);
     }
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         //mapSwitcher.GetComponent<SwitchMap>().PlayCloseMap();
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
 
 
         ////转移到新的场景
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(toPlaceIndex);
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         //转移到新的场景
         SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
         kindofTrans = KindofTrans.TRANSDOOR; //指明是通过tansdoor进行传送的
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
         }
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
         //转移到新的场景
