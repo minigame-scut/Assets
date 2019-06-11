@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        // buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
-        buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
+        buildSceneManager(GameObject.Find("birthPlace1-2-2").transform.position);
+      //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
         //监听进入新游戏
         EventCenter.AddListener<string>(EventType.UITOGAME,buildGameScene);
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
             sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
             Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
         }
-        if (UI != null && UI.activeSelf == false)
+        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null)
             sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = false;
     }
 
