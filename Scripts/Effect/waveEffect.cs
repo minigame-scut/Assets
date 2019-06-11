@@ -52,7 +52,7 @@ public class waveEffect : PostEffectBase
             startPos = new Vector4(Camera.main.WorldToScreenPoint(pos).x / Screen.width, Camera.main.WorldToScreenPoint(pos).y / Screen.height, 0, 0);
             waveStartTime = Time.time;
             isWave = false;
-            Debug.Log("Wave");
+           // Debug.Log("Wave");
         }
         if (Input.GetMouseButton(0))
         {

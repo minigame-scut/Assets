@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         buildSceneManager(GameObject.Find("birthPlace1-4-1").transform.position);
       //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
+
         //监听进入新游戏
         EventCenter.AddListener<string>(EventType.UITOGAME,buildGameScene);
         //监听返回主菜单

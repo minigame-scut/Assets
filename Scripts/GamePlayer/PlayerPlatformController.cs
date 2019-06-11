@@ -18,7 +18,6 @@ public class PlayerPlatformController : PhysicalObject
     public float inputTimer = 0;
     //是否暂停
     public bool isPause = false;
-
     //受到弹力方向
     public Transform elasticTrans;
 
@@ -39,9 +38,10 @@ public class PlayerPlatformController : PhysicalObject
             StartCoroutine(setBirthAnimAsFalse());
         }
     }
-
-    protected override void ComputeVelocity()
+    //重写PhysicalObject中计算玩家速度的函数
+    protected override void playerControl()
     {
+        //是否暂停
         if (isPause)
             return;
         //输入计时器计时
@@ -58,92 +58,71 @@ public class PlayerPlatformController : PhysicalObject
         }
         //是否重力翻转
         spriteRenderer.flipY = (playerData.gravityTrans == 1) ? false : true;
-        if(playerData.buff.contains(Buff.GRAVITY))
+        if (playerData.buff.contains(Buff.GRAVITY))
         {
-            if(playerData.flagGravity == 0)
+            if (playerData.flagGravity == 0)
             {
                 gravityContrary();
                 playerData.flagGravity = 1;
             }
         }
+        //判断是否冲刺，然后进行冲刺位移计算和阴影效果生成
         if (isRush)
         {
             //生成阴影
             createShdow();
-            //是冲刺状态
-            if (playerData.rushTimer <= playerData.rushMaxTime)
-            {   
-
-                playerData.rushTimer += Time.fixedDeltaTime;
-                targetVelocity = move * curRushSpeed;
-            }
-            else  //结束了冲刺状态
-            {
-                playerData.rushTimer = 0;
-                targetVelocity = move * playerData.maxSpeed;
-                isRush = false;
-            }
+            //冲刺移动
+            rushMove();
             return;
         }
         else
         {
             move = Vector2.zero;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") == -1)
         {
-            playerData.dir = -1;
-            move.x = playerData.dir ;
-            isWalk = true;
-
-        }else if (Input.GetKey(KeyCode.D))
-        {
-            playerData.dir = 1;
-            move.x = playerData.dir;
-            isWalk = true;
+            //左跑
+            run(-1);
         }
-        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") == 1)
+        {
+            //右跑
+            run(1);
+        }
+        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetAxis("Horizontal") == 0)
         {
             isWalk = false;
         }
         //冲刺状态
-        if (Input.GetKeyDown(KeyCode.K)&& playerData.canRush)
+        if ((Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("Rush"))&& playerData.canRush)
         {
-            isJump = false;
-            isWalk = false;
-            move.x = playerData.dir;
-            isRush = true;
             if (playerData.buff.contains(Buff.SUPER))
             {
                 superRush();
             }
             else
             {
-                targetVelocity = move * curRushSpeed;
+                rush();
             }
             //空中只能冲刺一次
             playerData.canRush = false;
-            //生成阴影
-            createShdow();
             //广播移除重置buff的信号
             EventCenter.Broadcast(EventType.INITDELETE);
-            //计算冲刺的起始点 计算差值
+
             return;
         }
         //跳跃
         if (Input.GetButtonDown("Jump") && playerData.canJump)
         {
+            //再次初始化curJumpSpeed
             curJumpSpeed = playerData.normalJumpSpeed;
             if(playerData.buff.contains(Buff.SUPER))
             {
-                isWalk = false;
-                isJump = true;
                 superJump();
             }
             else
             {
-                isWalk = false;
-                isJump = true;
-                velocity.y = curJumpSpeed;
+                jump();
             }
             EventCenter.Broadcast(EventType.INITDELETE);   
         }
@@ -152,17 +131,19 @@ public class PlayerPlatformController : PhysicalObject
             //大跳小跳
             isWalk = false;
             isJump = true;
-            if (velocity.y > 0)
-                velocity.y = velocity.y * 0.5f;
+            if (velocity.y > 0 && playerData.gravityTrans == 1)
+                velocity.y = velocity.y * 0.3f;
+            else if (velocity.y < 0 && playerData.gravityTrans == -1)
+                velocity.y = velocity.y * 0.3f;
         }
         //判断玩家当前是否持有弹力buff
         if (playerData.buff.contains(Buff.ELASTIC))
         {
             //计算弹力buff持有的时间，当时间>=0.2s时广播信号移除该buff
             playerData.elasticTimer += Time.fixedDeltaTime;
-
             if (playerData.elasticTimer < 0.3f)
             {
+                Debug.Log("I have ealstic");
                 elasticUp();
             }
             else
@@ -228,26 +209,71 @@ public class PlayerPlatformController : PhysicalObject
     {
         this.playerData.setPlayerVector3DPositionData(pos.x, pos.y, pos.z);
     }
-
     //设置玩家所处地图的数据
     public void setPlayerDataMapIndex(int index)
     {
         this.playerData.mapIndex = index;
     }
-
+    //奔跑
+    void run(int direction)
+    {
+        playerData.dir = direction;
+        move.x = playerData.dir;
+        isWalk = true;
+    }
+    //跳跃
+    void jump()
+    {
+        isWalk = false;
+        isJump = true;
+        curJumpSpeed = playerData.normalJumpSpeed;
+        velocity.y = curJumpSpeed * playerData.gravityTrans;
+    }
     //超级跳
     void superJump()
     {
+        isWalk = false;
+        isJump = true;
         curJumpSpeed = playerData.superJumpSpeed;
-        velocity.y = curJumpSpeed;
+        velocity.y = curJumpSpeed * playerData.gravityTrans;
         EventCenter.Broadcast(EventType.JUMP);
     }
-    //超级冲刺
+    //普通冲刺,设置普通冲刺时的速度
+    void rush()
+    {
+        isJump = false;
+        isWalk = false;
+        move.x = playerData.dir;
+        isRush = true;
+        this.curRushSpeed = playerData.normalRushSpeed;
+        targetVelocity = move * curRushSpeed;
+    }
+    //超级冲刺， 设置超级冲刺时的速度
     void superRush()
     {
+        isJump = false;
+        isWalk = false;
+        move.x = playerData.dir;
+        isRush = true;
         this.curRushSpeed = playerData.superRushSpeed;
         targetVelocity = move * curRushSpeed;
         EventCenter.Broadcast(EventType.RUSH);
+    }
+    //冲刺移动，实际计算冲刺位移的函数，并判断冲刺是否结束
+    void rushMove()
+    {
+        //是冲刺状态
+        if (playerData.rushTimer <= playerData.rushMaxTime)
+        {
+            playerData.rushTimer += Time.fixedDeltaTime;
+            targetVelocity = move * curRushSpeed;
+        }
+        else  //结束了冲刺状态
+        {
+            playerData.rushTimer = 0;
+            targetVelocity = move * playerData.maxSpeed;
+            isRush = false;
+        }
     }
     //生成阴影
     void createShdow()
@@ -275,7 +301,6 @@ public class PlayerPlatformController : PhysicalObject
         velocity = Vector2.zero;
         anim.SetBool("isDeath", true);
     }
-
     IEnumerator setBirthAnimAsFalse()
     {
         yield return new WaitForSeconds(0.958f);
