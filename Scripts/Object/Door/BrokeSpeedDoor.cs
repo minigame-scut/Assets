@@ -36,7 +36,7 @@ public class BrokeSpeedDoor : MonoBehaviour
             {
 
                 Debug.Log("BorkeDoor");//测试
-
+                EventCenter.Broadcast(EventType.WAVE, this.transform.position);
                 EventCenter.Broadcast(EventType.BROKESPEEDDOOR, elasticTrans);   //广播弹力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }

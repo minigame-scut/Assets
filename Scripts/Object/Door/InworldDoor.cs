@@ -29,7 +29,7 @@ public class InworldDoor : MonoBehaviour
         {
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
-
+                EventCenter.Broadcast(EventType.WAVE, this.transform.position);
                 Debug.Log("InWorldDoorDoor");//测试
                 EventCenter.Broadcast(EventType.INWORLDDOOR,this.name);   //广播里世界门触碰信号
                 deltaTime = 0;  //重置间隔定时器
