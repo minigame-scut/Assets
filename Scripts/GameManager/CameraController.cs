@@ -48,6 +48,8 @@ public class CameraController : MonoBehaviour
 
     void FixCameraPos()
     {
+
+        //Debug.Log(player.transform.position.x+""+player.transform.position.y);
         targetPos = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
 
         if (player.transform.position.x - cameraWidth <= -scrWidth / 2 )

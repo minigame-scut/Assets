@@ -410,12 +410,14 @@ PrefabInstance:
     - target: {fileID: 5105765558277027745, guid: 109b24c51df63b247b651e2ed14e037b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.17
+
+      value: -8.53
+
       objectReference: {fileID: 0}
     - target: {fileID: 5105765558277027745, guid: 109b24c51df63b247b651e2ed14e037b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5105765558277027745, guid: 109b24c51df63b247b651e2ed14e037b,
         type: 3}
@@ -582,6 +584,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1502761017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4031508727571453713, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_Name
+      value: UIToGameAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453713, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031508727571453716, guid: ff9b809c14795a94ea12f2a0d37c2aff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff9b809c14795a94ea12f2a0d37c2aff, type: 3}
 --- !u!1 &1125781039
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +811,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900095908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.77, y: 0.38, z: -0.098816015}
+
+  m_LocalPosition: {x: -6.55, y: 0.337, z: -0.098816015}
+
   m_LocalScale: {x: 3, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 2000452833}
@@ -802,8 +880,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01840949, y: 0.39637685}
-  m_Size: {x: 0.47063273, y: 1.4327538}
+  m_Offset: {x: 0.010741155, y: 0.0005928576}
+  m_Size: {x: 0.4859694, y: 0.6411858}
   m_Direction: 0
 --- !u!1 &1990026705
 GameObject:
