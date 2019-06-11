@@ -32,7 +32,7 @@ public class BrokeSpeedDoor : MonoBehaviour
         //检测到玩家触碰
         if (collision.transform.tag == "player")
         {
-            if (deltaTime > 1)  //触发时间间隔大于一秒
+            if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
 
                 Debug.Log("BorkeDoor");//测试

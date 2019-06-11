@@ -9,6 +9,8 @@
     TRANSDOOR,       //传送门  传送本地图内
     TRANSDOORTOWORLD,  //传送门  传送到不同的地图
     UPSPEEDDOOR,     //加速门
+    INITDOOR,        //重置门
+    COLORTRANSDOOR,  //门颜色转换
     //玩家信号
     DEATH,           //玩家死亡
     BIRTH,           //玩家诞生
@@ -17,11 +19,14 @@
     JUMP,            //玩家跳
     RUSH,            //玩家冲
     ELASTICDELETE,   //弹力buff消除
+    INITDELETE,      //重置buff消除
     //道具信号
     DESTROY,          //道具销毁
     UITOGAME,        //进入游戏
     GAMETOUI,         //返回UI    
     CONTINUEGAME,     //继续游戏
-
-
+    //游戏
+    ANIMPAUSE,       //顿帧
+    SHAKESCREEN,     //震动
+    WAVE,            //波纹
 }

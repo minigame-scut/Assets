@@ -30,7 +30,7 @@ public class SManager : MonoBehaviour
     }
     void Awake()
     {
-        player = Resources.Load<GameObject>("GameManagerRes/player");
+        player = Resources.Load<GameObject>("GameManagerRes/player 1");
     }
 
     // Start is called before the first frame update
@@ -81,20 +81,22 @@ public class SManager : MonoBehaviour
             playerData.setPlayerVector3DPositionData(this.birthPosition.x, this.birthPosition.y, this.birthPosition.z);
             playerData.mapIndex = int.Parse(SceneMapData.getInstance().getMapData()[GameManager.instance.sceneName]);
             //修改
-            gamePlayer.GetComponent<GamePlayer>().setPlayerData(playerData);
+            gamePlayer.GetComponent<PlayerPlatformController>().setPlayerData(playerData);
 
             //保存
-            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<GamePlayer>().getPlayerData());
+            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData());
             //读取 修改位置地图信息 再保存
+            Debug.Log("save: " + playerData.gravityTrans);
+            Debug.Log("save: " + playerData.buff.contains(Buff.GRAVITY));
 
         }
         catch (UnityException e)
         {
             Debug.Log(e.Message);
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().setPlayerVector3DPositionData(this.birthPosition.x, this.birthPosition.y, this.birthPosition.z);
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().mapIndex = int.Parse(SceneMapData.getInstance().getMapData()[GameManager.instance.sceneName]);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().setPlayerVector3DPositionData(this.birthPosition.x, this.birthPosition.y, this.birthPosition.z);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().mapIndex = int.Parse(SceneMapData.getInstance().getMapData()[GameManager.instance.sceneName]);
             //保存
-            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<GamePlayer>().getPlayerData());
+            SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData());
         }
 
 
@@ -108,10 +110,10 @@ public class SManager : MonoBehaviour
     {
         if (gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.ELASTIC);
-            gamePlayer.GetComponent<GamePlayer>().elasticTrans = transform;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.ELASTIC);
+            gamePlayer.GetComponent<PlayerPlatformController>().elasticTrans = transform;
             //根据弹力门的方向设置玩家刚体该方向速度为0
-            gamePlayer.GetComponent<GamePlayer>().rig.velocity *= (transform.right.x == 0) ? new Vector2(0, 1) : new Vector2(1, 0);
+            //gamePlayer.GetComponent<PlayerPlatformController>().rig.velocity *= (transform.right.x == 0) ? new Vector2(0, 1) : new Vector2(1, 0);
         }
     }
     private void responseForSignalDEATHDOOR()
@@ -122,8 +124,8 @@ public class SManager : MonoBehaviour
     {
         if (gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().flagGravity = 0;
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.GRAVITY);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().flagGravity = 0;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.GRAVITY);
         }
     }
     private void responseForMAGICALDOOR()
@@ -135,15 +137,21 @@ public class SManager : MonoBehaviour
         if (gamePlayer != null)
         {
             newPosition += (curTag == "transDoor_r") ? new Vector3(-1, 0, 0) : new Vector3(1, 0, 0);
-            gamePlayer.GetComponent<GamePlayer>().transform.position = newPosition;
+            gamePlayer.GetComponent<PlayerPlatformController>().transform.position = newPosition;
         }
-        //GamePlayer.getInstance().transform.position = newPosition;
     }
     private void responseForUPSPEEDDOOR()
     {
         if(gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.add(Buff.SUPER);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.SUPER);
+        }
+    }
+    private void responseForINITDOOR()
+    {
+        if (gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.add(Buff.INITSTATE);
         }
     }
     private void responseForDEATH()
@@ -153,7 +161,7 @@ public class SManager : MonoBehaviour
         //销毁人物，3s延迟后销毁
         if (gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().isDead = true;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isDead = true;
             Destroy(gamePlayer, 2.0f);
             StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
         }
@@ -167,7 +175,7 @@ public class SManager : MonoBehaviour
     private void responseForREBIRTH()
     {
         if(gamePlayer != null)
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().isBirth = true;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().isBirth = true;
     }
     private void responseForJUMP()
     {
@@ -177,7 +185,7 @@ public class SManager : MonoBehaviour
         //如果在接受到JUMP信号时玩家buff状态为SUPER，则移除该buff状态
         if(gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.SUPER);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPER);
         }
         
     }
@@ -188,7 +196,7 @@ public class SManager : MonoBehaviour
         //遍历Player中的buffList列表，如果在接收到RUSH信号时玩家buff状态为SUPER，则移除该buff状态
         if(gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.SUPER);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPER);
         }
         
     }
@@ -197,8 +205,17 @@ public class SManager : MonoBehaviour
         //接受到ELASTICDELETE信号后设置弹力计时器时间为0，并移除弹力buff
         if(gamePlayer != null)
         {
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().elasticTimer = 0.0f;
-            gamePlayer.GetComponent<GamePlayer>().getPlayerData().buff.remove(Buff.ELASTIC);
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().elasticTimer = 0.0f;
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.ELASTIC);
+        }
+    }
+
+    private void responseForINITDELETE()
+    {
+        //接受到INITDELETE信号后移除该buff
+        if(gamePlayer != null)
+        {
+            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.INITSTATE);
         }
     }
     private void responseForDESTROY(GameObject gameObject)
@@ -216,12 +233,14 @@ public class SManager : MonoBehaviour
         EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
         EventCenter.AddListener<Vector3, string>(EventType.TRANSDOOR, responseForTRANSDOOR);
         EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
+        EventCenter.AddListener(EventType.INITDOOR, responseForINITDOOR);
         //监听玩家信号
         EventCenter.AddListener(EventType.DEATH, responseForDEATH);
         EventCenter.AddListener(EventType.JUMP, responseForJUMP);
         EventCenter.AddListener(EventType.RUSH, responseForRUSH);
         EventCenter.AddListener(EventType.ELASTICDELETE, responseForELASTICDELETE);
         EventCenter.AddListener(EventType.REBIRTH, responseForREBIRTH);
+        EventCenter.AddListener(EventType.INITDELETE, responseForINITDELETE);
         //
         EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
     }

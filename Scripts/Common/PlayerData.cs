@@ -8,47 +8,50 @@
     public float y;
     public float z;
 
-    
+    public float maxSpeed = 3;
 
+    //冲刺速度
+    public float normalRushSpeed = 10;
+    public float superRushSpeed = 15;
+    //跳跃速度
+    public float normalJumpSpeed = 7;
+    public float superJumpSpeed = 11;
 
-    //移动参数
-    public bool canWalk = true;
-    public float MoveSpeed = 5.0f;
-    public int Direction = 1;
-    //跳跃参数
-    public float JumpSpeed = 8.0f;
+    //冲刺计时器
+    public float rushTimer = 0;
+    //最大冲刺时间
+    public float rushMaxTime = 0.15f;
+
+    //人物的方向 -1左 1右
+    public int dir = 1;
+
+    //判断是否在地上
     public bool canJump = true;
-    public float JumpTime = 0.0f;
-    //冲刺参数  
-    public int TimesofDash = 1;
-    public float DashTime = 0.0f;
-    //规格参数
-    public float size;//128
+    //判断是否在冲刺
+    public bool canRush = true;
+    //重力信号
+    public int gravityTrans = 1;
+    public int flagGravity = 0;
     //死亡信号
     public bool isDead = false;
     //重生信号
     public bool isBirth = false;
+    //弹力buff计时器
+    public float elasticTimer = 0.0f;
     //持有buff列表
-    public BuffStructure buff = BuffStructure.Instance;
+    public BuffStructure buff = new BuffStructure();
 
-    public int CountJ;
-    public bool useInput;
-
-    
-    
-    //标志位
-    public int flagGravity = 0;
-    public int flagGravityTrans = 1;
-    //计时器
-    public float inputTimer = 0.0f;    //输入锁
-    public float elasticTimer = 0.0f;  //弹力计时器
-
-    public float testForce = 5.0f;
 
     public void setPlayerVector3DPositionData(double x,double y, double z)
     {
         this.x = (float)x;
         this.y = (float)y;
         this.z = (float)z;
+    }
+
+    public void initJumpAndRush()
+    {
+        this.canJump = true;
+        this.canRush = true;
     }
 }
