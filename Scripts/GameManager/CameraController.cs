@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CameraController : MonoBehaviour
 {
@@ -16,17 +17,30 @@ public class CameraController : MonoBehaviour
     //设置一个缓动速度插值
     public float smooth = 1;
 
-    public 
+    public Vector3 coord1;
 
+    public Vector3 coord2;
+
+    public float scrWidth;
+    public float scrHeight;
+
+    public float cameraWidth= 2;
+    public float cameraHeight = 1;
 
     void Start()
     {
-
+        coord1 = GameObject.Find("coord1").transform.position;
+        coord2 = GameObject.Find("coord2").transform.position;
+        scrWidth = Math.Abs(coord1.x - coord2.x);
+        scrHeight = Math.Abs(coord1.y - coord2.y);
+        float sizeOfCamera = this.GetComponent<Camera>().orthographicSize;
+        cameraHeight = sizeOfCamera  ;
+        cameraWidth= sizeOfCamera   * ((float)Screen.width / Screen.height);
     }
     void Update()
     {
         if (player == null)
-            player = GameObject.Find("player(Clone)");
+            player = GameObject.Find("player 1(Clone)");
 
         if (player != null)
             FixCameraPos();
@@ -36,18 +50,15 @@ public class CameraController : MonoBehaviour
     {
         targetPos = new Vector3(player.transform.position.x, player.transform.position.y, gameObject.transform.position.z);
 
+        if (player.transform.position.x - cameraWidth <= -scrWidth / 2 )
+            targetPos.x =-scrWidth /2 +cameraWidth;
+        else if (player.transform.position.x + cameraWidth >= scrWidth / 2)
+            targetPos.x = scrWidth / 2 - cameraWidth;
+        if (player.transform.position.y - cameraHeight <= -scrHeight / 2 )
+            targetPos.y = -scrHeight/2 + cameraHeight;
+        else if (player.transform.position.y + cameraHeight >= scrHeight / 2)
+            targetPos.y = scrHeight/2 - cameraHeight;
         transform.position = targetPos;
-
-        //if (player.transform.position.y > 0f)
-        //{
-        //    targetPos = new Vector3(gameObject.transform.position.x, player.transform.position.y + Ahead, gameObject.transform.position.z);
-        //}
-        //else
-        //{
-        //    targetPos = new Vector3(gameObject.transform.position.x - Ahead, player.transform.position.y - Ahead, gameObject.transform.position.z);
-        //}
-
-        //  transform.position = Vector3.Lerp(transform.position, targetPos, smooth * Time.deltaTime);
 
     }
 
