@@ -18,5 +18,10 @@
     RUSH,            //玩家冲
     ELASTICDELETE,   //弹力buff消除
     //道具信号
-    DESTROY          //道具销毁
+    DESTROY,          //道具销毁
+    UITOGAME,        //进入游戏
+    GAMETOUI,         //返回UI    
+    CONTINUEGAME,     //继续游戏
+
+
 }
