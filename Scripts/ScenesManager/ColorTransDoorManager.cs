@@ -45,7 +45,8 @@ public class ColorTransDoorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = GameObject.Find("SceneMananger").GetComponent<SManager>().getGamePlayer();
+        if(GameObject.Find("SceneManager") != null)
+        player = GameObject.Find("SceneManager").GetComponent<SManager>().getGamePlayer();
     }
 
     //对信号 颜色传送门 的处理函数

@@ -34,6 +34,7 @@ public class TransDoor : MonoBehaviour
                 if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
                     //这个传送门对应的传送门
+                    EventCenter.Broadcast(EventType.WAVE, this.transform.position);
                     string mapTransDoorName = SceneMapData.instance.getMapData()[gameObject.name];
                     GameObject mapTransDoor = GameObject.Find(mapTransDoorName);
 

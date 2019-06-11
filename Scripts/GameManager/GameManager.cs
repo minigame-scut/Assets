@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        buildSceneManager(GameObject.Find("birthPlace1-2-2").transform.position);
-      //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
+         buildSceneManager(GameObject.Find("birthPlace1-6-1").transform.position);
+     //   buildSceneManager(new Vector3(3.07f, -2.49f, 0));
 
         //监听进入新游戏
         EventCenter.AddListener<string>(EventType.UITOGAME,buildGameScene);
