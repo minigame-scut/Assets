@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Dialog System ; Background ; Image ; Music -->
+<root>
+  <say>
+    <name>小明</name>
+    <image>小明</image>
+    <content>我为什么会在这里？你是谁？</content>
+  </say>
+  <say>
+    <name>小明</name>
+    <image>小明</image>
+    <content>你好美！但是我想离开这里，我想回家！</content>
+  </say>
+  <say>
+    <name>小明</name>
+    <image>小明</image>
+    <content>嗯..你愿意跟我走吗？</content>
+  </say>
+</root>
