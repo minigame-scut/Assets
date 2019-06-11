@@ -27,13 +27,18 @@ public class GameManager : MonoBehaviour
     //持有的当前场景的SceneManager
     GameObject sManager;
 
-    private float musicVolume;
-    private float soundVolume;
-    private Slider volumeControl;
+    //持有的当前场景的UI
+    GameObject UIPrefab;
+    GameObject UI;
+    //GameObject UIAnmationPrefab;
+    //GameObject UIAnmation;
+
 
     //持有的当前场景的AudioManager
-    GameObject aManager;
-
+    GameObject aManagerPrefab;
+    static GameObject aManager;
+    private static float musicVolume;
+    private static float soundVolume;
 
     public string sceneName;
 
@@ -74,14 +79,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
         //instance = this;
 
         //读取玩家资源
         //建议使用资源管理类
-       // player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
-  
+        // player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
 
+        //读取开始游戏过渡动画资源
+        //UIAnmationPrefab = Resources.Load<GameObject>("GameManagerRes/UIToGameAnimation");
+        
 
         //初始化映射关系
         SceneMapData.getInstance().init();
@@ -101,11 +108,20 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        // buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
-        buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
+        buildSceneManager(GameObject.Find("birthPlace1-2-2").transform.position);
+      //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
+        //监听进入新游戏
+        EventCenter.AddListener<string>(EventType.UITOGAME,buildGameScene);
+        //监听返回主菜单
+        EventCenter.AddListener(EventType.GAMETOUI, buildUIScene);
+        //监听继续游戏
+        EventCenter.AddListener<Vector3>(EventType.CONTINUEGAME, buildGameScene);
         //创建当前场景的AudioManager
         buildAudioManager(new Vector3(0, 0, 0));
+
+        //创建当前场景的UI
+        buildUI();
     }
 
     // Update is called once per frame
@@ -115,9 +131,21 @@ public class GameManager : MonoBehaviour
         //保存玩家数据
         if (Input.GetKeyUp(KeyCode.T))
         {
-            SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+            SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         }
        // Debug.Log(sceneName);
+       //暂停游戏并显示UI
+       if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //显示UI
+            UI.SetActive(true);
+            //暂停游戏
+            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
+            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
+            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
+        }
+        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null)
+            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = false;
     }
 
     //转化关卡
@@ -144,7 +172,7 @@ public class GameManager : MonoBehaviour
         //mapSwitcher.GetComponent<SwitchMap>().PlayCloseMap();
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
 
 
         ////转移到新的场景
@@ -186,7 +214,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(toPlaceIndex);
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         //转移到新的场景
         SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
         kindofTrans = KindofTrans.TRANSDOOR; //指明是通过tansdoor进行传送的
@@ -214,7 +242,7 @@ public class GameManager : MonoBehaviour
         }
 
         //切关保存玩家的数据
-        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<GamePlayer>().getPlayerData());
+        SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
         //转移到新的场景
@@ -243,6 +271,12 @@ public class GameManager : MonoBehaviour
         //GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
         //  buildSceneMapSwitcher();
+
+        //创建audioManager
+        buildAudioManager(new Vector3(0,0,0));
+
+        //创建UI
+        buildUI();
     }
 
     IEnumerator waitForFindForTransDoor()
@@ -283,6 +317,11 @@ public class GameManager : MonoBehaviour
         //GameObject.Find("SceneManager").GetComponent<SManager>().birthPlayer();
         //创建mapSwitcher
         // buildSceneMapSwitcher();
+        //创建audioManager
+        buildAudioManager(new Vector3(0, 0, 0));
+
+        //创建UI
+        buildUI();
     }
 
     IEnumerator waitForFindForWorldDoor()
@@ -342,12 +381,19 @@ public class GameManager : MonoBehaviour
 
         //创建mapSwitcher
         //buildSceneMapSwitcher();
+        //创建audioManager
+        buildAudioManager(new Vector3(0, 0, 0));
+
+        //创建UI
+        buildUI();
     }
 
 
     //创建场景管理器
     void buildSceneManager(Vector3 birthPlace)
     {
+        if (sceneName == "Interface")
+            return;
        sManager  = GameObject.Find("SceneManager");
         //当前场景没有管理器
         if(sManager == null)
@@ -368,27 +414,28 @@ public class GameManager : MonoBehaviour
 
     void buildAudioManager(Vector3 birthPlace)
     {
+        aManagerPrefab =  Resources.Load<GameObject>("GameManagerRes/AudioManager");
         aManager = GameObject.Find("AudioManager");
-        //当前场景没有管理器
+        //当前场景没有声音管理器
         if (aManager == null)
         {
-            aManager =  (GameObject)Resources.Load("AudioManager");
-            changeMusicVolum();
-            changeSoundVolum();
+            
+            aManager = GameObject.Instantiate(aManagerPrefab);
+            
+            changeMusicVolum(0.8f);
+            changeSoundVolum(0.8f);
         }
     }
 
-    public void changeMusicVolum()
+    public static void changeMusicVolum(float mv)
     {
-        volumeControl = GameObject.FindWithTag("MVControl").GetComponent<Slider>();
-        musicVolume = volumeControl.value;
+        musicVolume = mv;
         aManager.GetComponent<AudioManager>().setMusciVolume(musicVolume);
     }
 
-    public void changeSoundVolum()
+    public static void changeSoundVolum(float sv)
     {
-        volumeControl = GameObject.FindWithTag("SVControl").GetComponent<Slider>();
-        soundVolume = volumeControl.value;
+        soundVolume = sv;
         aManager.GetComponent<AudioManager>().setSoundVolume(soundVolume);
     }
 
@@ -397,9 +444,60 @@ public class GameManager : MonoBehaviour
         yield return 0;
           //转移到新的场景
           SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
-      
     }
 
+    void buildUI()
+    {
+        if (sceneName == "Interface")
+            return;
+        UIPrefab = Resources.Load<GameObject>("GameManagerRes/UI");
+        UI = GameObject.Find("UI");
+        //当前场景没有声音管理器
+        if (UI == null)
+        {
+            UI = GameObject.Instantiate(UIPrefab);
+            UI.SetActive(false);
+        }
+    }
 
+    void buildGameScene(string birthPlace)
+    {
+        StartCoroutine(buildGameSceneIE(birthPlace));
+      
 
+    }
+
+    IEnumerator buildGameSceneIE(string bp)
+    {
+        yield return new WaitForSeconds(1);
+        //Debug.Log(GameObject.Find("birthPlace1-0-1") == null);
+
+        buildSceneManager(GameObject.Find(bp).transform.position);
+        buildAudioManager(new Vector3(0, 0, 0));
+        buildUI();
+        //UIAnmation.GetComponent<Animator>().Play("UIToGame");
+       
+    }
+    void buildGameScene(Vector3 birthPosition)
+    {
+        StartCoroutine(buildGameSceneIE(birthPosition));
+    }
+    IEnumerator buildGameSceneIE(Vector3 bp)
+    {
+        yield return new WaitForSeconds(1);
+        //Debug.Log(GameObject.Find("birthPlace1-0-1") == null);
+
+        buildSceneManager(bp);
+        buildAudioManager(new Vector3(0, 0, 0));
+        buildUI();
+    }
+    void buildUIScene()
+    {
+        StartCoroutine(buildUISceneIE());
+    }
+    IEnumerator buildUISceneIE()
+    {
+        yield return new WaitForSeconds(1);
+        buildAudioManager(new Vector3(0, 0, 0));
+    }
 }

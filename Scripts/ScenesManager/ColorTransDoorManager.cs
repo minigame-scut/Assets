@@ -18,7 +18,7 @@ public class ColorTransDoorManager : MonoBehaviour
 
     public GameObject transDoor_0;  //本关卡最终的传送门
 
-
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,17 +39,28 @@ public class ColorTransDoorManager : MonoBehaviour
         //添加 颜色传送门 的监听
         EventCenter.AddListener<GameObject>(EventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
 
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        player = GameObject.Find("SceneMananger").GetComponent<SManager>().getGamePlayer();
     }
 
     //对信号 颜色传送门 的处理函数
     void responseForCOLORTRANSDOOR(GameObject colorTransDoor)
     {
+        GameObject toTransDoor; //传送目的门
+        //触碰的是本关卡的最终传送门, 随机传送至上方四扇门之一
+        if (colorTransDoor.Equals(transDoor_0))
+        {
+            toTransDoor = genRandomTransDoor();
+            player.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
+            return;
+        }
+
+
         //提取 颜色传送门的name 的数字
         //格式 transDoor (1), transDoor (2), ...
         string szIndex = System.Text.RegularExpressions.Regex.Replace(colorTransDoor.name, @"[^0-9]+", "");
@@ -58,8 +69,28 @@ public class ColorTransDoorManager : MonoBehaviour
         if (!mapTransDoor.ContainsKey(szIndex)) return;
         Debug.Log(colorTransDoor.name + "发出信号");
 
+        //上方四扇门全部为红色
+        if (transDoor_1.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+            transDoor_2.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+            transDoor_3.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+            transDoor_4.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) ||
+            dIsFinished
+            )
+        {
+            //传送至本关卡的最终的传送门
+            player.transform.position = transDoor_0.transform.position + new Vector3(0.8f, 0.0f);
+        }
+        else
+        {
+            //传送至上方四扇门之一
+            toTransDoor = genRandomTransDoor();
+            player.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
+        }
+        
 
-        //寻找对应的传送门
+
+
+        //寻找对应的颜色转换传送门
         string mapIndex = mapTransDoor[szIndex];    //映射序列
         string[] indexes = mapIndex.Split(' '); //分割映射序列
 
@@ -91,23 +122,8 @@ public class ColorTransDoorManager : MonoBehaviour
             }
         }
 
-        //上方四扇门全部为红色, 传送至本关卡的最终的传送门
-        if (transDoor_1.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
-            transDoor_2.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
-            transDoor_3.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
-            transDoor_4.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) ||
-            dIsFinished
-            )
-        {
-            GamePlayer.Instance.transform.position = transDoor_0.transform.position + new Vector3(0.5f, 0.0f);
-            return;
-        }
-
-
-        //进行传送
-        GameObject toTransDoor = genRandomTransDoor();
-        GamePlayer.Instance.transform.position = toTransDoor.transform.position + new Vector3(0.0f, 1.0f);
     }
+
 
     //生成一个随机的传送门(上方四扇门)
     GameObject genRandomTransDoor()

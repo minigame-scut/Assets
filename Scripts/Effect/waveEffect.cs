@@ -52,7 +52,7 @@ public class waveEffect : PostEffectBase
             startPos = new Vector4(Camera.main.WorldToScreenPoint(pos).x / Screen.width, Camera.main.WorldToScreenPoint(pos).y / Screen.height, 0, 0);
             waveStartTime = Time.time;
             isWave = false;
-            Debug.Log("Wave");
+           // Debug.Log("Wave");
         }
         if (Input.GetMouseButton(0))
         {
@@ -60,7 +60,7 @@ public class waveEffect : PostEffectBase
             Vector2 mousePos = Input.mousePosition;
             //将mousePos转化为（0，1）区间
             startPos = new Vector4(mousePos.x / Screen.width, mousePos.y / Screen.height, 0, 0);
-            Debug.Log(new Vector2(mousePos.x / Screen.width, mousePos.y / Screen.height));
+       
             waveStartTime = Time.time;
         }
 
