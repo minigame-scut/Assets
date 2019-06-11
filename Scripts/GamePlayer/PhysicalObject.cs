@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PhysicalObject : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class PhysicalObject : MonoBehaviour
     public PlayerData playerData;
     //判定是否在地上的阈值
     public float minGroundNormalY = 0.65f;
-    public float  gravityModifier = 0.01f;
+    protected float gravityModifier = 0.6f;
     //是否在rush
     public bool isRush = false;
     //是否在walk
     public bool isWalk = false;
     //是否在jump
     public bool isJump = false;
+    //是否在空中
+    public bool isGround = true;
 
     protected Vector2 targetVelocity;
 
@@ -56,27 +59,21 @@ public class PhysicalObject : MonoBehaviour
     void Update()
     {
         targetVelocity = Vector2.zero;
-        ComputeVelocity();
+        playerControl();
         playAnimation();
     }
+    protected virtual void playerControl() { }
 
-    protected virtual void ComputeVelocity()
-    {
-
-    }
-
-    protected virtual void playAnimation()
-    {
-
-    }
+    protected virtual void playAnimation() { }
 
     void FixedUpdate()
     {
         //Physics2D.gravity = (0,-9.8f)  模拟重力加速
+        //if(velocity.y <= 5.0f)
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime * playerData.gravityTrans;
         //赋予移动方向
         velocity.x = targetVelocity.x;
-        
+        isGround = false;
         if (isRush)
         {
             velocity.y = 0;
@@ -102,10 +99,9 @@ public class PhysicalObject : MonoBehaviour
         Movement(move, false);
 
         //垂直移动
-
         //计算y轴移动向量
         move = Vector2.up * deltaPosition.y;
-
+        
         Movement(move, true);
     }
 
@@ -145,6 +141,7 @@ public class PhysicalObject : MonoBehaviour
                         if (currentNormal.y > minGroundNormalY)
                         {
                             //在地上
+                            isGround = true;
                             isJump = false;
                             playerData.canJump = true;
                             //在y轴上移动
@@ -174,15 +171,17 @@ public class PhysicalObject : MonoBehaviour
                         }
 
                         //判断玩家是否在地上
-                        if (currentNormal.y > minGroundNormalY)
+                        float yCurrentNormal = currentNormal.y > 0 ? currentNormal.y : (-currentNormal.y);
+                        if (yCurrentNormal > minGroundNormalY)
                         {
                             //在地上
+                            isGround = true;
                             isJump = false;
                             playerData.canJump = true;
                             //在y轴上移动
                             if (yMovement)
                             {
-                                groundNormal = currentNormal;
+                                groundNormal = currentNormal * playerData.gravityTrans;
                                 currentNormal.x = 0;
                             }
                         }
@@ -196,14 +195,11 @@ public class PhysicalObject : MonoBehaviour
                         }
                     }
                 }
-
                 //防止抖动 取小值
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
-            }
-                            
+            }                  
         }
-
         rb2d.position = rb2d.position + move.normalized * distance;
     }
 }
