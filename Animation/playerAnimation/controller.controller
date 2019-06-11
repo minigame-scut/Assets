@@ -9,13 +9,13 @@ AnimatorController:
   m_Name: controller
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: iswalk
+  - m_Name: isWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isjump
+  - m_Name: isJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -27,7 +27,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isdash
+  - m_Name: isDash
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -70,7 +70,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102181342237606366}
@@ -145,7 +145,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102348252351054912}
@@ -195,10 +195,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102789237725748414}
@@ -226,7 +226,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102037650127744188}
@@ -276,7 +276,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102445524205014168}
@@ -301,7 +301,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102348252351054912}
@@ -326,7 +326,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102413165325664624}
@@ -379,7 +379,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102789237725748414}
@@ -404,7 +404,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102181342237606366}
@@ -432,7 +432,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102931022199463152}
@@ -482,7 +482,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102789237725748414}
@@ -532,7 +532,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102037650127744188}
@@ -635,7 +635,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102413165325664624}
@@ -685,7 +685,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102037650127744188}
@@ -735,10 +735,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102181342237606366}
@@ -791,7 +791,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102811979822906400}
@@ -844,7 +844,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102931022199463152}
@@ -897,7 +897,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: iswalk
+    m_ConditionEvent: isWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102811979822906400}
@@ -922,7 +922,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102348252351054912}
@@ -950,7 +950,7 @@ AnimatorStateTransition:
     m_ConditionEvent: direction
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: isjump
+    m_ConditionEvent: isJump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102413165325664624}
@@ -975,7 +975,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102445524205014168}
@@ -1000,7 +1000,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isdash
+    m_ConditionEvent: isDash
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102445524205014168}

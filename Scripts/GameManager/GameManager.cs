@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     //持有的当前场景的UI
     GameObject UIPrefab;
     GameObject UI;
+    //GameObject UIAnmationPrefab;
+    //GameObject UIAnmation;
 
 
     //持有的当前场景的AudioManager
@@ -77,14 +79,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
         //instance = this;
 
         //读取玩家资源
         //建议使用资源管理类
-       // player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
-  
+        // player = Resources.Load<GameObject>("GameManagerRes/playerTestPrefab");
 
+        //读取开始游戏过渡动画资源
+        //UIAnmationPrefab = Resources.Load<GameObject>("GameManagerRes/UIToGameAnimation");
+        
 
         //初始化映射关系
         SceneMapData.getInstance().init();
@@ -133,11 +137,15 @@ public class GameManager : MonoBehaviour
        //暂停游戏并显示UI
        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            //暂停游戏
-            //----
             //显示UI
             UI.SetActive(true);
+            //暂停游戏
+            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
+            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
+            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
         }
+        if (UI != null && UI.activeSelf == false)
+            sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = false;
     }
 
     //转化关卡
@@ -455,6 +463,8 @@ public class GameManager : MonoBehaviour
     void buildGameScene(string birthPlace)
     {
         StartCoroutine(buildGameSceneIE(birthPlace));
+      
+
     }
 
     IEnumerator buildGameSceneIE(string bp)
@@ -465,6 +475,8 @@ public class GameManager : MonoBehaviour
         buildSceneManager(GameObject.Find(bp).transform.position);
         buildAudioManager(new Vector3(0, 0, 0));
         buildUI();
+        //UIAnmation.GetComponent<Animator>().Play("UIToGame");
+       
     }
     void buildGameScene(Vector3 birthPosition)
     {
