@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener(MyEventType.GAMETOUI, buildUIScene);
         //监听继续游戏
         EventCenter.AddListener<Vector3>(MyEventType.CONTINUEGAME, buildGameScene);
+        //监听进入下一关
+        EventCenter.AddListener(MyEventType.NEXTMAP, gotoNextMap);
         //创建当前场景的AudioManager
         buildAudioManager(new Vector3(0, 0, 0));
 
@@ -505,5 +507,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         buildAudioManager(new Vector3(0, 0, 0));
+    }
+    //去下一关
+    void gotoNextMap()
+    {
+        SceneManager.LoadScene("");
     }
 }
