@@ -25,7 +25,7 @@ public class NextPlace : MonoBehaviour
             Debug.Log(this.name);
             Debug.Log("nextPlace");
             //发送进入下一个场景的信号还有当前场景的标识
-            EventCenter.Broadcast<string>(EventType.NEXTPLACE, this.name);
+            EventCenter.Broadcast<string>(MyEventType.NEXTPLACE, this.name);
         }
     }
 }

@@ -227,22 +227,22 @@ public class SManager : MonoBehaviour
     private void listener()
     {
         //监听门信号
-        EventCenter.AddListener<Transform>(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
-        EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
-        EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
-        EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener<Vector3, string>(EventType.TRANSDOOR, responseForTRANSDOOR);
-        EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
-        EventCenter.AddListener(EventType.INITDOOR, responseForINITDOOR);
+        EventCenter.AddListener<Transform>(MyEventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
+        EventCenter.AddListener(MyEventType.DEATHDOOR, responseForSignalDEATHDOOR);
+        EventCenter.AddListener(MyEventType.GDOOR, responseForSignalGDOOR);
+        EventCenter.AddListener(MyEventType.MAGICALDOOR, responseForMAGICALDOOR);
+        EventCenter.AddListener<Vector3, string>(MyEventType.TRANSDOOR, responseForTRANSDOOR);
+        EventCenter.AddListener(MyEventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
+        EventCenter.AddListener(MyEventType.INITDOOR, responseForINITDOOR);
         //监听玩家信号
-        EventCenter.AddListener(EventType.DEATH, responseForDEATH);
-        EventCenter.AddListener(EventType.JUMP, responseForJUMP);
-        EventCenter.AddListener(EventType.RUSH, responseForRUSH);
-        EventCenter.AddListener(EventType.ELASTICDELETE, responseForELASTICDELETE);
-        EventCenter.AddListener(EventType.REBIRTH, responseForREBIRTH);
-        EventCenter.AddListener(EventType.INITDELETE, responseForINITDELETE);
+        EventCenter.AddListener(MyEventType.DEATH, responseForDEATH);
+        EventCenter.AddListener(MyEventType.JUMP, responseForJUMP);
+        EventCenter.AddListener(MyEventType.RUSH, responseForRUSH);
+        EventCenter.AddListener(MyEventType.ELASTICDELETE, responseForELASTICDELETE);
+        EventCenter.AddListener(MyEventType.REBIRTH, responseForREBIRTH);
+        EventCenter.AddListener(MyEventType.INITDELETE, responseForINITDELETE);
         //
-        EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
+        EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
     }
 
     IEnumerator createNewPlayerInBirthPlaceAfterDeath()
@@ -251,7 +251,7 @@ public class SManager : MonoBehaviour
         if(gamePlayer == null)
         {
             birthPlayer();
-            EventCenter.Broadcast(EventType.REBIRTH);
+            EventCenter.Broadcast(MyEventType.REBIRTH);
         }
             
     }

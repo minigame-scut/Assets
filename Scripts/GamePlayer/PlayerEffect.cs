@@ -22,7 +22,7 @@ public class PlayerEffect : MonoBehaviour
         animTimer = .0f;
         animMaxTime = .5f;
         isAnimPause = false;
-        EventCenter.AddListener(EventType.ANIMPAUSE, setAnim);
+        EventCenter.AddListener(MyEventType.ANIMPAUSE, setAnim);
     }
 
     // Update is called once per frame

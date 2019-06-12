@@ -31,7 +31,7 @@ public class DeathDoor : MonoBehaviour
             {
 
                 Debug.Log("deathDoor");//测试
-                EventCenter.Broadcast(EventType.DEATHDOOR);   //广播死亡门触碰信号
+                EventCenter.Broadcast(MyEventType.DEATHDOOR);   //广播死亡门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }

@@ -28,9 +28,9 @@ public class OutworldDoor : MonoBehaviour
         {
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
-                EventCenter.Broadcast(EventType.WAVE, this.transform.position);
+                EventCenter.Broadcast(MyEventType.WAVE, this.transform.position);
                 Debug.Log("outWorldDoorDoor");//测试
-                EventCenter.Broadcast(EventType.OUTWORLDDOOR, this.name);   //广播表世界门触碰信号
+                EventCenter.Broadcast(MyEventType.OUTWORLDDOOR, this.name);   //广播表世界门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }

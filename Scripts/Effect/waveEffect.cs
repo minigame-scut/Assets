@@ -27,7 +27,7 @@ public class waveEffect : PostEffectBase
 
     void Start()
     {
-        EventCenter.AddListener<Vector3>(EventType.WAVE, setWave);
+        EventCenter.AddListener<Vector3>(MyEventType.WAVE, setWave);
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)

@@ -40,7 +40,7 @@ public class ColorTransDoorManager : MonoBehaviour
         mapColors.Add("GREEN", new Color(0.0f, 1.0f, 0.0f));
 
         //添加 颜色传送门 的监听
-        EventCenter.AddListener<GameObject>(EventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
+        EventCenter.AddListener<GameObject>(MyEventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
 
      
     }

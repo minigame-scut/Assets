@@ -30,7 +30,7 @@ public class Face : MonoBehaviour
             
             //广播销毁关卡滑稽脸的信号并传递当前gameObject对象
             GameObject gameObject = this.gameObject;
-            EventCenter.Broadcast(EventType.DESTROY, gameObject); 
+            EventCenter.Broadcast(MyEventType.DESTROY, gameObject); 
         }
     }
 }

@@ -98,26 +98,26 @@ public class GameManager : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
 
         //监听玩家关卡转换
-        EventCenter.AddListener<string>(EventType.NEXTPLACE, toNextPlace);
+        EventCenter.AddListener<string>(MyEventType.NEXTPLACE, toNextPlace);
 
         //监听传送门的转换
-        EventCenter.AddListener<string>(EventType.TRANSDOORTOWORLD, toTransDoor);
+        EventCenter.AddListener<string>(MyEventType.TRANSDOORTOWORLD, toTransDoor);
 
         //监听里表世界门的转换
-        EventCenter.AddListener<string>(EventType.INWORLDDOOR, toWorldDoor);
-        EventCenter.AddListener<string>(EventType.OUTWORLDDOOR, toWorldDoor);
+        EventCenter.AddListener<string>(MyEventType.INWORLDDOOR, toWorldDoor);
+        EventCenter.AddListener<string>(MyEventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        buildSceneManager(GameObject.Find("birthPlace1-4-1").transform.position);
+        buildSceneManager(GameObject.Find("birthPlace1-1-1").transform.position);
       //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
         //监听进入新游戏
-        EventCenter.AddListener<string>(EventType.UITOGAME,buildGameScene);
+        EventCenter.AddListener<string>(MyEventType.UITOGAME,buildGameScene);
         //监听返回主菜单
-        EventCenter.AddListener(EventType.GAMETOUI, buildUIScene);
+        EventCenter.AddListener(MyEventType.GAMETOUI, buildUIScene);
         //监听继续游戏
-        EventCenter.AddListener<Vector3>(EventType.CONTINUEGAME, buildGameScene);
+        EventCenter.AddListener<Vector3>(MyEventType.CONTINUEGAME, buildGameScene);
         //创建当前场景的AudioManager
         buildAudioManager(new Vector3(0, 0, 0));
 

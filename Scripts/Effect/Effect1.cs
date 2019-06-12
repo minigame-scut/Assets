@@ -36,7 +36,7 @@ public class Effect1: MonoBehaviour
         else
         {
             pos = new Vector3(random()*8, random()*5, 0);
-            EventCenter.Broadcast(EventType.WAVE, pos);
+            EventCenter.Broadcast(MyEventType.WAVE, pos);
             timer = 0;
         }
     }

@@ -22,9 +22,9 @@ public class GroundNeedle : MonoBehaviour
         //玩家的 tag 为 Player
         if (otherCollision.gameObject.tag.Equals("player"))
         {
-            EventCenter.Broadcast(EventType.SHAKESCREEN);
+            EventCenter.Broadcast(MyEventType.SHAKESCREEN);
             //广播玩家死亡信号
-            EventCenter.Broadcast(EventType.DEATH);
+            EventCenter.Broadcast(MyEventType.DEATH);
         }
     }
 }

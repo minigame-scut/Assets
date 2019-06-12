@@ -30,7 +30,7 @@ public class initDoor : MonoBehaviour
         {
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
-                EventCenter.Broadcast(EventType.INITDOOR);   //广播重力门触碰信号
+                EventCenter.Broadcast(MyEventType.INITDOOR);   //广播重力门触碰信号
                 deltaTime = 0;  //重置间隔定时器
             }
         }

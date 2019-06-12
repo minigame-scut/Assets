@@ -107,7 +107,7 @@ public class PlayerPlatformController : PhysicalObject
             //空中只能冲刺一次
             playerData.canRush = false;
             //广播移除重置buff的信号
-            EventCenter.Broadcast(EventType.INITDELETE);
+            EventCenter.Broadcast(MyEventType.INITDELETE);
 
             return;
         }
@@ -124,7 +124,7 @@ public class PlayerPlatformController : PhysicalObject
             {
                 jump();
             }
-            EventCenter.Broadcast(EventType.INITDELETE);   
+            EventCenter.Broadcast(MyEventType.INITDELETE);   
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -148,7 +148,7 @@ public class PlayerPlatformController : PhysicalObject
             }
             else
             {
-                EventCenter.Broadcast(EventType.ELASTICDELETE);
+                EventCenter.Broadcast(MyEventType.ELASTICDELETE);
             }
         }
         targetVelocity = move * playerData.maxSpeed;
@@ -236,7 +236,7 @@ public class PlayerPlatformController : PhysicalObject
         isJump = true;
         curJumpSpeed = playerData.superJumpSpeed;
         velocity.y = curJumpSpeed * playerData.gravityTrans;
-        EventCenter.Broadcast(EventType.JUMP);
+        EventCenter.Broadcast(MyEventType.JUMP);
     }
     //普通冲刺,设置普通冲刺时的速度
     void rush()
@@ -257,7 +257,7 @@ public class PlayerPlatformController : PhysicalObject
         isRush = true;
         this.curRushSpeed = playerData.superRushSpeed;
         targetVelocity = move * curRushSpeed;
-        EventCenter.Broadcast(EventType.RUSH);
+        EventCenter.Broadcast(MyEventType.RUSH);
     }
     //冲刺移动，实际计算冲刺位移的函数，并判断冲刺是否结束
     void rushMove()

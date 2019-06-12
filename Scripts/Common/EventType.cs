@@ -1,4 +1,4 @@
-﻿public enum EventType{
+﻿public enum MyEventType{
     //各类门的信号
     BROKESPEEDDOOR,  //弹力门
     DEATHDOOR,       //死亡门

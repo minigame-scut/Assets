@@ -9,12 +9,12 @@ public class UIManager : MonoBehaviour
     public void startGameScene()
     {
         SceneManager.LoadScene("map1-0");
-        EventCenter.Broadcast<string>(EventType.UITOGAME,"birthPlace1-0-1");
+        EventCenter.Broadcast<string>(MyEventType.UITOGAME,"birthPlace1-0-1");
     }
     public void returnGameScene()
     {
         SceneManager.LoadScene("Interface");
-        EventCenter.Broadcast(EventType.GAMETOUI);
+        EventCenter.Broadcast(MyEventType.GAMETOUI);
     }
 
     public void loadSavedScene()
@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
             }
             SceneManager.LoadScene(playerData.mapIndex);
             Vector3 playerPosition = new Vector3(playerData.x, playerData.y, playerData.z);
-            EventCenter.Broadcast<Vector3>(EventType.CONTINUEGAME, playerPosition);
+            EventCenter.Broadcast<Vector3>(MyEventType.CONTINUEGAME, playerPosition);
 
         }
         catch (UnityException ue)

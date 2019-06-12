@@ -83,7 +83,7 @@ public class ShakeScreen : MonoBehaviour
     private void listener()
     {
        
-        EventCenter.AddListener(EventType.SHAKESCREEN, shakeScreen);
+        EventCenter.AddListener(MyEventType.SHAKESCREEN, shakeScreen);
         
     }
 

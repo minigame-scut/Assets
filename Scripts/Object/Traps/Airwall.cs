@@ -23,7 +23,7 @@ public class Airwall : MonoBehaviour
         if (otherCollision.gameObject.tag.Equals("player"))
         {
             //广播玩家死亡信号
-            EventCenter.Broadcast(EventType.DEATH);
+            EventCenter.Broadcast(MyEventType.DEATH);
         }
     }
 }
