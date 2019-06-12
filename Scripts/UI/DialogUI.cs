@@ -17,21 +17,35 @@ public enum CommandType
 }
 
 
-/// <summary>
-/// 基类：指令类
-/// </summary>
-public class Command
-{
-    public CommandType AllType; //定义成员变量 类型对象
-}
-
+///// <summary>
+///// 基类：指令类
+///// </summary>
+//public class Command
+//{
+//    public CommandType AllType; //定义成员变量 类型对象
+//}
+///// <summary>
+///// 背景音指令类：继承 指令基类
+///// </summary>
+//public class Bgm : Command
+//{
+//    public string Name; //名字
+//}
+///// <summary>
+///// 背景指令类：继承 指令基类
+///// </summary>
+//public class Bg : Command
+//{
+//    public string Name; //名字
+//}
 
 
 /// <summary>
 /// 说话指令类：继承 指令基类
 /// </summary>
-public class Say : Command
+public class Say /*: Command*/
 {
+    public CommandType AllType;
     public string Name;    //名字
     public string Image;   //图片
     public string Content; //内容
@@ -39,23 +53,7 @@ public class Say : Command
 
 
 
-/// <summary>
-/// 背景音指令类：继承 指令基类
-/// </summary>
-public class Bgm : Command
-{
-    public string Name; //名字
-}
 
-
-
-/// <summary>
-/// 背景指令类：继承 指令基类
-/// </summary>
-public class Bg : Command
-{
-    public string Name; //名字
-}
 
 
 
@@ -64,7 +62,7 @@ public class Bg : Command
 /// </summary>
 public class DialogUI : MonoBehaviour
 {
-    public List<Command> Commands = new List<Command>(); //声明一个 List 数组 类型为：Command
+    public List<Say> Commands = new List<Say>(); //声明一个 List 数组 类型为：Command
     private int _index = 0;                   //默认索引为0
     public GameObject GameImage;                      //游戏界面
     public Image BgImage;                        //背景图
@@ -72,7 +70,7 @@ public class DialogUI : MonoBehaviour
     public Text NameText;                       //名字文本
     public Text ConttentText;                   //内容文本
     private bool _isExecute = false;             //是否执行命令：默认不执行
-    private string HeadPath = "Resources/UI";
+    //private string HeadPath = "Resources/UI";
 
 
     /// <summary>
@@ -81,8 +79,7 @@ public class DialogUI : MonoBehaviour
     void Start()
     {
         AnalysisXml();                                                                            //调用解析XML方法
-        //GameObject.Find("newGame").GetComponent<Button>().onClick.AddListener(StartGame); //给开始游戏按钮，添加监听事件
-        StartGame();
+        EventCenter.AddListener(MyEventType.DIALOG, StartGame);
     }
 
 
@@ -91,11 +88,11 @@ public class DialogUI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _isExecute == true )
-       
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && _isExecute == true)
+
         {
             OneByOneExecuteCommand(); //执行对话命令函数
-      }
+        }
     }
 
 
@@ -115,39 +112,22 @@ public class DialogUI : MonoBehaviour
     /// </summary>
     public void OneByOneExecuteCommand()
     {
-        if (_index >= Commands.Count) //下标越界：读完
+        if (_index >= Commands.Count)
         {
             GameObject.Find("GameImage").GetComponent<Image>().enabled = false;
             GameObject.Find("Name").GetComponent<Text>().enabled = false;
             GameObject.Find("Content").GetComponent<Text>().enabled = false;
             GameObject.Find("Head Portrait").GetComponent<Image>().enabled = false;
             _isExecute = false;                                                //关闭执行命令
+            EventCenter.Broadcast(MyEventType.PLAYERPAUSE, false);
             return;
         }
 
-        Command command = Commands[_index++]; //自增：取出一条命令
-
-        switch (command.AllType)
-        {
-            //如果类型是：Say 说话
-            case CommandType.Say:
-                Say say = (Say)command;                     //实例化 Say 对象 say
-                HeadPortrait.sprite = Resources.Load<Sprite>(say.Image); //更换头像
-                NameText.text = say.Name;                          //人物
-                ConttentText.text = say.Content;                       //说话内容
-                break;
-        }
+        Say say = Commands[_index++]; //自增：取出一条命令
+        HeadPortrait.sprite = Resources.Load<Sprite>(say.Image); //更换头像
+        NameText.text = say.Name;                          //人物
+        ConttentText.text = say.Content;                       //说话内容
     }
-
-
-    /// <summary>
-    /// 重载场景
-    /// </summary>
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //重载当前场景
-    }
-
 
     /// <summary>
     /// 解析XML

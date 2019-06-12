@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     }
     public void returnGameScene()
     {
+        Debug.Log("111");
         SceneManager.LoadScene("Interface");
         EventCenter.Broadcast(MyEventType.GAMETOUI);
     }

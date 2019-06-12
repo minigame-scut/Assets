@@ -12,6 +12,7 @@
     INITDOOR,        //重置门
     COLORTRANSDOOR,  //门颜色转换
     //玩家信号
+    WALK,            //玩家移动
     DEATH,           //玩家死亡
     BIRTH,           //玩家诞生
     REBIRTH,         //玩家重生
@@ -26,8 +27,11 @@
     UITOGAME,        //进入游戏
     GAMETOUI,         //返回UI    
     CONTINUEGAME,     //继续游戏
+    PLAYERPAUSE,       //玩家暂停
     //游戏
     ANIMPAUSE,       //顿帧
     SHAKESCREEN,     //震动
     WAVE,            //波纹
+    //NPC
+    DIALOG,         //对话信号
 }

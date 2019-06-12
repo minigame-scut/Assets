@@ -61,6 +61,10 @@ public class PhysicalObject : MonoBehaviour
         targetVelocity = Vector2.zero;
         playerControl();
         playAnimation();
+
+        //广播移动信号
+        if (velocity != Vector2.zero && isGround)
+            EventCenter.Broadcast(MyEventType.WALK);
     }
     protected virtual void playerControl() { }
 

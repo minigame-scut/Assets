@@ -16,9 +16,8 @@ public enum KindofTrans
 
 public class GameManager : MonoBehaviour
 {
-
+    public string testBirthPlace;
     public int MapIndexNum = 0;
-
     public static GameManager instance;
 
     Dictionary<string, string> mapData;
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
     //持有的当前场景的UI
     GameObject UIPrefab;
     GameObject UI;
+    //是否由NPC引起的暂停
+    private bool NPCPause = false;
     //GameObject UIAnmationPrefab;
     //GameObject UIAnmation;
 
@@ -113,7 +114,8 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(MyEventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        buildSceneManager(GameObject.Find("birthPlace1-" + MapIndexNum  +"-1").transform.position);
+        if (sceneName != "Interface")
+            buildSceneManager(GameObject.Find(testBirthPlace).transform.position);
         //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
@@ -125,6 +127,8 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<Vector3>(MyEventType.CONTINUEGAME, buildGameScene);
         //监听进入下一关
         EventCenter.AddListener(MyEventType.NEXTMAP, gotoNextMap);
+        //监听暂停游戏
+        EventCenter.AddListener<bool>(MyEventType.PLAYERPAUSE, pauseGame);
         //创建当前场景的AudioManager
         buildAudioManager(new Vector3(0, 0, 0));
 
@@ -148,12 +152,16 @@ public class GameManager : MonoBehaviour
             //显示UI
             UI.SetActive(true);
             //暂停游戏
-            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
+            //pauseGame(true);
+            //Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
             sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = true;
-            Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
+            //Debug.Log(sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause);
         }
-        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null)
+        if (UI != null && UI.activeSelf == false && sManager.GetComponent<SManager>().getGamePlayer() != null
+            && sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause && !NPCPause)
+        {
             sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = false;
+        }
     }
 
     //转化关卡
@@ -236,6 +244,11 @@ public class GameManager : MonoBehaviour
         toPlaceIndex = 0;  //小关卡的下标
         toBigPlaceIndex = 0;  //大关卡的下标
 
+        //播放TransferDoor音效
+        if (aManager != null)
+        {
+            aManager.GetComponent<AudioManager>().PlaySound("Music/Sounds/Sou/InOuntWorldDoor");
+        }
 
         Debug.Log("toWorldDoor  " + toWorldDoor);
         try
@@ -432,6 +445,10 @@ public class GameManager : MonoBehaviour
 
             changeMusicVolum(0.8f);
             changeSoundVolum(0.8f);
+            if (sceneName == "map1-0")
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1-0");
+            else
+                aManager.GetComponent<AudioManager>().PlayMusic("Music/BGM/map1");
         }
     }
 
@@ -507,6 +524,13 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         buildAudioManager(new Vector3(0, 0, 0));
+    }
+    void pauseGame(bool ispause)
+    {
+        Debug.Log("Pause:" + ispause);
+        sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().isPause = ispause;
+        NPCPause = ispause;
+        return;
     }
     //去下一关
     void gotoNextMap()
