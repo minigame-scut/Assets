@@ -36,7 +36,7 @@ public class Ghost : MonoBehaviour
         if (mObjPlayer != null && otherCollision.gameObject.tag.Equals("player"))
         {
             //广播玩家死亡信号
-            EventCenter.Broadcast(EventType.DEATH);
+            EventCenter.Broadcast(MyEventType.DEATH);
             Debug.Log("玩家被幽灵触碰到，玩家死亡");
         }
     }

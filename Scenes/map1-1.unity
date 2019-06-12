@@ -2769,6 +2769,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2229006851139430890, guid: f00fb72e51530bb4dab093d9394684be,
+        type: 3}
+      propertyPath: MapIndexNum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f00fb72e51530bb4dab093d9394684be, type: 3}
 --- !u!1 &4567190111897266524 stripped
@@ -4552,11 +4557,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1102597905794440117, guid: 172cbda6fa32712488e64b898d68ae9a,
-        type: 3}
-      propertyPath: m_TagString
-      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 1792512526214119999, guid: 172cbda6fa32712488e64b898d68ae9a,
         type: 3}
@@ -10782,6 +10782,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Tiles.Array.data[36].second.m_TileIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102597905794440117, guid: 172cbda6fa32712488e64b898d68ae9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 27896828087885725, guid: 172cbda6fa32712488e64b898d68ae9a,
         type: 3}
