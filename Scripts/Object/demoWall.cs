@@ -20,9 +20,8 @@ public class demoWall : MonoBehaviour
     {
         if (collision.transform.tag == "player")
         {
-            Debug.Log("demo");
             Debug.Log(transform.position);
-            EventCenter.Broadcast(EventType.HELLODEMO, transform.position);
+            EventCenter.Broadcast(MyEventType.HELLODEMO, transform.position);
         }
     }
 }

@@ -47,6 +47,6 @@ public class logicForMapSeven : MonoBehaviour
     }
     void listener()
     {
-        EventCenter.AddListener(EventType.DEATH, responseForDEATH);
+        EventCenter.AddListener(MyEventType.DEATH, responseForDEATH);
     }
 }

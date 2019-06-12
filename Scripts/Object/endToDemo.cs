@@ -14,7 +14,7 @@ public class endToDemo : MonoBehaviour
     {
         if(other.transform.tag == "player")
         {
-            EventCenter.Broadcast<string>(EventType.NEXTPLACE, this.name);
+            EventCenter.Broadcast<string>(MyEventType.NEXTPLACE, this.name);
         }
     }
 }
