@@ -17,12 +17,16 @@ public enum KindofTrans
 public class GameManager : MonoBehaviour
 {
 
+    public int MapIndexNum = 0;
+
     public static GameManager instance;
 
     Dictionary<string, string> mapData;
 
     //玩家的object
     static public GameObject player;
+    //持有道具数据
+    public PropData propData;
 
     //持有的当前场景的SceneManager
     GameObject sManager;
@@ -42,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public string sceneName;
 
-    static  KindofTrans kindofTrans = KindofTrans.DEFAULT;
+    static KindofTrans kindofTrans = KindofTrans.DEFAULT;
 
     static string toPlace; //通往关卡的标号
     static string toTrans;  //通往的传送门
@@ -54,26 +58,27 @@ public class GameManager : MonoBehaviour
 
 
 
- 
-        //不销毁GameManager
-        // DontDestroyOnLoad(this); 
-        void Awake()
+
+    //不销毁GameManager
+    // DontDestroyOnLoad(this); 
+    void Awake()
+    {
+        propData = new PropData();
+        if (instance == null)
         {
-            if (instance == null)
-            {
-                // 判定 null 是保证场景跳转时不会出现重复的 GlobalScript 实例 (主要是跳转回上一个场景)
-                // 在没有 GlobalScript 实例时才创建 GlobalScript 实例
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else if (instance != this)
-            {
-                // 保证场景中只有唯一的 GlobalScript 实例，如果有多余的则销毁
-                Destroy(gameObject);
-            }
+            // 判定 null 是保证场景跳转时不会出现重复的 GlobalScript 实例 (主要是跳转回上一个场景)
+            // 在没有 GlobalScript 实例时才创建 GlobalScript 实例
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-       
-    
+        else if (instance != this)
+        {
+            // 保证场景中只有唯一的 GlobalScript 实例，如果有多余的则销毁
+            Destroy(gameObject);
+        }
+    }
+
+
 
 
     // Start is called before the first frame update
@@ -88,7 +93,7 @@ public class GameManager : MonoBehaviour
 
         //读取开始游戏过渡动画资源
         //UIAnmationPrefab = Resources.Load<GameObject>("GameManagerRes/UIToGameAnimation");
-        
+
 
         //初始化映射关系
         SceneMapData.getInstance().init();
@@ -108,16 +113,18 @@ public class GameManager : MonoBehaviour
         EventCenter.AddListener<string>(MyEventType.OUTWORLDDOOR, toWorldDoor);
 
         //创建当前场景的sceneManager
-        buildSceneManager(GameObject.Find("birthPlace1-6-1").transform.position);
-      //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
+        buildSceneManager(GameObject.Find("birthPlace1-" + MapIndexNum  +"-1").transform.position);
+        //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
         //监听进入新游戏
-        EventCenter.AddListener<string>(MyEventType.UITOGAME,buildGameScene);
+        EventCenter.AddListener<string>(MyEventType.UITOGAME, buildGameScene);
         //监听返回主菜单
         EventCenter.AddListener(MyEventType.GAMETOUI, buildUIScene);
         //监听继续游戏
         EventCenter.AddListener<Vector3>(MyEventType.CONTINUEGAME, buildGameScene);
+        //监听进入下一关
+        EventCenter.AddListener(MyEventType.NEXTMAP, gotoNextMap);
         //创建当前场景的AudioManager
         buildAudioManager(new Vector3(0, 0, 0));
 
@@ -134,9 +141,9 @@ public class GameManager : MonoBehaviour
         {
             SavePlayerData.SetData("Save/PlayerData.sav", sManager.GetComponent<SManager>().getGamePlayer().GetComponent<PlayerPlatformController>().getPlayerData());
         }
-       // Debug.Log(sceneName);
-       //暂停游戏并显示UI
-       if(Input.GetKeyDown(KeyCode.Escape))
+        // Debug.Log(sceneName);
+        //暂停游戏并显示UI
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             //显示UI
             UI.SetActive(true);
@@ -159,14 +166,14 @@ public class GameManager : MonoBehaviour
 
         try
         {
-         toBigPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') - 1, 1));
-         toPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') + 1, 1));
+            toBigPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') - 1, 1));
+            toPlaceIndex = int.Parse(toPlace.Substring(toPlace.IndexOf('-') + 1, 1));
         }
         catch (UnityException e)
         {
             Debug.Log(e.Message);
         }
-     
+
         Debug.Log(toPlace);
         Debug.Log(toPlaceIndex);
         //播放切换场景动画
@@ -177,7 +184,7 @@ public class GameManager : MonoBehaviour
 
 
         ////转移到新的场景
-        SceneManager.LoadScene("map" + toBigPlaceIndex + '-' +toPlaceIndex);
+        SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
 
         //StartCoroutine(waitForMapSwitch(toBigPlaceIndex, toPlaceIndex));
 
@@ -185,9 +192,9 @@ public class GameManager : MonoBehaviour
 
         kindofTrans = KindofTrans.NEXTPLACE; //指明是通过nextplace进行传送的
 
- 
+
         //切换场景 生成玩家
-         StartCoroutine(waitForFindForNextPlace());
+        StartCoroutine(waitForFindForNextPlace());
 
     }
 
@@ -203,11 +210,11 @@ public class GameManager : MonoBehaviour
         {
             toBigPlaceIndex = int.Parse(toTrans.Substring(toTrans.IndexOf('-') - 1, 1));
             toPlaceIndex = int.Parse(toTrans.Substring(toTrans.IndexOf('-') + 1, 1));
-         
+
         }
         catch (UnityException e)
         {
-            
+
             Debug.Log(e.Message);
         }
 
@@ -257,12 +264,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator waitForFindForNextPlace()
     {
-      
+
         yield return new WaitForSeconds(0.5f);
         Transform birthPlacePosition = GameObject.Find(toPlace).transform;
         Debug.Log("birthPlacePosition" + birthPlacePosition.position);
         //生成玩家 
-      
+
         kindofTrans = KindofTrans.DEFAULT;
 
 
@@ -274,7 +281,7 @@ public class GameManager : MonoBehaviour
         //  buildSceneMapSwitcher();
 
         //创建audioManager
-        buildAudioManager(new Vector3(0,0,0));
+        buildAudioManager(new Vector3(0, 0, 0));
 
         //创建UI
         buildUI();
@@ -285,26 +292,26 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Transform toTransPosition = GameObject.Find(toTrans).transform;
-        Vector3 birthPosition = new Vector3(0,0,0);
+        Vector3 birthPosition = new Vector3(0, 0, 0);
         Debug.Log("toTransPosition" + toTransPosition.position);
         //生成玩家 
 
         switch (toTransPosition.tag)
         {
             case "transDoor":
-              
+
                 birthPosition = new Vector3(toTransPosition.position.x - 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_r":
-               
+
                 birthPosition = new Vector3(toTransPosition.position.x + 1, toTransPosition.position.y, 0);
                 break;
             case "transDoor_u":
-            
+
                 birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y + 1, 0);
                 break;
             case "transDoor_d":
-              
+
                 birthPosition = new Vector3(toTransPosition.position.x, toTransPosition.position.y - 1, 0);
                 break;
             default:
@@ -339,42 +346,42 @@ public class GameManager : MonoBehaviour
         switch (toWorldPosition.tag)
         {
             case "inworldDoor":
-            
+
                 birthPosition = new Vector3(toWorldPosition.position.x - 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_r":
-              
+
                 birthPosition = new Vector3(toWorldPosition.position.x + 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "inworldDoor_u":
-             
+
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "inworldDoor_d":
-               
+
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             case "outworldDoor":
-               
+
                 birthPosition = new Vector3(toWorldPosition.position.x - 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_r":
-              
+
                 birthPosition = new Vector3(toWorldPosition.position.x + 0.8f, toWorldPosition.position.y, 0);
                 break;
             case "outworldDoor_u":
-               
+
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y + 1, 0);
                 break;
             case "outworldDoor_d":
-                
+
                 birthPosition = new Vector3(toWorldPosition.position.x, toWorldPosition.position.y - 1, 0);
                 break;
             default:
                 break;
         }
 
- 
+
         kindofTrans = KindofTrans.DEFAULT;
         buildSceneManager(birthPosition);
         //生成玩家
@@ -395,9 +402,9 @@ public class GameManager : MonoBehaviour
     {
         if (sceneName == "Interface")
             return;
-       sManager  = GameObject.Find("SceneManager");
+        sManager = GameObject.Find("SceneManager");
         //当前场景没有管理器
-        if(sManager == null)
+        if (sManager == null)
         {
             sManager = new GameObject("SceneManager");
             sManager.AddComponent<SManager>();
@@ -415,14 +422,14 @@ public class GameManager : MonoBehaviour
 
     void buildAudioManager(Vector3 birthPlace)
     {
-        aManagerPrefab =  Resources.Load<GameObject>("GameManagerRes/AudioManager");
+        aManagerPrefab = Resources.Load<GameObject>("GameManagerRes/AudioManager");
         aManager = GameObject.Find("AudioManager");
         //当前场景没有声音管理器
         if (aManager == null)
         {
-            
+
             aManager = GameObject.Instantiate(aManagerPrefab);
-            
+
             changeMusicVolum(0.8f);
             changeSoundVolum(0.8f);
         }
@@ -443,8 +450,8 @@ public class GameManager : MonoBehaviour
     IEnumerator waitForMapSwitch(int toBigPlaceIndex, int toPlaceIndex)
     {
         yield return 0;
-          //转移到新的场景
-          SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
+        //转移到新的场景
+        SceneManager.LoadScene("map" + toBigPlaceIndex + '-' + toPlaceIndex);
     }
 
     void buildUI()
@@ -464,7 +471,7 @@ public class GameManager : MonoBehaviour
     void buildGameScene(string birthPlace)
     {
         StartCoroutine(buildGameSceneIE(birthPlace));
-      
+
 
     }
 
@@ -477,7 +484,7 @@ public class GameManager : MonoBehaviour
         buildAudioManager(new Vector3(0, 0, 0));
         buildUI();
         //UIAnmation.GetComponent<Animator>().Play("UIToGame");
-       
+
     }
     void buildGameScene(Vector3 birthPosition)
     {
@@ -500,5 +507,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         buildAudioManager(new Vector3(0, 0, 0));
+    }
+    //去下一关
+    void gotoNextMap()
+    {
+        SceneManager.LoadScene("");
     }
 }

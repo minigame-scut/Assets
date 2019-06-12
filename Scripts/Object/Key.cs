@@ -23,7 +23,7 @@ public class Key : MonoBehaviour
         {
             Debug.Log("collection");
             //广播销毁关卡钥匙道具的信号并传递当前gameObject对象
-            EventCenter.Broadcast(EventType.DESTROY, this.gameObject); 
+            EventCenter.Broadcast(MyEventType.DESTROY, this.gameObject); 
         }
     }
 

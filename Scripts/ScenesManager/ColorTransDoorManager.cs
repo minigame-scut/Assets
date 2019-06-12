@@ -49,7 +49,8 @@ public class ColorTransDoorManager : MonoBehaviour
 
         //添加 颜色传送门 的监听
         EventCenter.AddListener<GameObject>(MyEventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
-        EventCenter.AddListener(MyEventType.DEATH, recoverTransDoor);
+      
+          EventCenter.AddListener(MyEventType.DEATH, recoverTransDoor);
 
 
     }
@@ -156,10 +157,14 @@ public class ColorTransDoorManager : MonoBehaviour
     //重置传送门颜色
     void recoverTransDoor()
     {
-        recoverCount++;
+        if (GameManager.instance.sceneName != "map1-6")
+            return;
+
+            recoverCount++;
         if(recoverCount >= 5)
         {
-            tip.SetActive(true);
+            if(tip != null)
+                tip.SetActive(true);
         }
         GameObject.Find("transDoor (161)").GetComponent<SpriteRenderer>().color = mapColors["GREEN"];
         GameObject.Find("transDoor (162)").GetComponent<SpriteRenderer>().color = mapColors["YELLOW"];

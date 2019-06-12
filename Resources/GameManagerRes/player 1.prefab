@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b5594c25c5b8f2b47a300605c8fb3164, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 147d9ce05df1b2146913f0e6b486df81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 7186863230479286457}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 58b67cff1fda5c747a55b842345f2ac5, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2de12ac19d434a41926f6ae9749aa7b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 0.3, y: 0.56}
     newSize: {x: 0.3, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 0.1
   isRush: 0
   isWalk: 0
   isJump: 0
+  isGround: 1
   curJumpSpeed: 0
   curRushSpeed: 0
   shadowr: {fileID: 1507537604408894481, guid: d0c984e39447cb543bf764dbac540bb1, type: 3}
