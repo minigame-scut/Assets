@@ -20,6 +20,7 @@
     RUSH,            //玩家冲
     ELASTICDELETE,   //弹力buff消除
     INITDELETE,      //重置buff消除
+    NEXTMAP,        //玩家进入下一大关卡
     //道具信号
     DESTROY,          //道具销毁
     UITOGAME,        //进入游戏
