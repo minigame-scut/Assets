@@ -20,6 +20,9 @@ public class PlayerPlatformController : PhysicalObject
     public bool isPause = false;
     //受到弹力方向
     public Transform elasticTrans;
+    //旋转角
+    float angleX;
+    float angleY;
 
     Vector2 move;
     
@@ -37,6 +40,12 @@ public class PlayerPlatformController : PhysicalObject
             playerData.isBirth = false;
             StartCoroutine(setBirthAnimAsFalse());
         }
+
+        angleX = (playerData.gravityTrans == -1) ? 180 : 0;
+        angleY = (playerData.dir == 1) ? 0 : 180;
+        
+        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
+        Debug.Log(playerData.numOfFace);
     }
     //重写PhysicalObject中计算玩家速度的函数
     protected override void playerControl()
@@ -44,6 +53,10 @@ public class PlayerPlatformController : PhysicalObject
         //是否暂停
         if (isPause)
             return;
+
+        angleX = (playerData.gravityTrans == -1) ? 180 : 0;
+        angleY = (playerData.dir == 1) ? 0 : 180;
+             
         //输入计时器计时
         if (inputTimer <= 1.2f)
         {
@@ -57,7 +70,6 @@ public class PlayerPlatformController : PhysicalObject
             return;
         }
         //是否重力翻转
-        spriteRenderer.flipY = (playerData.gravityTrans == 1) ? false : true;
         if (playerData.buff.contains(Buff.GRAVITY))
         {
             if (playerData.flagGravity == 0)
@@ -79,12 +91,12 @@ public class PlayerPlatformController : PhysicalObject
         {
             move = Vector2.zero;
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetAxis("Horizontal") == -1)
+        if (Input.GetKey(KeyCode.A) || (Input.GetAxis("Horizontal") >= -1 && Input.GetAxis("Horizontal") <= -0.3))
         {
             //左跑
             run(-1);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetAxis("Horizontal") == 1)
+        else if (Input.GetKey(KeyCode.D) || (Input.GetAxis("Horizontal") <= 1 && Input.GetAxis("Horizontal") >= 0.3))
         {
             //右跑
             run(1);
@@ -107,7 +119,7 @@ public class PlayerPlatformController : PhysicalObject
             //空中只能冲刺一次
             playerData.canRush = false;
             //广播移除重置buff的信号
-            EventCenter.Broadcast(MyEventType.INITDELETE);
+            EventCenter.Broadcast(EventType.INITDELETE);
 
             return;
         }
@@ -124,7 +136,8 @@ public class PlayerPlatformController : PhysicalObject
             {
                 jump();
             }
-            EventCenter.Broadcast(MyEventType.INITDELETE);   
+            EventCenter.Broadcast(EventType.INITDELETE);
+            
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -148,30 +161,16 @@ public class PlayerPlatformController : PhysicalObject
             }
             else
             {
-                EventCenter.Broadcast(MyEventType.ELASTICDELETE);
+                EventCenter.Broadcast(EventType.ELASTICDELETE);
             }
         }
         targetVelocity = move * playerData.maxSpeed;
     }
     protected override void playAnimation()
     {
-        if(playerData.dir == 1)
-        {
-            anim.SetFloat("direction", 1);
-        }
-        else if(playerData.dir == -1)
-        {
-            anim.SetFloat("direction", -1);
-        }
-        if(isWalk && playerData.dir == 1)
+        if(isWalk)
         {
             anim.SetBool("isWalk", true);
-            anim.SetFloat("direction", playerData.dir);
-        }
-        else if(isWalk && playerData.dir == -1)
-        {
-            anim.SetBool("isWalk", true);
-            anim.SetFloat("direction", playerData.dir);
         }
         else
         {
@@ -218,6 +217,7 @@ public class PlayerPlatformController : PhysicalObject
     void run(int direction)
     {
         playerData.dir = direction;
+        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         move.x = playerData.dir;
         isWalk = true;
     }
@@ -236,7 +236,7 @@ public class PlayerPlatformController : PhysicalObject
         isJump = true;
         curJumpSpeed = playerData.superJumpSpeed;
         velocity.y = curJumpSpeed * playerData.gravityTrans;
-        EventCenter.Broadcast(MyEventType.JUMP);
+        EventCenter.Broadcast(EventType.JUMP);
     }
     //普通冲刺,设置普通冲刺时的速度
     void rush()
@@ -257,7 +257,7 @@ public class PlayerPlatformController : PhysicalObject
         isRush = true;
         this.curRushSpeed = playerData.superRushSpeed;
         targetVelocity = move * curRushSpeed;
-        EventCenter.Broadcast(MyEventType.RUSH);
+        EventCenter.Broadcast(EventType.RUSH);
     }
     //冲刺移动，实际计算冲刺位移的函数，并判断冲刺是否结束
     void rushMove()
@@ -286,6 +286,7 @@ public class PlayerPlatformController : PhysicalObject
     //反重力
     void gravityContrary()
     {
+        this.transform.localEulerAngles = new Vector3(angleX, angleY, 0);
         playerData.gravityTrans *= -1;
         velocity.y = 0;
     }
