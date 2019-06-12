@@ -28,6 +28,7 @@
     GAMETOUI,         //返回UI    
     CONTINUEGAME,     //继续游戏
     PLAYERPAUSE,       //玩家暂停
+    HELLODEMO,       //进入demo
     //游戏
     ANIMPAUSE,       //顿帧
     SHAKESCREEN,     //震动
