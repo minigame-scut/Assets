@@ -5,6 +5,9 @@ using UnityEngine;
 //此类用于管理 map 1-6 的传送门
 //上方四扇传送门的 name 为 transDoor (161), transDoor (162), ...
 //下方四扇传送门的 name 为 transDoor (165), transDoor (166), ...
+//初始状态: 绿 黄 黄 绿, 玩家死亡后门的颜色状态不会重置
+//在初始状态下, 通关方法, 2--3--1--3
+
 public class ColorTransDoorManager : MonoBehaviour
 {
     private Dictionary<string, string> mapTransDoor;    //触发哪扇门，会引起哪些门的变化
@@ -45,8 +48,8 @@ public class ColorTransDoorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.Find("SceneManager") != null)
-        player = GameObject.Find("SceneManager").GetComponent<SManager>().getGamePlayer();
+        if (GameObject.Find("SceneManager") != null)
+            player = GameObject.Find("SceneManager").GetComponent<SManager>().getGamePlayer();
     }
 
     //对信号 颜色传送门 的处理函数
@@ -80,6 +83,7 @@ public class ColorTransDoorManager : MonoBehaviour
         {
             //传送至本关卡的最终的传送门
             player.transform.position = transDoor_0.transform.position + new Vector3(0.8f, 0.0f);
+            //return;   //若启用此语句, 则表示, 传送至本关卡最终传送门后, 上面四扇门的颜色不会改变(保持全是红色)
         }
         else
         {
@@ -103,17 +107,17 @@ public class ColorTransDoorManager : MonoBehaviour
 
             if (_color.Equals(mapColors["BLUE"]))
             {
-                _transDoor.GetComponent<SpriteRenderer>().color = mapColors["YELLOW"];
+                _transDoor.GetComponent<SpriteRenderer>().color = mapColors["GREEN"];
             }
-            else if (_color.Equals(mapColors["YELLOW"]))
+            else if (_color.Equals(mapColors["GREEN"]))
             {
                 _transDoor.GetComponent<SpriteRenderer>().color = mapColors["RED"];
             }
             else if (_color.Equals(mapColors["RED"]))
             {
-                _transDoor.GetComponent<SpriteRenderer>().color = mapColors["GREEN"];
+                _transDoor.GetComponent<SpriteRenderer>().color = mapColors["YELLOW"];
             }
-            else if (_color.Equals(mapColors["GREEN"]))
+            else if (_color.Equals(mapColors["YELLOW"]))
             {
                 _transDoor.GetComponent<SpriteRenderer>().color = mapColors["BLUE"];
             }
