@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(0.6f, 0.6f);
+    public Vector2 speed = new Vector2(2f, 2f);
 
     private GameObject mObjPlayer;   //游戏对象——玩家
 
@@ -36,7 +36,7 @@ public class Ghost : MonoBehaviour
         if (mObjPlayer != null && otherCollision.gameObject.tag.Equals("player"))
         {
             //广播玩家死亡信号
-            EventCenter.Broadcast(MyEventType.DEATH);
+            EventCenter.Broadcast(EventType.DEATH);
             Debug.Log("玩家被幽灵触碰到，玩家死亡");
         }
     }

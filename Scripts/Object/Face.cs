@@ -21,16 +21,10 @@ public class Face : MonoBehaviour
     {
         //玩家的 tag 为 Player
         if (otherCollider.tag.Equals("player"))
-        {
-            //获取玩家的控制脚本
-            Player player = otherCollider.gameObject.GetComponent<Player>();
-
-            //更新收集滑稽的个数
-            player.faceCount += 1;
-            
+        {     
             //广播销毁关卡滑稽脸的信号并传递当前gameObject对象
             GameObject gameObject = this.gameObject;
-            EventCenter.Broadcast(MyEventType.DESTROY, gameObject); 
+            EventCenter.Broadcast(EventType.DESTROY, gameObject); 
         }
     }
 }

@@ -13,6 +13,14 @@ public class SManager : MonoBehaviour
     public GameObject gamePlayer;
     //玩家prefab
     GameObject player;
+    //保存玩家存档数据
+    PlayerData saveData;
+    //是否收集
+    bool isCollectKey = false;
+    bool isCollectFace = false;
+    //道具
+    GameObject key;
+    GameObject face;
 
     private static SManager instance = null;
 
@@ -26,7 +34,6 @@ public class SManager : MonoBehaviour
             //}
             return SManager.instance;
         }
-
     }
     void Awake()
     {
@@ -36,14 +43,60 @@ public class SManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        key = GameObject.Find("Key");
+        face = GameObject.Find("Face");
+        init();
         birthPlayer();
         listener();
+        saveData = (PlayerData)SavePlayerData.GetData("Save/PlayerData.sav", typeof(PlayerData));
+    }
+
+    void init()
+    {
+        int count = GameManager.instance.propData.collectionMap.Count;
+        for (int i = 0; i < count; i++)
+        {
+            if(getNumOfMap(GameManager.instance.sceneName).x == GameManager.instance.propData.collectionMap[i].x && 
+                getNumOfMap(GameManager.instance.sceneName).y == GameManager.instance.propData.collectionMap[i].y)
+            {
+                if (GameManager.instance.propData.collectionMap[i].z == 1 && key != null)
+                    key.SetActive(true);
+                else if (GameManager.instance.propData.collectionMap[i].z == 0 && key != null)
+                    key.SetActive(false);
+                if (GameManager.instance.propData.collectionMap[i].w == 1 && face != null)
+                    face.SetActive(true);
+                else if (GameManager.instance.propData.collectionMap[i].w == 0 && face != null)
+                {
+                    face.SetActive(false);
+                }
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        listener();
+        
+        
+        if (gamePlayer != null && saveData != null)
+        {
+            //如果当前场景收集过道具，重新设置道具状态
+            if (gamePlayer.GetComponent<PlayerPlatformController>().playerData.numOfFace == saveData.numOfFace && isCollectFace && face != null)
+            {
+                Debug.Log(isCollectFace);
+                GameManager.instance.propData.setFaceTrue(getNumOfMap(GameManager.instance.sceneName).x, getNumOfMap(GameManager.instance.sceneName).y);
+                face.SetActive(true);
+                isCollectFace = false;
+            }
+
+            if (gamePlayer.GetComponent<PlayerPlatformController>().playerData.numOfKey == saveData.numOfKey && isCollectKey && key != null)
+            {
+                GameManager.instance.propData.setKeyTrue(getNumOfMap(GameManager.instance.sceneName).x, getNumOfMap(GameManager.instance.sceneName).y);
+                key.SetActive(true);
+                isCollectKey = false;
+            }
+
+        }
     }
     //获取当前场景出生点位置的函数
     public void setBirthPosition(Vector3 newPosition)
@@ -71,8 +124,6 @@ public class SManager : MonoBehaviour
         //GameObject player = Resources.Load<GameObject>("GameManagerRes/player");
         gamePlayer = GameObject.Instantiate(player,birthPosition, Quaternion.identity);
 
-
-
         // //在进入场景的时候应该读取修改保存一个玩家的数据
         try
         {
@@ -86,8 +137,6 @@ public class SManager : MonoBehaviour
             //保存
             SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData());
             //读取 修改位置地图信息 再保存
-            Debug.Log("save: " + playerData.gravityTrans);
-            Debug.Log("save: " + playerData.buff.contains(Buff.GRAVITY));
 
         }
         catch (UnityException e)
@@ -98,7 +147,6 @@ public class SManager : MonoBehaviour
             //保存
             SavePlayerData.SetData("Save/PlayerData.sav", gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData());
         }
-
 
 
     }
@@ -166,11 +214,6 @@ public class SManager : MonoBehaviour
             StartCoroutine(createNewPlayerInBirthPlaceAfterDeath());
         }
             
-        
-        //创建对应prefeb
-        //Quaternion newQuaternion = new Quaternion(0, 0, 0, 0);//实例化预制体的rotation
-        // GameObject.Instantiate(prefeb, birthPosition, newQuaternion);
-        //GameObject.Instantiate(/*prefeb*/);
     }
     private void responseForREBIRTH()
     {
@@ -179,26 +222,15 @@ public class SManager : MonoBehaviour
     }
     private void responseForJUMP()
     {
+        
         //播放JUMP音效
         //AudioManager.getInstance().PlaySound("Jump");
-        //遍历Player中的buffList列表，查看当前玩家的buff状态
-        //如果在接受到JUMP信号时玩家buff状态为SUPER，则移除该buff状态
-        if(gamePlayer != null)
-        {
-            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPER);
-        }
-        
+
     }
     private void responseForRUSH()
     {
         //播放RUSH音效
         //AudioManager.getInstance().PlaySound("Rush");
-        //遍历Player中的buffList列表，如果在接收到RUSH信号时玩家buff状态为SUPER，则移除该buff状态
-        if(gamePlayer != null)
-        {
-            gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.SUPER);
-        }
-        
     }
     private void responseForELASTICDELETE()
     {
@@ -218,32 +250,56 @@ public class SManager : MonoBehaviour
             gamePlayer.GetComponent<PlayerPlatformController>().getPlayerData().buff.remove(Buff.INITSTATE);
         }
     }
-    private void responseForDESTROY(GameObject gameObject)
+    private void responseForDESTROY(GameObject other)
     {
-        //销毁当前场景玩家的prefeb
-        Destroy(gameObject);
+        if(gamePlayer != null)
+        {
+            //销毁当前场景物品的prefeb
+            if (other.tag == "collection")
+            {
+                gamePlayer.GetComponent<PlayerPlatformController>().playerData.numOfFace++;
+                GameManager.instance.propData.setFaceFalse(getNumOfMap(GameManager.instance.sceneName).x, getNumOfMap(GameManager.instance.sceneName).y);
+                other.SetActive(false);
+                isCollectFace = true;
+            }
+            if (other.tag == "collection_key")
+            {
+                gamePlayer.GetComponent<PlayerPlatformController>().playerData.numOfKey++;
+                GameManager.instance.propData.setKeyFalse(getNumOfMap(GameManager.instance.sceneName).x, getNumOfMap(GameManager.instance.sceneName).y);
+                other.SetActive(false);
+                isCollectKey = true;
+            }
+        }
+    }
+    //获取当前场景的编号
+    private Vector2Int getNumOfMap(string sceneName)
+    {
+        int toBigPlaceIndex = int.Parse(sceneName.Substring(sceneName.IndexOf('-') - 1, 1));
+        int toPlaceIndex = int.Parse(sceneName.Substring(sceneName.IndexOf('-') + 1, 1));
+        return new Vector2Int(toBigPlaceIndex, toPlaceIndex);
     }
     //添加监听器
     private void listener()
     {
         //监听门信号
-        EventCenter.AddListener<Transform>(MyEventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
-        EventCenter.AddListener(MyEventType.DEATHDOOR, responseForSignalDEATHDOOR);
-        EventCenter.AddListener(MyEventType.GDOOR, responseForSignalGDOOR);
-        EventCenter.AddListener(MyEventType.MAGICALDOOR, responseForMAGICALDOOR);
-        EventCenter.AddListener<Vector3, string>(MyEventType.TRANSDOOR, responseForTRANSDOOR);
-        EventCenter.AddListener(MyEventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
-        EventCenter.AddListener(MyEventType.INITDOOR, responseForINITDOOR);
+        EventCenter.AddListener<Transform>(EventType.BROKESPEEDDOOR, responseForSignalBROKESPEEDDOOR);
+        EventCenter.AddListener(EventType.DEATHDOOR, responseForSignalDEATHDOOR);
+        EventCenter.AddListener(EventType.GDOOR, responseForSignalGDOOR);
+        EventCenter.AddListener(EventType.MAGICALDOOR, responseForMAGICALDOOR);
+        EventCenter.AddListener<Vector3, string>(EventType.TRANSDOOR, responseForTRANSDOOR);
+        EventCenter.AddListener(EventType.UPSPEEDDOOR, responseForUPSPEEDDOOR);
+        EventCenter.AddListener(EventType.INITDOOR, responseForINITDOOR);
         //监听玩家信号
-        EventCenter.AddListener(MyEventType.DEATH, responseForDEATH);
-        EventCenter.AddListener(MyEventType.JUMP, responseForJUMP);
-        EventCenter.AddListener(MyEventType.RUSH, responseForRUSH);
-        EventCenter.AddListener(MyEventType.ELASTICDELETE, responseForELASTICDELETE);
-        EventCenter.AddListener(MyEventType.REBIRTH, responseForREBIRTH);
-        EventCenter.AddListener(MyEventType.INITDELETE, responseForINITDELETE);
+        EventCenter.AddListener(EventType.DEATH, responseForDEATH);
+        EventCenter.AddListener(EventType.JUMP, responseForJUMP);
+        EventCenter.AddListener(EventType.RUSH, responseForRUSH);
+        EventCenter.AddListener(EventType.ELASTICDELETE, responseForELASTICDELETE);
+        EventCenter.AddListener(EventType.REBIRTH, responseForREBIRTH);
+        EventCenter.AddListener(EventType.INITDELETE, responseForINITDELETE);
         //
-        EventCenter.AddListener<GameObject>(MyEventType.DESTROY, responseForDESTROY);
+        EventCenter.AddListener<GameObject>(EventType.DESTROY, responseForDESTROY);
     }
+
 
     IEnumerator createNewPlayerInBirthPlaceAfterDeath()
     {
@@ -251,7 +307,7 @@ public class SManager : MonoBehaviour
         if(gamePlayer == null)
         {
             birthPlayer();
-            EventCenter.Broadcast(MyEventType.REBIRTH);
+            EventCenter.Broadcast(EventType.REBIRTH);
         }
             
     }

@@ -21,15 +21,9 @@ public class Key : MonoBehaviour
         //玩家的 tag 为 Player
         if(otherCollider.tag.Equals("player"))
         {
-            //获取玩家的控制脚本
-            Player player = otherCollider.gameObject.GetComponent<Player>();
-
-            //更新当前关卡的钥匙的状态
-            player.hasKey = true;
-
+            Debug.Log("collection");
             //广播销毁关卡钥匙道具的信号并传递当前gameObject对象
-            GameObject gameObject = this.gameObject;
-            EventCenter.Broadcast(MyEventType.DESTROY, gameObject); 
+            EventCenter.Broadcast(EventType.DESTROY, this.gameObject); 
         }
     }
 
