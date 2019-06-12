@@ -29,7 +29,7 @@ public class TransDoor : MonoBehaviour
             if (deltaTime > BiggestTriggerTime)  //触发时间间隔大于一秒
             {
 
-                Debug.Log("TransDoor");//测试
+               
 
                 if(SceneMapData.instance.getMapData().ContainsKey(gameObject.name))
                 {
@@ -51,6 +51,7 @@ public class TransDoor : MonoBehaviour
                 else  //用于 map1-6 的传送门的
                 {
                     EventCenter.Broadcast<GameObject>(MyEventType.COLORTRANSDOOR, gameObject);
+                    Debug.Log("1-6TransDoor");//测试
                 }
 
                 deltaTime = 0;  //重置间隔定时器

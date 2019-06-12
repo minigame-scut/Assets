@@ -40,6 +40,10 @@
     public float elasticTimer = 0.0f;
     //持有buff列表
     public BuffStructure buff = new BuffStructure();
+    //key数目
+    public int numOfKey = 0;
+    //笑脸数目
+    public int numOfFace = 0;
 
 
     public void setPlayerVector3DPositionData(double x,double y, double z)

@@ -21,7 +21,15 @@ public class ColorTransDoorManager : MonoBehaviour
 
     public GameObject transDoor_0;  //本关卡最终的传送门
 
+    public GameObject tip;           //游戏提示
     GameObject player;
+
+    //记录玩家进入门的次数，每5次重置一次
+    public int count = 0;
+
+    //记录门重置的次数，超过五次给玩家提示
+    public int recoverCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +49,10 @@ public class ColorTransDoorManager : MonoBehaviour
 
         //添加 颜色传送门 的监听
         EventCenter.AddListener<GameObject>(MyEventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
+      
+          EventCenter.AddListener(MyEventType.DEATH, recoverTransDoor);
 
-     
+
     }
 
     // Update is called once per frame
@@ -55,6 +65,7 @@ public class ColorTransDoorManager : MonoBehaviour
     //对信号 颜色传送门 的处理函数
     void responseForCOLORTRANSDOOR(GameObject colorTransDoor)
     {
+        count++;
         GameObject toTransDoor; //传送目的门
         //触碰的是本关卡的最终传送门, 随机传送至上方四扇门之一
         if (colorTransDoor.Equals(transDoor_0))
@@ -83,7 +94,7 @@ public class ColorTransDoorManager : MonoBehaviour
         {
             //传送至本关卡的最终的传送门
             player.transform.position = transDoor_0.transform.position + new Vector3(0.8f, 0.0f);
-            //return;   //若启用此语句, 则表示, 传送至本关卡最终传送门后, 上面四扇门的颜色不会改变(保持全是红色)
+            return;   //若启用此语句, 则表示, 传送至本关卡最终传送门后, 上面四扇门的颜色不会改变(保持全是红色)
         }
         else
         {
@@ -127,6 +138,38 @@ public class ColorTransDoorManager : MonoBehaviour
             }
         }
 
+        if (transDoor_1.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+          transDoor_2.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+          transDoor_3.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) &&
+          transDoor_4.GetComponent<SpriteRenderer>().color.Equals(mapColors["RED"]) ||
+          dIsFinished
+          )
+        {
+            GameObject.Find("transDoor (160)").GetComponent<SpriteRenderer>().color = Color.white;
+        }
+            //满了五次重置门
+            if (count >= 5) {
+            recoverTransDoor();
+            count = 0;
+        }
+      
+    }
+    //重置传送门颜色
+    void recoverTransDoor()
+    {
+        if (GameManager.instance.sceneName != "map1-6")
+            return;
+
+            recoverCount++;
+        if(recoverCount >= 5)
+        {
+            if(tip != null)
+                tip.SetActive(true);
+        }
+        GameObject.Find("transDoor (161)").GetComponent<SpriteRenderer>().color = mapColors["GREEN"];
+        GameObject.Find("transDoor (162)").GetComponent<SpriteRenderer>().color = mapColors["YELLOW"];
+        GameObject.Find("transDoor (163)").GetComponent<SpriteRenderer>().color = mapColors["YELLOW"];
+        GameObject.Find("transDoor (164)").GetComponent<SpriteRenderer>().color = mapColors["GREEN"];
     }
 
 
