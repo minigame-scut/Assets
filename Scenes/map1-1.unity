@@ -4405,6 +4405,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 1102597905794440117, guid: 172cbda6fa32712488e64b898d68ae9a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1222639741994813865, guid: 172cbda6fa32712488e64b898d68ae9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10684,11 +10689,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Tiles.Array.data[36].second.m_TileIndex
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1102597905794440117, guid: 172cbda6fa32712488e64b898d68ae9a,
-        type: 3}
-      propertyPath: m_TagString
-      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 27896828087885725, guid: 172cbda6fa32712488e64b898d68ae9a,
         type: 3}
@@ -19869,6 +19869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8824092100851168213, guid: 8863848dd7c9a9249918c8d056b33064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824092100851168208, guid: 8863848dd7c9a9249918c8d056b33064,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19929,6 +19934,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1becac66de9a1f64bb2370191f6e321f, type: 2}
+    - target: {fileID: 4085881684507166718, guid: 8863848dd7c9a9249918c8d056b33064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8863848dd7c9a9249918c8d056b33064, type: 3}
 --- !u!1001 &8984624298455806534

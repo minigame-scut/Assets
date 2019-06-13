@@ -533,6 +533,13 @@ public class GameManager : MonoBehaviour
         NPCPause = ispause;
         return;
     }
+
+    //返回持有的sceneManager
+    public GameObject getSceneManager()
+    {
+        return this.sManager;
+    }
+
     //去下一关
     void gotoNextMap()
     {
