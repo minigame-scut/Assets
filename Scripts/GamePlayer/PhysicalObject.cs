@@ -9,7 +9,7 @@ public class PhysicalObject : MonoBehaviour
     public PlayerData playerData;
     //判定是否在地上的阈值
     public float minGroundNormalY = 0.65f;
-    protected float gravityModifier = 0.6f;
+    protected float gravityModifier = 0.68f;
     //是否在rush
     public bool isRush = false;
     //是否在walk

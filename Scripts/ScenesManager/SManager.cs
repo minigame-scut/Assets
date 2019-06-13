@@ -85,7 +85,6 @@ public class SManager : MonoBehaviour
             //如果当前场景收集过道具，重新设置道具状态
             if (gamePlayer.GetComponent<PlayerPlatformController>().playerData.numOfFace == saveData.numOfFace && isCollectFace && face != null)
             {
-                Debug.Log(isCollectFace);
                 GameManager.instance.propData.setFaceTrue(getNumOfMap(GameManager.instance.sceneName).x, getNumOfMap(GameManager.instance.sceneName).y);
                 face.SetActive(true);
                 isCollectFace = false;
@@ -278,6 +277,7 @@ public class SManager : MonoBehaviour
     }
     private void responseForRUSH()
     {
+        
         if (audioManager != null)
         {
             audioManager.GetComponent<AudioManager>().PlaySound("Music/Sounds/Sou/Rush");

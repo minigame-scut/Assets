@@ -49,8 +49,8 @@ public class ColorTransDoorManager : MonoBehaviour
 
         //添加 颜色传送门 的监听
         EventCenter.AddListener<GameObject>(MyEventType.COLORTRANSDOOR, responseForCOLORTRANSDOOR);
-      
-          EventCenter.AddListener(MyEventType.DEATH, recoverTransDoor);
+
+        EventCenter.AddListener(MyEventType.DEATH, recoverTransDoor);
 
 
     }

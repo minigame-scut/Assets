@@ -16,7 +16,8 @@ public enum KindofTrans
 
 public class GameManager : MonoBehaviour
 {
-    public string testBirthPlace;
+   // public string testBirthPlace;
+
     public int MapIndexNum = 0;
     public static GameManager instance;
 
@@ -115,7 +116,7 @@ public class GameManager : MonoBehaviour
 
         //创建当前场景的sceneManager
         if (sceneName != "Interface")
-            buildSceneManager(GameObject.Find(testBirthPlace).transform.position);
+            buildSceneManager(GameObject.Find("birthPlace1-" + MapIndexNum + "-1").transform.position);
         //  buildSceneManager(new Vector3(-7.733808f, 3.064172f, 0));
 
 
@@ -147,7 +148,7 @@ public class GameManager : MonoBehaviour
         }
         // Debug.Log(sceneName);
         //暂停游戏并显示UI
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Menu"))
         {
             //显示UI
             UI.SetActive(true);

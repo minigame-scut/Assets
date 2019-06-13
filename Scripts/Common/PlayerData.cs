@@ -11,11 +11,11 @@
     public float maxSpeed = 3;
 
     //冲刺速度
-    public float normalRushSpeed = 10;
-    public float superRushSpeed = 15;
+    public float normalRushSpeed = 11;
+    public float superRushSpeed = 18;
     //跳跃速度
-    public float normalJumpSpeed = 7;
-    public float superJumpSpeed = 11;
+    public float normalJumpSpeed = 5.7f;
+    public float superJumpSpeed = 8.0f;
 
     //冲刺计时器
     public float rushTimer = 0;

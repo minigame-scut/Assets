@@ -41,9 +41,13 @@ public class logicForMapSeven : MonoBehaviour
     }
     void responseForDEATH()
     {
-        ghost.transform.position = ghostPos;
-        ghostBirthTimer = 0;
-        ghost.SetActive(false);
+        if (ghost != null)
+        {
+            ghost.transform.position = ghostPos;
+            ghostBirthTimer = 0;
+            ghost.SetActive(false);
+        }
+        return;
     }
     void listener()
     {

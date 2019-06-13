@@ -48,4 +48,8 @@ public class UIManager : MonoBehaviour
         float tempSV = GameObject.FindWithTag("SVControl").GetComponent<Slider>().value;
         GameManager.changeSoundVolum(tempSV);
     }
+    public void exitGame()
+    {
+        Application.Quit();
+    }
 }
