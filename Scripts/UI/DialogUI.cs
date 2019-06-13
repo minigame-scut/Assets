@@ -88,7 +88,7 @@ public class DialogUI : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && _isExecute == true)
+        if ((Input.GetButtonDown("Skip") || Input.GetKeyDown(KeyCode.Space)) && _isExecute == true)
 
         {
             OneByOneExecuteCommand(); //执行对话命令函数

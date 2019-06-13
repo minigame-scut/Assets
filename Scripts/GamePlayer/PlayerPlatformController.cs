@@ -120,7 +120,7 @@ public class PlayerPlatformController : PhysicalObject
             playerData.canRush = false;
             //广播移除重置buff的信号
             EventCenter.Broadcast(MyEventType.INITDELETE);
-
+            EventCenter.Broadcast(MyEventType.RUSH);
             return;
         }
         //跳跃
@@ -137,7 +137,8 @@ public class PlayerPlatformController : PhysicalObject
                 jump();
             }
             EventCenter.Broadcast(MyEventType.INITDELETE);
-            
+            EventCenter.Broadcast(MyEventType.JUMP);
+
         }
         else if (Input.GetButtonUp("Jump"))
         {
@@ -293,8 +294,8 @@ public class PlayerPlatformController : PhysicalObject
     //弹起
     void elasticUp()
     {
-        velocity.y = elasticTrans.right.y * 4;
-        velocity.x = elasticTrans.right.x * 4;
+        velocity.y = elasticTrans.right.y * 4.4f;
+        velocity.x = elasticTrans.right.x * 4.4f;
     }
     //玩家死亡
     void Dead()

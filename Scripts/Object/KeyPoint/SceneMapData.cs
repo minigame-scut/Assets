@@ -40,8 +40,8 @@ public class SceneMapData
             mapData.Add("nextPlace1-1-3", "birthPlace1-2-2");
             mapData.Add("nextPlace1-2-1", "birthPlace1-1-2");
             mapData.Add("nextPlace1-2-2", "birthPlace1-1-3");
-            mapData.Add("nextPlace1-2-3", "birthPlace1-3-1");
-            mapData.Add("nextPlace1-2-4", "birthPlace1-4-1");
+            mapData.Add("nextPlace1-2-3", "birthPlace1-4-1");
+            mapData.Add("nextPlace1-2-4", "birthPlace1-3-1");
             mapData.Add("nextPlace1-3-1", "birthPlace1-2-3");
             mapData.Add("nextPlace1-4-1", "birthPlace1-2-4");
             mapData.Add("nextPlace1-3-2", "birthPlace1-6-1");
@@ -66,15 +66,15 @@ public class SceneMapData
         mapData.Add("outworldDoor1-7-3", "inworldDoor1-3-3");
 
         //地图编号与build编号的映射
-        mapData.Add("map1-0", "0");
-        mapData.Add("map1-1", "1");
-        mapData.Add("map1-2", "2");
-        mapData.Add("map1-3", "3");
-        mapData.Add("map1-4", "4");
-        mapData.Add("map1-5", "5");
-        mapData.Add("map1-6", "6");
-        mapData.Add("map1-7", "7");
-        mapData.Add("map1-8", "8");
+        mapData.Add("map1-0", "1");
+        mapData.Add("map1-1", "2");
+        mapData.Add("map1-2", "3");
+        mapData.Add("map1-3", "4");
+        mapData.Add("map1-4", "5");
+        mapData.Add("map1-5", "6");
+        mapData.Add("map1-6", "7");
+        mapData.Add("map1-7", "8");
+        mapData.Add("map1-8", "9");
         //}
         //else
         //{
